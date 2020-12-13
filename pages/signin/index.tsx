@@ -27,8 +27,10 @@ const Login = ({type}) => {
           </div>
         
           <div className="flex flex-col mt-8">
-            <Link className="text-green" href="">Esqueceu a senha?</Link>
-            <Link className="text-green" href="/signup">Crie sua conta</Link>
+            <div className="text-green">
+              <Link  href="">Esqueceu a senha?</Link>
+              <Link  href="/signup">Crie sua conta</Link>
+            </div>
           </div>
           </form>
         </div>

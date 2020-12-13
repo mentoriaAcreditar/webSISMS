@@ -1,7 +1,6 @@
-import Login from '../../pages/signin';
+import Login from '../signin';
 import Input from '../../components/Input';
 import Nav from '../../components/Nav';
-import { width } from '@open-wa/wa-automate/dist/config/puppeteer.config';
 
 
 const About = () => {
