@@ -2,7 +2,7 @@ import '../styles/main.css'
 import React from 'react'
 import Head from 'next/head'
 
-
+//Teste de acesso
 const MyApp = ({ Component, pageProps }) => (
   <>
   <Head>
