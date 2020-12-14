@@ -1,7 +1,6 @@
-import Login from '../../pages/signin';
+import Login from '../signin';
 import Input from '../../components/Input';
 import Nav from '../../components/Nav';
-import { width } from '@open-wa/wa-automate/dist/config/puppeteer.config';
 
 
 const About = () => {
@@ -127,33 +126,54 @@ const Footer = () => {
     </div>
   )
 }
+import React, { Component } from 'react';
+import { Usuario } from '../../models/usuario';
+import firebase from 'firebase/app';
+import  'firebase/firestore'
 
-const LandigPage = () => {
-  return(
-    <>
-    <Nav/>
-    
-    <div className="flex flex-row sm:w-8/12 bg-auto bg-white w-11/12 items-center justify-center h-64 mb-32 sm:mt-2 mt-32 sm:mb-4 sm:h-screen text-3xl text-green  "
-     style={{ background: "url(./ilustracao01.svg)  no-repeat center/cover"} }>
-      <div className="flex flex-col mt-60 mx-4">
-        <div className="fixed w-5/12 pr-2  py-40 mr-6 mt-12 flex flex-row justify-end">
-          <a className="-mr-22  " href="https://wa.me/message/TR5VNKOMUBYSK1">
-            <img className="w-16 " src="./whats.png" alt=""/>
-          </a>
+class LandigPage extends Component {
+  usuarios: Usuario[] = [];
+  componentDidMount() {
+    this.buscarDados();
+  }
+  async buscarDados() {
+    const db = firebase.firestore();
+    db.collection("usuario")
+      .get()
+      .then((dados) => {
+        this.usuarios = dados.docs.map((doc) => doc.data() as Usuario);
+        console.log(this.usuarios);
+        this.setState({ usuarios: this.usuarios });
+      });
+  }
+ 
+  render() {
+    return (
+      <>
+        <Nav/>
+
+        <div className="flex flex-row sm:w-8/12 bg-auto bg-white w-11/12 items-center justify-center h-64 mb-32 sm:mt-2 mt-32 sm:mb-4 sm:h-screen text-3xl text-green  "
+        style={{ background: "url(./ilustracao01.svg)  no-repeat center/cover"} }>
+        <div className="flex flex-col mt-60 mx-4">
+          <div className="fixed w-5/12 pr-2  py-40 mr-6 mt-12 flex flex-row justify-end">
+            <a className="-mr-22  " href="https://wa.me/message/TR5VNKOMUBYSK1">
+              <img className="w-16 " src="./whats.png" alt=""/>
+            </a>
+          </div>
+
+          
+        </div> 
+
         </div>
-    
-        
-    </div> 
-    
-    </div>
-    <h1 className="-mt-24 mb-32 mx-6 text-center text-3xl">Seja muito bem-vindo ao SIMS - Sistema de Monitormento de Saúde</h1>
-      
-      <About/>
-      <Contact/>
-      <Faqs/>
-      <Footer/>
-   </>
-  )
+        <h1 className="-mt-24 mb-32 mx-6 text-center text-3xl">Seja muito bem-vindo ao SIMS - Sistema de Monitormento de Saúde</h1>
+
+        <About/>
+        <Contact/>
+        <Faqs/>
+        <Footer/>
+      </>
+    );
+  }
 }
 
 export default LandigPage;

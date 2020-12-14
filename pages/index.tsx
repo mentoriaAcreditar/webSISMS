@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import "../styles/main.css";
-import LandingPage from '../pages/home';
+import LandingPage from './home';
 
 export default function Home() {
   return (
