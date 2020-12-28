@@ -12,11 +12,13 @@ module.exports = {
         black: "#000",
         blue: "#C0FFFF",
         blue2:"#2B478B",
-        green: '#066A71',
+        green: "#0C5263",
         greenBold: '#05494D',
         green3: '#1BDF64',
         green2: '#05494D',
-        blueLight: '#C0FFFF'
+        blueLight: '#C0FFFF',
+        greenLight: '#79F4C2',
+        blue3: '#7AC1D8'
 
       },
       textColor: {

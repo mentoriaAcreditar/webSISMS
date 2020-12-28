@@ -1,9 +1,20 @@
-import "../styles/main.css";
+import React, { InputHTMLAttributes } from 'react';
 
-const CheckBox = ({ name, placeholder, id, value }: any) => {
+interface CheckBoxPros extends InputHTMLAttributes<HTMLInputElement> {
+  name: string;
+  value: string;
+
+  id: string;
+}
+
+const CheckBox: React.FC<CheckBoxPros> = ({
+  name,
+  id,
+  value,
+}: CheckBoxPros) => {
   return (
     <div className="flex flex-row items-center space-x-2 ">
-      <input type="radio" id={id} name={name} value={value} />
+      <input className="" type="radio" id={id} name={name} value={value} />
       <label htmlFor={name}>{value}</label>
     </div>
   );

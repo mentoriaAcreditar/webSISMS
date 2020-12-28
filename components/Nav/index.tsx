@@ -1,7 +1,7 @@
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link';
+import React from 'react';
 
-const Nav = ({ fixed }: any) => {
+const Nav = () => {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <>
@@ -9,7 +9,7 @@ const Nav = ({ fixed }: any) => {
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full  flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <div className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase text-white">
-              <Link href="#">
+              <Link href="/#">
                 <img className="w-24" src="./Logo.svg" alt="" />
               </Link>
             </div>
@@ -29,10 +29,9 @@ const Nav = ({ fixed }: any) => {
             </button>
           </div>
           <div
-            className={
-              "lg:flex flex-grow items-center  " +
-              (navbarOpen ? " flex h-auto " : " hidden")
-            }
+            className={`lg:flex flex-grow items-center  ${
+              navbarOpen ? ' flex h-auto ' : ' hidden'
+            }`}
             id="example-navbar-danger"
           >
             <ul className="flex flex-col lg:flex-row list-none sm:space-x-2 lg:ml-auto">

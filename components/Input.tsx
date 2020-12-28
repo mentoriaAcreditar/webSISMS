@@ -1,12 +1,13 @@
-import "../styles/main.css";
-interface IInput {
-  name?: string;
-  placeholder?: string;
+import React, { InputHTMLAttributes } from 'react';
+
+interface IInput extends InputHTMLAttributes<HTMLInputElement> {
+  name: string;
+  placeholder: string;
 }
-const Input = ({ name, placeholder }: IInput) => {
+const Input: React.FC<IInput> = ({ name, placeholder }: IInput) => {
   return (
     <div className="flex flex-col p-2  ">
-      <label className="text-green mx-2" htmlFor="">
+      <label className="text-green mx-2" htmlFor="#">
         {name}
       </label>
       <input

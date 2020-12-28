@@ -22,7 +22,7 @@ body {
 
 a,
 a:visited {
-  @apply  inline-block text-center align-middle ;
+ 
 }
 
 .bg-color {
@@ -70,11 +70,24 @@ a:visited {
   font-family: 'Roboto', sans-serif;
 }
 
+.bg-greenGrad{
+  background: #4A5A54;
+mix-blend-mode: overlay;
+}
+
 @media(min-width: 640px){
   .margin-left{
     margin-left: 700px;
   }
   
+}
+
+.fundo {
+  background: url('../public/fe.png') no-repeat center/cover;
+  background-size: 100%;
+ 
+  
+  /* style={{ background: 'url(./background.png)  no-repeat center/cover' }} */
 }
 
 
