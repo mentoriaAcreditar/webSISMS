@@ -6,16 +6,16 @@ const CadastroPaciente = () => {
   return (
     <div
       className="flex fundo flex-col p-4"
-      // style={{ background: 'url(./background.png)  no-repeat center/cover' }}
+      style={{ background: 'url(./fe.png)  no-repeat center/cover' }}
     >
       <Bar title="Cadastro de Paciente" />
       <h1 className="mx-2 my-8 text-xl text-green">
         Dica: Você pode alterar o cadastro quando quiser.
       </h1>
       <div>
-        <div className="flex flex-row items-center ml-40 justify-center">
-          <div className="flex flex-row items-center ">
-            <div className="flex flex-col items-center justify-center">
+        <div className="sm:flex  sm:flex-row sm:items-center sm:ml-40  justify-center">
+          <div className="flex  flex-col sm:flex-row items-center ">
+            <div className="flex my-2  sm:my-0 flex-col items-center justify-center">
               <span className="text-xl text-green">Sua foto de perfil</span>
               <img src="./user.svg" alt="" />
             </div>
@@ -25,18 +25,18 @@ const CadastroPaciente = () => {
           </div>
         </div>
       </div>
-      <form action="">
+      <form action="sm:flex sm:flex-col">
         <Input name="Nome completo:" />
-        <div className="flex flex-row">
+        <div className="sm:flex sm:flex-row">
           <Input name="CPF:" />
           <Input name="Gênero:" />
           <Input name="Telefone:" />
         </div>
-        <div className="flex flex-row">
+        <div className="sm:flex sm:flex-row">
           <Input name="CEP:" />
           <Input name="Rua:" />
         </div>
-        <div className="flex flex-row">
+        <div className="sm:flex sm:flex-row">
           <Input name="Bairro:" />
           <Input name="Nº:" />
         </div>
