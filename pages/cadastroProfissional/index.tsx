@@ -6,9 +6,13 @@ const CadastroPaciente = () => {
   return (
     <div
       className="flex fundo flex-col p-4"
-      style={{ background: 'url(./fe.png)  no-repeat center/cover' }}
+      style={{ background: 'url(./fundoAzul.png)  no-repeat center/cover' }}
     >
-      <Bar title="Cadastro de Paciente" />
+      <div className="bg-gradient-to-b from-white  w-full flex flex-row items-center justify-center p-2 rounded-3xl">
+        <h1 className="sm:text-2xl text-center text-green">
+          Cadastro de profissional
+        </h1>
+      </div>
       <h1 className="mx-2 my-8 text-xl text-green">
         Dica: Você pode alterar o cadastro quando quiser.
       </h1>
@@ -34,14 +38,15 @@ const CadastroPaciente = () => {
         </div>
         <div className="sm:flex sm:flex-row">
           <Input name="CEP:" />
-          <Input name="Rua:" />
-        </div>
-        <div className="sm:flex sm:flex-row">
-          <Input name="Bairro:" />
+          <Input name="Cidade:" />
           <Input name="Nº:" />
         </div>
-        <Input name="Sofre de alguma(s) doença(s) crônica(s)? Caso sim descreva-a(s):" />
-        <Input name="Consome algum(uns) medicamento(s) frequentemente? Caso sim especifique." />
+        <div className="sm:flex sm:flex-row">
+          <Input name="Rua:" />
+          <Input name="Bairro:" />
+        </div>
+        <Input name="Rua:" />
+        <Input name="Função:" />
         <div className="flex flex-row w-full items-center justify-center py-4">
           <button
             type="submit"
