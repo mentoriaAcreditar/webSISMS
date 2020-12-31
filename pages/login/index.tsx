@@ -1,25 +1,37 @@
-import React, { Component } from "react";
-import firebase from "firebase/app";
-import "firebase/auth";
+import React, { Component } from 'react';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import router from 'next/router';
 class Login extends Component {
   logar() {
     var provider = new firebase.auth.GoogleAuthProvider();
-    provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
-    firebase.auth().languageCode = "pt";
+    provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+    firebase.auth().languageCode = 'pt';
     firebase
       .auth()
-      .signInWithPopup(provider)
-      .then((result) => {
-        var id = result.credential?.providerId;
-        var usuario = result.user;
-        console.log(id, ":",usuario?.uid, ":", usuario?.email);
+      .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+      .then(() => {
+        return firebase
+          .auth()
+          .signInWithPopup(provider)
+          .then((result) => {
+            var id = result.credential?.providerId;
+            var usuario = result.user;
+            console.log(id, ':', usuario?.uid, ':', usuario?.email);
+            router.push('user');
+          })
+          .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            var email = error.email;
+            var credential = error.credential;
+            console.log(errorCode, errorMessage, email, credential);
+          });
       })
-      .catch(function (error) {
+      .catch((error) => {
+        // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-        var email = error.email;
-        var credential = error.credential;
-        console.log(errorCode, errorMessage, email, credential);
       });
   }
   render() {
@@ -44,10 +56,7 @@ class Login extends Component {
                   >
                     <div className="grid grid-cols-3">
                       <div className="place-self-end">
-                        <img
-                          className="h-12"
-                          src="https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png"
-                        />
+                        <img className="h-12" src="./google_icon.png" />
                       </div>
                       <div className="mt-2">Logar com Google</div>
                     </div>
