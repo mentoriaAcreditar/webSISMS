@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 
-import "../../styles/main.css";
+
 
 import Input from '../../components/Input';
 
