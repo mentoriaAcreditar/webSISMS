@@ -1,31 +1,24 @@
-export class Usuario {
-    id: string;
-    nome: string;
-    email: string;
-    refPSF: string;
-    tipo: string;
+import { ETipoDeUsuario } from "./enums/tipoDeUsuario";
 
-    constructor(
-        id: string,
-        nome: string,
-        email: string,
-        refPSF: string,
-        tipo: string
-    ) {
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
-        this.refPSF = refPSF;
-        this.tipo = tipo;
+export abstract class Usuario {
+    id: string = '';
+    idCidade: string = '';
+    nome: string = '';
+    email: string = '';
+    idPSF: string = '';
+    tipo: ETipoDeUsuario = ETipoDeUsuario.PACIENTE;
+    avatar: string = '';
+    [key: string]: any;
+    constructor() { }
 
-    }
     toData() {
         return {
             id: this.id,
             nome: this.nome,
             email: this.email,
             refPSF: this.refPSF,
-            tipo: this.tipo
+            tipo: this.tipo,
+            avatar: this.avatar,
         };
     }
     fromData(res: any) {
@@ -34,7 +27,8 @@ export class Usuario {
             nome: res.nome,
             email: res.email,
             refPSF: res.refPSF,
-            tipo: res.tipo
+            tipo: res.tipo,
+            avatar: res.avatar,
         };
     }
 }
