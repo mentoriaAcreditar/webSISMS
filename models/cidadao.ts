@@ -32,7 +32,4 @@ export class Cidadao extends Usuario {
             endereco: res.endereco,
         };
     }
-    isTemOAtributo(key: string) {
-        return this ? Object.prototype.hasOwnProperty.call(this, key) : false;
-    }
 }

@@ -31,4 +31,7 @@ export abstract class Usuario {
             avatar: res.avatar,
         };
     }
+    isTemOAtributo(key: string) {
+        return this ? Object.prototype.hasOwnProperty.call(this, key) : false;
+    }
 }
