@@ -5,6 +5,7 @@ import Input from '../../components/Input';
 import Nav from '../../components/Nav';
 import { Usuario } from '../../models/usuario';
 import 'firebase/firestore';
+import { Cidadao } from '../../models/cidadao';
 
 const About = () => {
   return (
@@ -210,7 +211,7 @@ const Footer = () => {
 };
 
 class LandigPage extends Component {
-  usuarios: Usuario[] = [];
+  usuarios: Cidadao[] = [];
 
   componentDidMount() {
     this.buscarDados();
@@ -221,7 +222,9 @@ class LandigPage extends Component {
     db.collection('usuarios')
       .get()
       .then((dados) => {
-        this.usuarios = dados.docs.map((doc) => doc.data() as Usuario);
+        this.usuarios = dados.docs.map(
+          (doc) => doc.data() as Cidadao,
+        );
         console.log(this.usuarios);
         this.setState({ usuarios: this.usuarios });
       });
@@ -248,8 +251,8 @@ class LandigPage extends Component {
               </a>
             </div>
             <ul>
-              {this.usuarios.map((usuario) => (
-                <li>{usuario.email}</li>
+              {this.usuarios.map((usuario, index) => (
+                <li key={index}>{usuario.email}</li>
               ))}
             </ul>
           </div>
