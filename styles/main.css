@@ -75,6 +75,16 @@ a:visited {
 mix-blend-mode: overlay;
 }
 
+table, th, td {
+  /* border: 1px solid white; */
+}
+td {
+  padding: 0 16px;
+  text-align: center; 
+  /* border: 1px solid black; */
+}
+
+
 @media(min-width: 640px){
   .margin-left{
     margin-left: 700px;
@@ -82,13 +92,7 @@ mix-blend-mode: overlay;
   
 }
 
-.fundo {
-  background: url('../public/fe.png') no-repeat center/cover;
-  background-size: 100%;
- 
-  
-  /* style={{ background: 'url(./background.png)  no-repeat center/cover' }} */
-}
+
 
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;800&display=swap');
