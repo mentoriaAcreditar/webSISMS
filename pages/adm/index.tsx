@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.css';
 
 const RelatorioPaciente: React.FC = () => {
   const v = [
@@ -19,52 +20,175 @@ const RelatorioPaciente: React.FC = () => {
     },
   ];
   return (
-    <div
-      className="flex fundo flex-col p-4 "
-      style={{ background: 'url(./fundoAzul.png)  no-repeat center/cover' }}
-    >
-      <div className="bg-gradient-to-b from-white  w-full flex flex-col items-center justify-center p-2 rounded-3xl">
-        <h1 className="sm:text-2xl text-center text-green">
-          Relatório geral de pacientes por profissional
-        </h1>
-        <span>Administrador Fulano</span>
-      </div>
-      <div className="flex text-xl text-green px-8 flex-row mt-10">
-        <div className="w-9/12 ">
-          <div className="flex flex-row space-x-2 items-center">
-            <h1 className="bg-blue4 rounded-full px-6 py-2">Sintomas</h1>
-            <img src="./lupa.png" alt="" />
+    <>
+      <div className="flex fundo flex-col bg-blueLight2 ">
+        <div className="bg-gradient-to-b   w-full flex flex-col items-center justify-center p-2 rounded-3xl">
+          <h1 className="sm:text-2xl  text-center text-green">
+            Relatório geral de pacientes por profissional
+          </h1>
+          <span>Administrador Fulano</span>
+        </div>
+
+        <div className="w-1/2 px-8">
+          <div className="flex text-xl text-green  flex-row mt-10">
+            <div className="flex flex-row space-x-2 items-center">
+              <h1 className="blueDegrade rounded-full px-6 py-2">Sintomas</h1>
+              <img className="icon" src="./lupa2.svg" alt="" />
+            </div>
+          </div>
+          <table className="divide-y mt-6 blueDegrade w-full ">
+            {v.map((vt) => (
+              <tr className="border-blue4 text-xl text-blue4 ">
+                <td className="h-10 ">{vt.name}</td>
+                <td>
+                  <button type="button">Alterar</button>
+                </td>
+                <td>
+                  <button type="button">Excluir</button>
+                </td>
+              </tr>
+            ))}
+          </table>
+          <div className="flex flex-row space-x-4">
+            <button
+              type="button"
+              className="blueDegradeButton p-2 w-4/12 textButtonColor"
+            >
+              Adicionar
+            </button>
+            <button
+              type="button"
+              className="blueDegradeButton p-2 w-4/12 textButtonColor"
+            >
+              Aplicar
+            </button>
           </div>
         </div>
 
-        <div className="flex flex-row space-x-2 items-center">
-          <h1>Localizar pacientes</h1>
-          <img src="./lupa.png" alt="" />
+        <div className="w-1/2 px-8">
+          <div className="flex text-xl text-green  flex-row mt-10">
+            <div className="flex flex-row space-x-2 items-center">
+              <h1 className="blueDegrade rounded-full px-6 py-2">
+                Profissionais
+              </h1>
+              <img className="icon" src="./lupa2.svg" alt="" />
+            </div>
+          </div>
+          <table className="divide-y mt-6 blueDegrade w-full ">
+            {v.map((vt) => (
+              <tr className="border-blue4 text-xl text-blue4 ">
+                <td className="h-10 ">{vt.name}</td>
+                <td>
+                  <button type="button">Alterar</button>
+                </td>
+                <td>
+                  <button type="button">Excluir</button>
+                </td>
+              </tr>
+            ))}
+          </table>
+          <div className="flex flex-row space-x-4">
+            <button
+              type="button"
+              className="blueDegradeButton p-2 w-4/12 textButtonColor"
+            >
+              Adicionar
+            </button>
+            <button
+              type="button"
+              className="blueDegradeButton p-2 w-4/12 textButtonColor"
+            >
+              Aplicar
+            </button>
+          </div>
+        </div>
+
+        <div className="w-1/2 px-8">
+          <div className="flex text-xl text-green  flex-row mt-10">
+            <div className="flex flex-row space-x-2 items-center">
+              <h1 className="blueDegrade rounded-full px-6 py-2">Pacientes</h1>
+              <img className="icon" src="./lupa2.svg" alt="" />
+            </div>
+          </div>
+          <table className="divide-y mt-6 blueDegrade w-full ">
+            {v.map((vt) => (
+              <tr className="border-blue4 text-xl text-blue4 ">
+                <td className="h-10 ">{vt.name}</td>
+                <td>
+                  <button type="button">Alterar</button>
+                </td>
+                <td>
+                  <button type="button">Excluir</button>
+                </td>
+              </tr>
+            ))}
+          </table>
+          <div className="flex flex-row space-x-4">
+            <button
+              type="button"
+              className="blueDegradeButton p-2 w-4/12 textButtonColor"
+            >
+              Adicionar
+            </button>
+            <button
+              type="button"
+              className="blueDegradeButton p-2 w-4/12 textButtonColor"
+            >
+              Aplicar
+            </button>
+          </div>
+        </div>
+
+        <div className="w-1/2 px-8">
+          <div className="flex text-xl text-green  flex-row mt-10">
+            <div className="flex flex-row space-x-2 items-center">
+              <h1 className="blueDegrade rounded-full px-6 py-2">
+                Unidades de Saúde
+              </h1>
+              <img className="icon" src="./lupa2.svg" alt="" />
+            </div>
+          </div>
+          <table className="divide-y mt-6 blueDegrade w-full ">
+            {v.map((vt) => (
+              <tr className="border-blue4 text-xl text-blue4 ">
+                <td className="h-10 ">{vt.name}</td>
+                <td>
+                  <button type="button">Alterar</button>
+                </td>
+                <td>
+                  <button type="button">Excluir</button>
+                </td>
+              </tr>
+            ))}
+          </table>
+          <div className="flex flex-row space-x-4">
+            <button
+              type="button"
+              className="blueDegradeButton p-2 w-4/12 textButtonColor"
+            >
+              Adicionar
+            </button>
+            <button
+              type="button"
+              className="blueDegradeButton p-2 w-4/12 textButtonColor"
+            >
+              Aplicar
+            </button>
+          </div>
+        </div>
+        <div className=" flex flex-row  mt-20 justify-center">
+          <button
+            type="button"
+            className="blueDegradeButton p-2 w-40 textButtonColor"
+          >
+            Salvar
+          </button>
         </div>
       </div>
-      <form className=" flex flex-col items-center justfify-center" action="">
-        <div className="flex flex-col mt-8 shadow-xs  rounded-l-3xl rounded-r-3xl ">
-          {/* <ul className="flex bg-green text-white rounded-r-3xl rounded-l-3xl rounded-br-none rounded-bl-none flex-row p-2 space-x-4">
-           
-          </ul> */}
-          <ul className="flex flex-col ">
-            <table className="divide-y ">
-              {v.map((vt) => (
-                <tr className="border-blue4  text-2xl text-blue4  ">
-                  <td className="w-24 h-16">{vt.name}</td>
-                  <td>
-                    <button type="button">Alterar</button>
-                  </td>
-                  <td>
-                    <button type="button">Excluir</button>
-                  </td>
-                </tr>
-              ))}
-            </table>
-          </ul>
-        </div>
-      </form>
-    </div>
+      <div className="flex  flex-row justify-center w-full h-full ">
+        <img className="w-full" src="./fundo_ADM.png" alt="" />
+      </div>
+    </>
   );
 };
 
