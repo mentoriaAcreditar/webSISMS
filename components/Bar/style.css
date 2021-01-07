@@ -3,3 +3,8 @@
   mix-blend-mode: overlay;
   border-radius: 38px;
 }
+
+icon{
+  mix-blend-mode: soft-light;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+}

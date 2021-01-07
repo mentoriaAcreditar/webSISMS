@@ -1,30 +1,32 @@
+import React from 'react';
 import Link from 'next/link';
 
-const Profile = () => {
+const Profile: React.FC = () => {
   return (
     <div
-      className="flex flex-row items-center justify-center h-full"
+      className="flex flex-row justify-center h-full"
       style={{ background: 'url(./background.svg) no-repeat center/cover' }}
     >
-      <div className="shadow-md p-16 h-64 flex flex-col justify-center items-center bg-white rounded-2xl">
-        <h1>Qual o seu perfil?</h1>
-        <div className="flex flex-row items-center space-x-4">
-          <div className="shadow-2xl cursor-pointer bg-green  w-24 h-24 mt-10 flex flex-col items-center justify-center rounded-2xl">
-            <Link href="signin">
-              <h1 className="text-white text-center">Profissional da saúde</h1>
-            </Link>
-          </div>
-
-          <div className="shadow-2xl cursor-pointer bg-green  w-24 h-24 mt-10 flex flex-col items-center justify-center rounded-2xl">
-            <Link href="signin">
-              <h1 className="text-white text-center">Paciente</h1>
-            </Link>
-          </div>
-          <div className="shadow-2xl cursor-pointer bg-green  w-24 h-24 mt-10 flex flex-col items-center justify-center rounded-2xl">
-            <Link href="signin">
-              <h1 className="text-white text-center">Gerente</h1>
-            </Link>
-          </div>
+      <div className="flex text-green flex-col mt-10 space-y-4 items-center">
+        <h1 className="text-3xl  ">Seja bem-vindo ao</h1>
+        <img className="w-1/2" src="./Logo.svg" alt="logo" />
+        <span>Você é um:</span>
+        <div className="space-y-4">
+          <Link href="/cadastroPaciente">
+            <div className="p-2 cursor-pointer bg-blue rounded-xl flex flex-row justify-center">
+              <span>Paciente</span>
+            </div>
+          </Link>
+          <Link href="/cadastroProfissional">
+            <div className="p-2 cursor-pointer bg-blue rounded-xl flex flex-row justify-center">
+              <span>Profissional</span>
+            </div>
+          </Link>
+          <Link href="/adm">
+            <div className="p-2 cursor-pointer bg-blue rounded-xl flex flex-row justify-center">
+              <span>Administrador</span>
+            </div>
+          </Link>
         </div>
       </div>
     </div>

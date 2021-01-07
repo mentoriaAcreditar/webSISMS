@@ -60,7 +60,7 @@ const Nav = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <Link href="login">
+                <Link href="profile">
                   <img
                     className="cursor-pointer w-12 ml-2"
                     src="./user.svg"

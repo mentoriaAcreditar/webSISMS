@@ -26,7 +26,8 @@ module.exports = {
         blue5: "#A2D4DD",
         green6: "#B3FCD9",
         blue6: "#A7D9E2",
-        greenBlack: "#464646"
+        greenBlack: "#464646",
+        green7: "#93FBCC"
 
       },
       textColor: {
