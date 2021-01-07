@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import router from 'next/router';
+
 class Login extends Component {
   logar() {
-    var provider = new firebase.auth.GoogleAuthProvider();
+    const provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
     firebase.auth().languageCode = 'pt';
     firebase
@@ -15,25 +16,26 @@ class Login extends Component {
           .auth()
           .signInWithPopup(provider)
           .then((result) => {
-            var id = result.credential?.providerId;
-            var usuario = result.user;
+            const id = result.credential?.providerId;
+            const usuario = result.user;
             console.log(id, ':', usuario?.uid, ':', usuario?.email);
             router.push('user');
           })
           .catch((error) => {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            var email = error.email;
-            var credential = error.credential;
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            const { email } = error;
+            const { credential } = error;
             console.log(errorCode, errorMessage, email, credential);
           });
       })
       .catch((error) => {
         // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
+        const errorCode = error.code;
+        const errorMessage = error.message;
       });
   }
+
   render() {
     return (
       <>

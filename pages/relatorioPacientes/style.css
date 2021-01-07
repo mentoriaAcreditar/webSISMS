@@ -1,0 +1,12 @@
+.header{
+  background: linear-gradient(180deg, #DFFDFF 0%, rgba(223, 253, 255, 0) 110%);
+  mix-blend-mode: multiply;
+  backdrop-filter: blur(4px);
+/* Note: backdrop-filter has minimal browser support */
+
+  border-radius: 49px;
+}
+
+.icon{
+  mix-blend-mode: luminosity;
+}

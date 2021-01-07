@@ -2,11 +2,10 @@ import React, { InputHTMLAttributes } from 'react';
 
 interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
-  placeholder: string;
 }
 const Input: React.FC<IInput> = ({
   name,
-  placeholder,
+
   id,
   value,
   onChange,
@@ -17,7 +16,6 @@ const Input: React.FC<IInput> = ({
         {name}
       </label>
       <input
-        placeholder={placeholder}
         id={id}
         value={value}
         onChange={onChange}

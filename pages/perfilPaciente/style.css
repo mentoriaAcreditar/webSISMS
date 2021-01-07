@@ -1,0 +1,14 @@
+.icon{
+ 
+mix-blend-mode: overlay;
+}
+
+.content{
+  background: #464646;
+mix-blend-mode: overlay;
+opacity: 2.5;
+backdrop-filter: blur(2px);
+/* Note: backdrop-filter has minimal browser support */
+
+border-radius: 62px;
+}

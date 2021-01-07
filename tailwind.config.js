@@ -22,8 +22,11 @@ module.exports = {
         gray: "#B7B7B7",
         blue4: "#3C7F95",
         blue4Dark: "#429DB0",
-        blueLight2: "#B4CEFF"
-        
+        blueLight2: "#B4CEFF",
+        blue5: "#A2D4DD",
+        green6: "#B3FCD9",
+        blue6: "#A7D9E2",
+        greenBlack: "#464646"
 
       },
       textColor: {

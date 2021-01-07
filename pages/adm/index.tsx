@@ -29,7 +29,7 @@ const RelatorioPaciente: React.FC = () => {
           <span>Administrador Fulano</span>
         </div>
 
-        <div className="w-1/2 px-8">
+        <div className="sm:w-1/2 px-8">
           <div className="flex text-xl text-green  flex-row mt-10">
             <div className="flex flex-row space-x-2 items-center">
               <h1 className="blueDegrade rounded-full px-6 py-2">Sintomas</h1>
@@ -65,7 +65,7 @@ const RelatorioPaciente: React.FC = () => {
           </div>
         </div>
 
-        <div className="w-1/2 px-8">
+        <div className="sm:w-1/2 px-8">
           <div className="flex text-xl text-green  flex-row mt-10">
             <div className="flex flex-row space-x-2 items-center">
               <h1 className="blueDegrade rounded-full px-6 py-2">
@@ -103,7 +103,7 @@ const RelatorioPaciente: React.FC = () => {
           </div>
         </div>
 
-        <div className="w-1/2 px-8">
+        <div className="sm:w-1/2 px-8">
           <div className="flex text-xl text-green  flex-row mt-10">
             <div className="flex flex-row space-x-2 items-center">
               <h1 className="blueDegrade rounded-full px-6 py-2">Pacientes</h1>
@@ -139,7 +139,7 @@ const RelatorioPaciente: React.FC = () => {
           </div>
         </div>
 
-        <div className="w-1/2 px-8">
+        <div className="sm:w-1/2 px-8">
           <div className="flex text-xl text-green  flex-row mt-10">
             <div className="flex flex-row space-x-2 items-center">
               <h1 className="blueDegrade rounded-full px-6 py-2">

@@ -169,8 +169,8 @@ const Faqs = () => {
 const Footer = () => {
   return (
     <div
-      className="p-16 flex flex-row w-full bg-green mt-10 space-x-4"
-      style={{ background: 'url(./background.svg) no-repeat center/cover' }}
+      className="p-16  flex flex-row w-full bg-green  space-x-4"
+      style={{ background: 'url(./footerHome.png) no-repeat center/cover' }}
     >
       <div className="flex w-1/2 flex-row  ">
         <span className="hidden sm:flex flex-row items-center">
@@ -222,9 +222,7 @@ class LandigPage extends Component {
     db.collection('usuarios')
       .get()
       .then((dados) => {
-        this.usuarios = dados.docs.map(
-          (doc) => doc.data() as Cidadao,
-        );
+        this.usuarios = dados.docs.map((doc) => doc.data() as Cidadao);
         console.log(this.usuarios);
         this.setState({ usuarios: this.usuarios });
       });
@@ -236,19 +234,19 @@ class LandigPage extends Component {
         <Nav />
 
         <div
-          className="flex flex-row sm:w-8/12 bg-auto bg-white w-11/12 items-center justify-center h-64 mb-32 sm:mt-2 mt-32 sm:mb-4 sm:h-screen text-3xl text-green  "
+          className="flex flex-row sm:w-8/12   w-11/12 items-center justify-center h-64 mb-32 sm:mt-2 mt-32 sm:mb-4 sm:h-screen text-3xl text-green  "
           style={{
             background: 'url(./ilustracao01.svg)  no-repeat center/cover',
           }}
         >
           <div className="flex flex-col mt-60 mx-4">
             <div className="fixed w-5/12 pr-2  py-40 mr-6 mt-12 flex flex-row justify-end">
-              <a
+              {/* <a
                 className="-mr-22  "
                 href="https://wa.me/message/TR5VNKOMUBYSK1"
               >
                 <img className="w-16 " src="./whats.png" alt="" />
-              </a>
+              </a> */}
             </div>
             <ul>
               {this.usuarios.map((usuario, index) => (

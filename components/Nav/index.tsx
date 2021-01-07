@@ -5,7 +5,7 @@ const Nav = () => {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <>
-      <nav className="fixed w-full flex flex-wrap bg-blue items-center shadow-md  px-2 py-3 navbar-expand-lg  mb-3">
+      <nav className="fixed w-full flex flex-wrap bg-blue6 items-center shadow-md  px-2 py-3 navbar-expand-lg  mb-3">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full  flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <div className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase text-white">
