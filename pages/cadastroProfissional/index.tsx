@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import Bar from '../../components/Bar';
 import Input from '../../components/Input';
 
@@ -8,11 +9,18 @@ const CadastroPaciente = () => {
       className="flex fundo flex-col p-4"
       style={{ background: 'url(./fundoAzul.png)  no-repeat center/cover' }}
     >
-      <div className="bg-gradient-to-b from-white  w-full flex flex-row items-center justify-center p-2 rounded-3xl">
-        <h1 className="sm:text-2xl text-center text-green">
-          Cadastro de profissional
-        </h1>
+      <div className=" bg-gradient-to-b from-blue w-full flex flex-row items-center justify-center p-2 rounded-3xl">
+        <div className="flex flex-col w-11/12">
+          <h1 className="sm:text-2xl  text-center text-green">
+            Cadastro do profissional
+          </h1>
+        </div>
+        <div className="flex cursor-pointer flex-row space-x-2">
+          <span>Sair</span>
+          <img src="./logout2.svg" alt="" />
+        </div>
       </div>
+
       <h1 className="mx-2 my-8 text-xl text-green">
         Dica: Você pode alterar o cadastro quando quiser.
       </h1>

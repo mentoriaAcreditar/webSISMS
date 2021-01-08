@@ -1,0 +1,5 @@
+.grad{
+  background: linear-gradient(180deg, #DFFDFF 0%, rgba(223, 253, 255, 0) 100%);
+mix-blend-mode: multiply;
+backdrop-filter: blur(4px);
+}

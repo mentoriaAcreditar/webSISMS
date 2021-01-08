@@ -13,7 +13,10 @@ const Bar: React.FC<BarProps> = ({ title }) => (
       <h1 className="sm:text-2xl  text-center text-green">{title}</h1>
     </div>
     <Link href="/">
-      <img className="cursor-pointer" src="./logout2.svg" alt="" />
+      <div className="flex cursor-pointer flex-row space-x-2">
+        <span>Sair</span>
+        <img src="./logout2.svg" alt="" />
+      </div>
     </Link>
   </div>
 );
