@@ -2,8 +2,10 @@ import React, { InputHTMLAttributes } from 'react';
 
 interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
+  label: string;
 }
 const Input: React.FC<IInput> = ({
+  label,
   name,
 
   id,
@@ -13,9 +15,10 @@ const Input: React.FC<IInput> = ({
   return (
     <div className="flex flex-col p-2  ">
       <label className="text-green mx-2" htmlFor="#">
-        {name}
+        {label}
       </label>
       <input
+      name={name}
         id={id}
         value={value}
         onChange={onChange}

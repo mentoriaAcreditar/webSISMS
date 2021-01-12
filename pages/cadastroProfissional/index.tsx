@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Bar from '../../components/Bar';
 import Input from '../../components/Input';
+import { ProfissonalDaSaude } from '../../models/profissonalDaSaude';
 
-const CadastroPaciente = () => {
+const CadastroProfissional = () => {
+  let [profissional, setProfissional] = useState({
+    ...new ProfissonalDaSaude(),
+  });
+
+  function handleChange(evt: any) {
+    const value = evt.target.value;
+    setProfissional({
+      ...profissional,
+      [evt.target.label]: value,
+    });
+  }
+  function handleSalvar() {
+    console.log(profissional);
+  }
   return (
     <div
       className="flex fundo flex-col p-4"
@@ -37,24 +52,29 @@ const CadastroPaciente = () => {
           </div>
         </div>
       </div>
-      <form action="sm:flex sm:flex-col">
-        <Input placeholder="Seu nome" name="Nome completo:" />
+      <form action="sm:flex sm:flex-col" onSubmit={handleSalvar}>
+        <Input
+          placeholder="Seu nome"
+          label="Nome completo:"
+          name="nome"
+          onChange={handleChange}
+        />
         <div className="sm:flex sm:flex-row">
-          <Input name="CPF:" />
-          <Input name="Gênero:" />
-          <Input name="Telefone:" />
+          <Input label="CPF:" name="" />
+          <Input label="Gênero:" name="" />
+          <Input label="Telefone:" name="" />
         </div>
         <div className="sm:flex sm:flex-row">
-          <Input name="CEP:" />
-          <Input name="Cidade:" />
-          <Input name="Nº:" />
+          <Input label="CEP:" name="" />
+          <Input label="Cidade:" name="" />
+          <Input label="Nº:" name="" />
         </div>
         <div className="sm:flex sm:flex-row">
-          <Input name="Rua:" />
-          <Input name="Bairro:" />
+          <Input label="Rua:" name="" />
+          <Input label="Bairro:" name="" />
         </div>
-        <Input name="Rua:" />
-        <Input name="Função:" />
+        <Input label="Rua:" name="" />
+        <Input label="Função:" name="" />
         <div className="flex flex-row w-full items-center justify-center py-4">
           <button
             type="submit"
@@ -68,4 +88,4 @@ const CadastroPaciente = () => {
   );
 };
 
-export default CadastroPaciente;
+export default CadastroProfissional;
