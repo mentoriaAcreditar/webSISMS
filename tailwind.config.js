@@ -27,7 +27,13 @@ module.exports = {
         green6: "#B3FCD9",
         blue6: "#A7D9E2",
         greenBlack: "#464646",
-        green7: "#93FBCC"
+        green7: "#93FBCC",
+
+        purpleDark: "#774DD6",
+        purple: "#8257E5",
+        gray: "#f0f0f7",
+        grayText: "#9C98A6",
+        grayTextBase: "#6a6180"
 
       },
       textColor: {

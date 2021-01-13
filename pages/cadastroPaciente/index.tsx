@@ -1,56 +1,162 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Bar from '../../components/Bar';
 import Input from '../../components/Input';
 
 const CadastroPaciente = () => {
+  const [tipos, setTipos] = useState([
+    'admin',
+    'gerente',
+    'profissional',
+    'paciente',
+  ]);
+  const [selectTipos, setSelectTipos] = useState();
+
+  const [cidades, setCidades] = useState([
+    'Viçosa do Ceará',
+    'Tianguá',
+    'Sobral',
+    'Frecheirinha',
+  ]);
+  const [selectCidade, setSelectCidade] = useState();
+
+  const [psfs, setPsfs] = useState(['Camcimbão', 'Ingá', 'Delgada']);
+  const [selectPsf, setSelectPsf] = useState();
+
+  function handleSelectTipo(event: any) {
+    const tipo = event.target.value;
+    setSelectTipos(tipo);
+    console.log(tipo);
+  }
+
+  function handleSelectCidade(event: any) {
+    const cidade = event.target.value;
+    setSelectCidade(cidade);
+    console.log(cidade);
+  }
+
+  function handleSelectPsf(event: any) {
+    const psf = event.target.value;
+    setSelectCidade(psf);
+    console.log(psf);
+  }
   return (
     <>
-      <div className="flex bg-green6 fundo flex-col p-4 z-10">
-        <Bar title="Cadastro de Paciente" />
-        <h1 className="mx-2 my-8 text-xl text-green">
-          Dica: Você pode alterar o cadastro quando quiser.
-        </h1>
-        <div>
-          <div className="sm:flex  sm:flex-row sm:items-center sm:ml-40  justify-center">
-            <div className="flex  flex-col sm:flex-row items-center ">
-              <div className="flex my-2  sm:my-0 flex-col items-center justify-center">
-                <span className="text-xl text-green">Sua foto de perfil</span>
-                <img src="./user.svg" alt="" />
-              </div>
-              <button className="bg-gray h-8 px-2" type="button">
-                Insira sua Imagem
-              </button>
+      <Bar title="Cadastro do Paciente" />
+      <div className="flex fundo flex-col items-center justify-center  bg-gray">
+        <div className="bg-purple w-full">
+          <h1 className="mx-2 mt-2 text-white text-xl">
+            Dica: Você pode alterar o cadastro quando quiser.
+          </h1>
+          <div className="py-4 flex items-center flex-col ">
+            <div>
+              <img className="z-0 w-32 h-32 relative" src="user.svg" alt="" />
+            </div>
+            <img
+              className="bg-blue6 z-10 rounded-full w-10 p-2 -mt-12 ml-20 h-10  relative"
+              src="camera.svg"
+              alt=""
+            />
+            <div className="flex items-center flex-col  mt-4">
+              <h1 className="font-bold text-white text-2xl">Antonio Carlos</h1>
+              <span className="text-xl">Enfermeiro</span>
             </div>
           </div>
         </div>
-        <form action="sm:flex sm:flex-col">
-          <Input placeholder="Seu nome" name="Nome completo:" />
-          <div className="sm:flex sm:flex-row">
-            <Input name="CPF:" />
-            <Input name="Gênero:" />
-            <Input name="Telefone:" />
+
+        <form className="sm:flex sm:flex-col  sm:mb-20  rounded-xl sm:p-16 py-16 px-8 justify-center sm:w-8/12 w-full  -mt-10 bg-white">
+          <Input mask="" placeholder="Seu nome" label="Nome completo:" />
+          <div className="sm:flex sm:flex-row sm:w-4/12">
+            <Input mask="99999999-9" label="RG:" />
+            <Input mask="999.999.999-99" label="CPF:" />
           </div>
           <div className="sm:flex sm:flex-row">
-            <Input name="CEP:" />
-            <Input name="Rua:" />
+            <div className="sm:w-full">
+              <Input mask="" label="E-mail:" />
+            </div>
+            <div className="sm:w-4/12">
+              <Input mask="(99)9.9999-9999" label="Telefone:" />
+            </div>
+          </div>
+
+          <div className="sm:flex sm:flex-row">
+            <div className="sm:w-3/12">
+              <Input mask="99.999-999" label="CEP:" />
+            </div>
+
+            <div className="flex text-green mt-2 flex-col sm:w-4/12 ml-2  sm:mr-4 mr-2 ">
+              <span className="">Cidade:</span>
+              <select
+                className="px-2  space-x-2 text-grayTextBase h-10 bg-white text-sm sm:text-base box-border t border-color rounded-lg"
+                id="tipo"
+                name="tipo"
+                value={selectCidade}
+                onChange={handleSelectCidade}
+              >
+                <option className="text-base" disabled selected>
+                  Selecione
+                </option>
+                {cidades.map((cidade) => (
+                  <option key={cidade} value={cidade}>
+                    {cidade}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="sm:w-5/12">
+              <Input mask="" label="Rua:" />
+            </div>
           </div>
           <div className="sm:flex sm:flex-row">
-            <Input name="Bairro:" />
-            <Input name="Nº:" />
+            <div className="sm:w-2/12">
+              <Input mask="" label="Nº:" />
+            </div>
+            <div className="sm:w-4/12">
+              <Input mask="" label="Bairro:" />
+            </div>
+            <div className="sm:w-6/12">
+              <Input mask="" label="Complemento:" />
+            </div>
           </div>
-          <Input name="Sofre de alguma(s) doença(s) crônica(s)? Caso sim descreva-a(s):" />
-          <Input name="Consome algum(uns) medicamento(s) frequentemente? Caso sim especifique." />
-          <div className="flex flex-row w-full items-center justify-center py-4" />
+
+          <div className="flex text-green flex-col sm:w-4/12  ml-2  sm:mr-4 mr-2 mt-4">
+            <span className="text-lg">PSF</span>
+            <select
+              className="p-2 space-x-2 mt-2 text-grayTextBase h-12 bg-white text-sm sm:text-base box-border bg-input border-color rounded-lg"
+              id="tipo"
+              label="tipo"
+              value={selectPsf}
+              onChange={handleSelectPsf}
+            >
+              <option className="text-base" disabled selected>
+                Selecione
+              </option>
+              {psfs.map((psf) => (
+                <option key={psf} value={psf}>
+                  {psf}
+                </option>
+              ))}
+            </select>
+          </div>
+          <Input
+            mask=""
+            label="Sofre de alguma(s) doença(s) crônica(s)? Caso sim descreva-a(s).:"
+          />
+
+          <Input
+            mask=""
+            label="Consome algum(uns) medicamento(s) frequentemente? Caso sim 
+            especifique."
+          />
+          <div className="flex mt-10 flex-row w-full items-center justify-center py-4">
+            <button
+              type="submit"
+              className="bg-blue4 text-white p-2 rounded-lg w-24"
+            >
+              Salvar
+            </button>
+          </div>
         </form>
-      </div>
-      <div className="flex  flex-row justify-center  w-full ">
-        <button
-          type="submit"
-          className="bg-white text-green mt-24 z-10 relative p-2 rounded-full w-24"
-        >
-          Salvar
-        </button>
-        <img className="w-full absolute z-0" src="./fundoFooter.png" alt="" />
       </div>
     </>
   );

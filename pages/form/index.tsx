@@ -10,7 +10,7 @@ const Form = () => {
       <div className="flex fundo flex-col p-4 bg-green6  items-center">
         <Bar title="Olá, tudo bem? Queremos saber como você está." />
 
-        <div className="flex flex-col bg-gray-400 p-8  sm:w-10/12 bg-opacity-25 rounded-3xl  mt-16 ">
+        <div className="flex bg-green  flex-col bg-gray-400 p-8  sm:w-10/12 bg-opacity-25 rounded-3xl  mt-16 ">
           <h1 className="text-xl text-green">
             Como está se sentido hoje? Marque os sintomas.
           </h1>
@@ -62,19 +62,18 @@ const Form = () => {
             Pronto
           </button>
         </div>
-        <div className="bg bg-opacity-10 bg-green4  sm:w-10/12  ">
-          <div className="flex h-64 flex-col bg-gray-400  p-8 w-full bg-opacity-25 rounded-3xl  mt-10 ">
+        <div className="bg-green bg-opacity-25  rounded-2xl mt-10 z-10  sm:w-10/12  ">
+          <div className="flex  flex-col bg-gray-400  p-8 w-full bg-opacity-25 rounded-3xl  ">
             <h1 className="text-xl text-green">Resumo</h1>
-            <p>
-              Dia 01/02/2021 às 13:50(3ª consulta)
-              <br />
+            <span> Dia 01/02/2021 às 13:50(3ª consulta)</span>
+            <p className="mt-10 h-full mb-64 ">
               Tosse fraca: respiração pouco ofegante; dores corporais fraca;
               sonolência moderada.
             </p>
           </div>
         </div>
       </div>
-      <div className="flex  flex-row justify-center z-0  w-full ">
+      <div className="flex -mt-24  flex-row justify-center z-0  w-full ">
         <img className="w-full absolute z-0" src="./fundoFooter.png" alt="" />
       </div>
     </>
