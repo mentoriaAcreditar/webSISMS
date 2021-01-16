@@ -1,4 +1,5 @@
 import React, { InputHTMLAttributes } from 'react';
+import './style.css';
 
 interface CheckBoxPros extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
@@ -14,7 +15,13 @@ const CheckBox: React.FC<CheckBoxPros> = ({
 }: CheckBoxPros) => {
   return (
     <div className="flex flex-row items-center space-x-2 ">
-      <input className="" type="radio" id={id} name={name} value={value} />
+      <input
+        className="radio-size"
+        type="radio"
+        id={id}
+        name={name}
+        value={value}
+      />
       <label htmlFor={name}>{value}</label>
     </div>
   );

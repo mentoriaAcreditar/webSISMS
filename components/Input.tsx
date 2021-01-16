@@ -3,7 +3,7 @@ import InputMask from 'react-input-mask';
 
 interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
-  label?: string;
+  label: string;
   mask: string;
 }
 const Input: React.FC<IInput> = ({

@@ -12,12 +12,7 @@ const Profile: React.FC = () => {
         <img className="w-1/2" src="./Logo.svg" alt="logo" />
         <span>Você é um:</span>
         <div className="space-y-4">
-          <Link href="/cadastroPaciente">
-            <div className="p-2 cursor-pointer bg-blue rounded-xl flex flex-row justify-center">
-              <span>Paciente</span>
-            </div>
-          </Link>
-          <Link href="/cadastroProfissional">
+          <Link href="/painelProfissional">
             <div className="p-2 cursor-pointer bg-blue rounded-xl flex flex-row justify-center">
               <span>Profissional</span>
             </div>

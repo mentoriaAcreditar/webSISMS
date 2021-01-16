@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Bar from '../../components/Bar';
 import './style.css';
+import ModalAddTool from '../../components/ModalAddSintomas';
+import ModalAddUnidades from '../../components/ModalAddUnidades';
+import ModalAddProfissional from '../../components/ModalAddProfissionais';
+import Link from 'next/link';
 
 const RelatorioPaciente: React.FC = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  function openModal() {
+    setModalOpen(true);
+  }
+
+  function toggleModal(): void {
+    setModalOpen(!modalOpen);
+  }
   const v = [
     {
       name: 'Tosse',
@@ -18,175 +32,131 @@ const RelatorioPaciente: React.FC = () => {
     {
       name: 'Falta de ar',
     },
+    {
+      name: 'Falta de ar',
+    },
+    {
+      name: 'Falta de ar',
+    },
   ];
   return (
     <>
-      <div className="flex fundo flex-col bg-blueLight2 ">
-        <div className="bg-gradient-to-b   w-full flex flex-col items-center justify-center p-2 rounded-3xl">
-          <h1 className="sm:text-2xl  text-center text-green">
-            Relatório geral de pacientes por profissional
-          </h1>
-          <span>Administrador Fulano</span>
-        </div>
+      <Bar route="" title="Painel do Administrador" />
+      <div className="flex flex-col space-y-4 bg-gray p-8 ">
+        <h1 className="text-2xl">Cadastros</h1>
+        <div className="sm:grid sm:grid-cols-2 sm:gap-4 space-y-4 sm:space-y-0">
+          <div className="w-full space-y-4 shadow-xl rounded-lg p-8 bg-white">
+            <h1 className="text-xl">
+              Sintomas que os pacientes poderão selecionar
+            </h1>
+            <ul className="mt-6 h-64 shadow-xs p-4 divide-y overflow-auto divide-gray rounded-lg w-full ">
+              {v.map((vt) => (
+                <li className="text-xl   ">
+                  <div className="flex flex-row">
+                    <span className="h-10 w-full text-green">{vt.name}</span>
+                    <div className="flex flex-row space-x-6">
+                      <button
+                        className=" flex flex-col justify-center items-center"
+                        type="button"
+                      >
+                        <img src="./edit-2.svg" alt="" />
+                      </button>
 
-        <div className="sm:w-1/2 px-8">
-          <div className="flex text-xl text-green  flex-row mt-10">
-            <div className="flex flex-row space-x-2 items-center">
-              <h1 className="blueDegrade rounded-full px-6 py-2">Sintomas</h1>
-              <img className="icon" src="./lupa2.svg" alt="" />
-            </div>
-          </div>
-          <table className="divide-y mt-6 blueDegrade w-full ">
-            {v.map((vt) => (
-              <tr className="border-blue4 text-xl text-blue4 ">
-                <td className="h-10 ">{vt.name}</td>
-                <td>
-                  <button type="button">Alterar</button>
-                </td>
-                <td>
-                  <button type="button">Excluir</button>
-                </td>
-              </tr>
-            ))}
-          </table>
-          <div className="flex flex-row space-x-4">
-            <button
-              type="button"
-              className="blueDegradeButton p-2 w-4/12 textButtonColor"
-            >
-              Adicionar
-            </button>
-            <button
-              type="button"
-              className="blueDegradeButton p-2 w-4/12 textButtonColor"
-            >
-              Aplicar
-            </button>
-          </div>
-        </div>
+                      <button
+                        className="flex flex-col justify-center items-center"
+                        type="button"
+                      >
+                        <img src="./trash-2.svg" alt="" />
+                      </button>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
 
-        <div className="sm:w-1/2 px-8">
-          <div className="flex text-xl text-green  flex-row mt-10">
-            <div className="flex flex-row space-x-2 items-center">
-              <h1 className="blueDegrade rounded-full px-6 py-2">
-                Profissionais
-              </h1>
-              <img className="icon" src="./lupa2.svg" alt="" />
-            </div>
-          </div>
-          <table className="divide-y mt-6 blueDegrade w-full ">
-            {v.map((vt) => (
-              <tr className="border-blue4 text-xl text-blue4 ">
-                <td className="h-10 ">{vt.name}</td>
-                <td>
-                  <button type="button">Alterar</button>
-                </td>
-                <td>
-                  <button type="button">Excluir</button>
-                </td>
-              </tr>
-            ))}
-          </table>
-          <div className="flex flex-row space-x-4">
             <button
               type="button"
-              className="blueDegradeButton p-2 w-4/12 textButtonColor"
+              className="rounded-lg bg-purple  p-2 w-4/12 textButtonColor"
+              onClick={() => openModal()}
             >
-              Adicionar
+              <span className="text-white">Adicionar</span>
             </button>
-            <button
-              type="button"
-              className="blueDegradeButton p-2 w-4/12 textButtonColor"
-            >
-              Aplicar
-            </button>
+            <ModalAddTool isOpen={modalOpen} setIsOpen={toggleModal} />
           </div>
-        </div>
+          <div className="w-full space-y-4 shadow-xl rounded-lg p-8 bg-white">
+            <h1 className="text-xl">Unidades de saúde (US)</h1>
+            <ul className="mt-6 h-64 shadow-xs p-4 divide-y overflow-auto divide-gray rounded-lg w-full ">
+              {v.map((vt) => (
+                <li className="text-xl   ">
+                  <div className="flex flex-row">
+                    <span className="h-10 w-full text-green">{vt.name}</span>
+                    <div className="flex flex-row space-x-6">
+                      <button
+                        className=" flex flex-col justify-center items-center"
+                        type="button"
+                      >
+                        <img src="./edit-2.svg" alt="" />
+                      </button>
 
-        <div className="sm:w-1/2 px-8">
-          <div className="flex text-xl text-green  flex-row mt-10">
-            <div className="flex flex-row space-x-2 items-center">
-              <h1 className="blueDegrade rounded-full px-6 py-2">Pacientes</h1>
-              <img className="icon" src="./lupa2.svg" alt="" />
-            </div>
-          </div>
-          <table className="divide-y mt-6 blueDegrade w-full ">
-            {v.map((vt) => (
-              <tr className="border-blue4 text-xl text-blue4 ">
-                <td className="h-10 ">{vt.name}</td>
-                <td>
-                  <button type="button">Alterar</button>
-                </td>
-                <td>
-                  <button type="button">Excluir</button>
-                </td>
-              </tr>
-            ))}
-          </table>
-          <div className="flex flex-row space-x-4">
-            <button
-              type="button"
-              className="blueDegradeButton p-2 w-4/12 textButtonColor"
-            >
-              Adicionar
-            </button>
-            <button
-              type="button"
-              className="blueDegradeButton p-2 w-4/12 textButtonColor"
-            >
-              Aplicar
-            </button>
-          </div>
-        </div>
+                      <button
+                        className="flex flex-col justify-center items-center"
+                        type="button"
+                      >
+                        <img src="./trash-2.svg" alt="" />
+                      </button>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
 
-        <div className="sm:w-1/2 px-8">
-          <div className="flex text-xl text-green  flex-row mt-10">
-            <div className="flex flex-row space-x-2 items-center">
-              <h1 className="blueDegrade rounded-full px-6 py-2">
-                Unidades de Saúde
-              </h1>
-              <img className="icon" src="./lupa2.svg" alt="" />
-            </div>
-          </div>
-          <table className="divide-y mt-6 blueDegrade w-full ">
-            {v.map((vt) => (
-              <tr className="border-blue4 text-xl text-blue4 ">
-                <td className="h-10 ">{vt.name}</td>
-                <td>
-                  <button type="button">Alterar</button>
-                </td>
-                <td>
-                  <button type="button">Excluir</button>
-                </td>
-              </tr>
-            ))}
-          </table>
-          <div className="flex flex-row space-x-4">
             <button
               type="button"
-              className="blueDegradeButton p-2 w-4/12 textButtonColor"
+              className="rounded-lg bg-purple  p-2 w-4/12 textButtonColor"
             >
-              Adicionar
+              <span className="text-white" onClick={() => openModal()}>
+                Adicionar
+              </span>
             </button>
-            <button
-              type="button"
-              className="blueDegradeButton p-2 w-4/12 textButtonColor"
-            >
-              Aplicar
-            </button>
+            <ModalAddUnidades isOpen={modalOpen} setIsOpen={toggleModal} />
+          </div>
+          <div className="w-full space-y-4 shadow-xl rounded-lg p-8 bg-white">
+            <h1 className="text-xl">Profissionais da unidade de saúde</h1>
+            <ul className="mt-6 h-64 shadow-xs p-4 divide-y overflow-auto divide-gray rounded-lg w-full ">
+              {v.map((vt) => (
+                <li className="text-xl   ">
+                  <div className="flex flex-row">
+                    <span className="h-10 w-full text-green">{vt.name}</span>
+                    <div className="flex flex-row space-x-6">
+                      <button
+                        className=" flex flex-col justify-center items-center"
+                        type="button"
+                      >
+                        <img src="./edit-2.svg" alt="" />
+                      </button>
+
+                      <button
+                        className="flex flex-col justify-center items-center"
+                        type="button"
+                      >
+                        <img src="./trash-2.svg" alt="" />
+                      </button>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <Link href="cadastroProfissional">
+              <button
+                type="button"
+                className="rounded-lg bg-purple  p-2 w-4/12 textButtonColor"
+              >
+                <span className="text-white">Adicionar</span>
+              </button>
+            </Link>
+            {/* <ModalAddProfissional isOpen={modalOpen} setIsOpen={toggleModal} /> */}
           </div>
         </div>
-        <div className=" flex flex-row  mt-20 justify-center">
-          <button
-            type="button"
-            className="blueDegradeButton p-2 w-40 textButtonColor"
-          >
-            Salvar
-          </button>
-        </div>
-      </div>
-      <div className="flex  flex-row justify-center w-full h-full ">
-        <img className="w-full" src="./fundo_ADM.png" alt="" />
       </div>
     </>
   );

@@ -1,6 +1,8 @@
 import { yellow } from '@material-ui/core/colors';
 import React from 'react';
+import Bar from '../../components/Bar';
 import './style.css';
+import Link from 'next/link';
 
 const RelatorioPaciente: React.FC = () => {
   const v = [
@@ -28,48 +30,41 @@ const RelatorioPaciente: React.FC = () => {
   ];
   return (
     <>
-      <div className="flex fundo flex-col  p-4 bg-blue5">
-        <div className="header sm:w-full flex flex-row items-center justify-center p-2 rounded-3xl">
-          <h1 className="sm:text-2xl  text-center text-green">
-            Relatório geral de pacientes por profissional
-          </h1>
-        </div>
-        <div className="flex sm:text-xl text-green sm:px-8 px-4 flex-row mt-10">
-          <div className="sm:w-9/12 ">
-            <div className="flex flex-row space-x-2 items-center">
-              <h1 className="text-sm sm:text-2xl">Nome do profissional</h1>
-              <img className="icon" src="./lupa.png" alt="" />
+      <Bar
+        left
+        route="/painelProfissional"
+        title="Relatório geral de pacientes"
+      />
+      <div className="flex fundo flex-col  sm:px-24 py-4 bg-gray ">
+        <form
+          className=" flex flex-col sm:p-8 p-4 rounded-lg shadow-md bg-white"
+          action=""
+        >
+          {' '}
+          <div className="sm:flex sm:flex-row">
+            <h1 className="text-xl w-full">Pacientes</h1>
+            <div className="flex flex-row space-x-4">
+              <input className="border rounded-lg p-2" type="text" />
+              <button className="bg-purple p-2 rounded-lg" type="button">
+                <span className="text-white">Pesquisar</span>
+              </button>
             </div>
           </div>
-
-          <div className="flex flex-row space-x-2 items-center">
-            <h1 className="sm:text-2xl text-sm">Localizar pacientes</h1>
-            <img className="icon" src="./lupa.png" alt="" />
-          </div>
-        </div>
-        <form className=" flex flex-col items-center justfify-center" action="">
-          <div className="flex flex-col mt-8   shadow-md rounded-l-3xl rounded-r-3xl  h-screen">
-            {/* <ul className="flex bg-green text-white rounded-r-3xl rounded-l-3xl rounded-br-none rounded-bl-none flex-row p-2 space-x-4">
-           
-          </ul> */}
-
+          <div className="flex flex-col mt-4 shadow-xs rounded-l-lg rounded-r-lg  h-screen">
             <table>
-              <tr className="sm:text-3xl  text-sm bg-blue4Dark   text-white  rounded-br-none rounded-bl-none flex-row mr-2 space-x-4">
-                <td className=" bg-blue4Dark sm:px-16  text-white  rounded-l-3xl  rounded-br-none rounded-bl-none flex-row p-2 space-x-4">
-                  <div className="flex  flex-row items-center space-x-4">
-                    <span>Nome</span>
-                    <img className="sm:w-8 w-4 icon" src="./lupa.png" alt="" />
-                  </div>
+              <tr className="sm:text-xl  text-sm bg-purpleDark   text-white  rounded-br-none rounded-bl-none flex-row mr-2 space-x-4">
+                <td className=" bg-purpleDark sm:px-16  text-white  rounded-l-lg  rounded-br-none rounded-bl-none flex-row p-2 space-x-4">
+                  Nome
                 </td>
                 <td>Contato</td>
-                <td>Última ataulização</td>
+                <td>Última atualização</td>
                 <td>Risco</td>
-                <td className=" bg-blue4Dark  text-white rounded-r-3xl sm:pr-8 rounded-br-none rounded-bl-none flex-row p-2 sm:space-x-4">
+                <td className=" bg-purpleDark  text-white rounded-r-lg sm:pr-8 rounded-br-none rounded-bl-none flex-row p-2 sm:space-x-4">
                   Ações
                 </td>
               </tr>
               {v.map((vt) => (
-                <tr className="border-blue4 sm:text-2xl border-b text-blue4  ">
+                <tr className="border-blue4 sm:text-xl border-b text-blue4  ">
                   <td className="p-4">{vt.name}</td>
                   <td>{vt.contato}</td>
                   <td>{vt.atualizacao}</td>
@@ -79,20 +74,21 @@ const RelatorioPaciente: React.FC = () => {
                         ? 'text-green'
                         : vt.risco === 'Médio'
                         ? 'text-yellow-400'
-                        : 'text-red-600'
+                        : 'text-red'
                     }
                   >
                     {vt.risco}
                   </td>
-                  <td>{vt.acoes}</td>
+                  <td>
+                    <Link href="/relatorioPaciente">
+                      <span className="cursor-pointer">Abrir</span>
+                    </Link>
+                  </td>
                 </tr>
               ))}
             </table>
           </div>
         </form>
-      </div>
-      <div className="flex  flex-row justify-center w-full h-full ">
-        <img className="w-full" src="./fundoFooter2.png" alt="" />
       </div>
     </>
   );

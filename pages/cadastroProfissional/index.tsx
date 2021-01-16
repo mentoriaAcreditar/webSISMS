@@ -57,12 +57,12 @@ const CadastroProfissional = () => {
   }
   return (
     <>
-      <Bar title="Cadastro di Profissional" />
+      <Bar title="Cadastro de Profissional" />
       <div className="flex fundo flex-col items-center justify-center  bg-gray">
         <div className="bg-purple w-full">
-          <h1 className="mx-2 mt-2 text-white text-xl">
+          {/* <h1 className="mx-2 mt-2 text-white text-xl">
             Dica: Você pode alterar o cadastro quando quiser.
-          </h1>
+          </h1> */}
           <div className="py-4 flex items-center flex-col ">
             <div>
               <img className="z-0 w-32 h-32 relative" src="user.svg" alt="" />

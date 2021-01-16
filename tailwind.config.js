@@ -9,7 +9,7 @@ module.exports = {
       colors: {
       
         pink: "#ED4A71",
-        black: "#000",
+       
         blue: "#C0FFFF",
         blue2:"#2B478B",
         green: "#0C5263",
@@ -33,7 +33,8 @@ module.exports = {
         purple: "#8257E5",
         gray: "#f0f0f7",
         grayText: "#9C98A6",
-        grayTextBase: "#6a6180"
+        grayTextBase: "#6a6180",
+        red: "#E33D3D"
 
       },
       textColor: {
