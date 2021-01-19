@@ -13,6 +13,7 @@ export const Form = styled(Unform)`
   bottom: 20px;
   opacity: 1;
   padding: 36px;
+  margin-top: 10px;
 
   h1 {
     margin: 0px 0px 20px 0;

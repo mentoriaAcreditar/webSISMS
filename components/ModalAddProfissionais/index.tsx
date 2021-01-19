@@ -51,7 +51,7 @@ const ModalAddProfissionais: React.FC<IModalProps> = ({
       <Form ref={formRef} onSubmit={handleSubmit}>
         <div className="flex flex-row w-full ">
           <div className="flex flex-col mb-4">
-            <label htmlFor="">Nome do sintoma</label>
+            <label htmlFor="sintoma">Nome do sintoma</label>
             <input
               className="w-10/12 border rounded-lg h-10 p-2"
               name="sintoma"

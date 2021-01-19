@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from 'firebase/app';
-import Login from '../signin';
+// import Login from '../signin';
 import Input from '../../components/Input';
 import Nav from '../../components/Nav';
 import { Usuario } from '../../models/usuario';
@@ -34,15 +34,12 @@ const About = () => {
 
 const Contact = () => {
   return (
-    <div
-      id="contact"
-      className="sm:flex sm:flex-row flex flex-col items-center h-screen"
-    >
+    <div id="contact" className=" flex flex-col items-center h-screen">
       <div className="sm:w-5/12 sm:mr-64 sm:mt-2 mt-16  ">
         <h1 className="text-3xl text-green font-bold mb-4 sm:mb-6">
           NOSSOS CONTATOS
         </h1>
-        <div className="flex flex-row items-center space-x-2">
+        <div className="flex flex-row items-center ">
           <img
             className="bg-white rounded-full w-10 p-2"
             src="./mail.svg"
@@ -50,37 +47,37 @@ const Contact = () => {
           />
           <span>contato@sisms.com.br</span>
         </div>
-        <div className="flex flex-row items-center mt-4  space-x-2">
+        <div className="flex flex-row items-center mt-4  ">
           <img className="w-10 " src="./whats.png" />
           <span>+55 88 9215698</span>
         </div>
       </div>
-      <div className="sm:flex sm:flex-row m-20  sm:mx-8  mt-4 sm:mt-32 ">
-        <form className="sm:flex w-full  flex-col items-center space-y-2">
+      <div className="p-4  sm:mx-8  mt-4 sm:mt-32 ">
+        <form className="sm:flex sm:w-full  items-center space-y-2">
           <h1 className="text-2xl text-green sm:mb-4">ENTRE EM CONTATO</h1>
           <input
-            className="border-2 border-green p-2 rounded-xl"
+            className="border border-green p-2 rounded-xl"
             placeholder="Seu nome *"
             type="text"
             name=""
             id=""
           />
           <input
-            className="border-2 border-green p-2 rounded-xl"
+            className="border border-green p-2 rounded-xl"
             placeholder="Seu e-mail *"
             type="text"
             name=""
             id=""
           />
           <input
-            className="border-2 border-green p-2 rounded-xl"
+            className="border border-green p-2 rounded-xl"
             placeholder="Assunto"
             type="text"
             name=""
             id=""
           />
           <input
-            className="border-2 border-green p-2 rounded-xl h-32 "
+            className="border border-green p-2 rounded-xl h-32 "
             placeholder="Sua mensagem"
             type="text"
             name=""
@@ -261,7 +258,7 @@ class LandigPage extends Component {
         </h1>
 
         <About />
-        <Contact />
+        {/* <Contact /> */}
         <Faqs />
         <Footer />
       </>

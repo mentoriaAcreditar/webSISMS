@@ -37,23 +37,23 @@ const RelatorioPaciente: React.FC = () => {
       />
       <div className="flex fundo flex-col  sm:px-24 py-4 bg-gray ">
         <form
-          className=" flex flex-col sm:p-8 p-4 rounded-lg shadow-md bg-white"
+          className=" flex flex-col sm:p-8 p-2 rounded-lg shadow-md bg-white"
           action=""
         >
           {' '}
           <div className="sm:flex sm:flex-row">
-            <h1 className="text-xl w-full">Pacientes</h1>
+            <h1 className="text-xl sm:w-full ">Pacientes</h1>
             <div className="flex flex-row space-x-4">
-              <input className="border rounded-lg p-2" type="text" />
+              <input className="border w-full rounded-lg p-2" type="text" />
               <button className="bg-purple p-2 rounded-lg" type="button">
                 <span className="text-white">Pesquisar</span>
               </button>
             </div>
           </div>
-          <div className="flex flex-col mt-4 shadow-xs rounded-l-lg rounded-r-lg  h-screen">
+          <div className="flex flex-col mt-4 text-xs  shadow-xs rounded-l-lg rounded-r-lg  h-screen">
             <table>
-              <tr className="sm:text-xl  text-sm bg-purpleDark   text-white  rounded-br-none rounded-bl-none flex-row mr-2 space-x-4">
-                <td className=" bg-purpleDark sm:px-16  text-white  rounded-l-lg  rounded-br-none rounded-bl-none flex-row p-2 space-x-4">
+              <tr className="sm:text-xl text-xs  bg-purpleDark   text-white  rounded-br-none rounded-bl-none flex-row  ">
+                <td className=" bg-purpleDark p-2  text-white  rounded-l-lg  rounded-br-none rounded-bl-none flex-row ">
                   Nome
                 </td>
                 <td>Contato</td>
@@ -65,7 +65,7 @@ const RelatorioPaciente: React.FC = () => {
               </tr>
               {v.map((vt) => (
                 <tr className="border-blue4 sm:text-xl border-b text-blue4  ">
-                  <td className="p-4">{vt.name}</td>
+                  <td className="py-2 px-0">{vt.name}</td>
                   <td>{vt.contato}</td>
                   <td>{vt.atualizacao}</td>
                   <td

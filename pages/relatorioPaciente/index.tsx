@@ -6,7 +6,11 @@ import Input from '../../components/Input';
 const RelatorioDescritivo = () => {
   return (
     <>
-      <Bar title="Relatório descritivo do paciente" />
+      <Bar
+        route="relatorioPacientes"
+        left
+        title="Relatório descritivo do paciente"
+      />
       <div className="flex  flex-col bg-gray">
         <div className="bg-purple w-full">
           <div className="py-4 flex items-center flex-col ">

@@ -23,6 +23,7 @@ const Input: React.FC<IInput> = ({
       <InputMask
         id={id}
         value={value}
+        name={name}
         onChange={onChange}
         className="p-4 h-10  bg-input box-border  text-grayTextBase bg-input border-color rounded-lg"
         type="text"

@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 interface BarProps {
   title?: string;
-  route?: string;
+  route: string;
   left?: boolean;
   logout?: boolean;
 }

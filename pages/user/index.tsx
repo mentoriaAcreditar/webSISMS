@@ -1,6 +1,6 @@
-import Input from '../../components/Input';
 import React, { Component } from 'react';
 import firebase from 'firebase/app';
+import Input from '../../components/Input';
 import 'firebase/auth';
 import { Usuario } from '../../models/usuario';
 import { Cidadao } from '../../models/cidadao';
@@ -20,7 +20,6 @@ class User extends Component<Usuario> {
         console.log(this.cidadao);
 
         this.setState({ user: this.cidadao });
-      
       });
     });
   }
@@ -35,6 +34,7 @@ class User extends Component<Usuario> {
   onSubmitForm() {
     console.log(this.cidadao);
   }
+
   render() {
     return (
       <div className="sm:px-10 ">
@@ -58,47 +58,11 @@ class User extends Component<Usuario> {
               </p>
             </div>
 
-            <Input
-              name="Nome"
-              id="nome"
-              value={this.cidadao?.nome}
-              onChange={(e) => this.onInputchange(e)}
-              placeholder="Antonio Carlos"
-            />
-            {/* <Input name="Sobrenome" placeholder="Rocha de Lima" /> */}
-            <div className="sm:flex flex-row">
-              <Input name="E-mail" placeholder="limaantoniocarlos@gmail.com" />
-              <Input name="Telefone" placeholder="(88)9.9215-0699" />
-            </div>
-            <div className="sm:flex flex-row">
-              <Input name="RG" placeholder="122.213.656-25" />
-              <Input name="CPF" placeholder="200788652-2" />
-            </div>
-            <Input
-              name="Endereço"
-              placeholder="Rua José Siqueira, S/N, Centro - Viçosa do Ceará"
-            />
-
-            <div className="divide-y divide-green mt-8">
-              <h1 className="text-green text-2xl">Dados profissionais</h1>
-              <p>
-                <br />
-              </p>
-            </div>
-            <div className="sm:flex flex-row">
-              <Input name="Cargo" placeholder="Enfermagem" />
-              <Input name="Especialidade" placeholder="Enfermagem cirurgica" />
-            </div>
-
             <div className="divide-y divide-green mt-8">
               <h1 className="text-green text-2xl">Local de trabalho</h1>
               <p>
                 <br />
               </p>
-            </div>
-            <div className="sm:flex flex-row">
-              <Input name="PSF" placeholder="Cacimbão" />
-              <Input name="Enfereço" placeholder="Sitio Cacimbão" />
             </div>
           </div>
 

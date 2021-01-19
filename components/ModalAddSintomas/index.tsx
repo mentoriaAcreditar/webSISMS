@@ -2,7 +2,7 @@ import React, { useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { FormHandles } from '@unform/core';
 
-import CheckBox from '../CheckBox';
+import RadioButton from '../RadioButton';
 import { Form } from './styles';
 
 import Modal from '../Modal';
@@ -51,14 +51,14 @@ const ModalAddTool: React.FC<IModalProps> = ({
       <Form ref={formRef} onSubmit={handleSubmit}>
         <div className="flex flex-row w-full ">
           <div className="flex flex-col mb-4">
-            <label htmlFor="">Nome do sintoma</label>
+            <label>Nome do sintoma</label>
             <input
               className="w-10/12 border rounded-lg h-10 p-2"
               name="sintoma"
               placeholder="Sintoma"
             />
           </div>
-          <CheckBox
+          <RadioButton
             type="radio"
             id="male"
             name="Sintoma critico"
@@ -68,7 +68,7 @@ const ModalAddTool: React.FC<IModalProps> = ({
         <div className="sm:grid sm:grid-cols-2 sm:gap-2 space-y-4 sm:space-y-0">
           <div className=" space-y-4 p-4 ">
             <h1>Frequencia</h1>
-            <CheckBox
+            <RadioButton
               type="radio"
               id="male"
               name="Sintoma critico"
@@ -109,9 +109,9 @@ const ModalAddTool: React.FC<IModalProps> = ({
               <span className="text-white">Adicionar Frequencia</span>
             </button>
           </div>
-          <div className=" space-y-4 p-4 ">
+          <div className=" space-y-2 p-4 ">
             <h1>Intencidade</h1>
-            <CheckBox
+            <RadioButton
               type="radio"
               id="male"
               name="Sintoma critico"

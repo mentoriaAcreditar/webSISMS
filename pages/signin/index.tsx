@@ -22,8 +22,8 @@ const Login = () => {
           <span className="text-green2 my-4">
             Para entrar, insira seu nome de usuário e senha.
           </span>
-          <Input name="Usuário" />
-          <Input name="Senha" />
+          {/* <Input name="Usuário" />
+          <Input name="Senha" /> */}
           <div className="bg-green w-4/12 cursor-pointer text-white rounded-3xl h-10 mt-6 flex flex-row items-center justify-center ">
             <Link href="/user">Entrar</Link>
           </div>

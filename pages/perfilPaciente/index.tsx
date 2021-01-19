@@ -6,7 +6,7 @@ import './style.css';
 const PerfilDoPaciente: React.FC = () => {
   return (
     <>
-      <Bar title="Perfil do paciente" />
+      <Bar route="#" title="Perfil do paciente" />
       <div className="flex flex-col p-4 h-screen items-center">
         <div className="flex bg-opacity-30 bg-green6 bg-gray-400 p-8 sm:w-10/12 bg-opacity-25 rounded-3xl  flex-col items-center mt-8 ">
           <div className="flex  flex-row sm:px-4 sm:space-x-32 space-x-24 items-center space-x-2">

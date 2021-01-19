@@ -5,6 +5,7 @@ import ReactModal from 'react-modal';
 interface IModalProps {
   children: any;
   isOpen: boolean;
+  title: string;
   setIsOpen: () => void;
 }
 
@@ -12,7 +13,7 @@ const Modal: React.FC<IModalProps> = ({
   children,
   title,
   isOpen,
-  top,
+
   setIsOpen,
 }) => {
   const [modalStatus, setModalStatus] = useState(isOpen);
@@ -69,7 +70,11 @@ const Modal: React.FC<IModalProps> = ({
           </button>
         </div>
         <div className="flex flex-row items-center mr-10 space-x-4">
-          <button className=" w-20 text-gray-400 h-10 rounded " type="button">
+          <button
+            onClick={setIsOpen}
+            className=" w-20 text-gray-400 h-10 rounded "
+            type="button"
+          >
             Cancelar
           </button>
           <button

@@ -57,7 +57,7 @@ const CadastroProfissional = () => {
   }
   return (
     <>
-      <Bar title="Cadastro de Profissional" />
+      <Bar route="#" title="Cadastro de Profissional" />
       <div className="flex fundo flex-col items-center justify-center  bg-gray">
         <div className="bg-purple w-full">
           {/* <h1 className="mx-2 mt-2 text-white text-xl">
@@ -88,21 +88,21 @@ const CadastroProfissional = () => {
             onChange={handleChange}
           />
           <div className="sm:flex sm:flex-row sm:w-4/12">
-            <Input mask="99999999-9" label="RG:" />
-            <Input mask="999.999.999-99" label="CPF:" />
+            <Input name="rg" mask="99999999-9" label="RG:" />
+            <Input name="cpf" mask="999.999.999-99" label="CPF:" />
           </div>
           <div className="sm:flex sm:flex-row">
             <div className="sm:w-full">
-              <Input mask="" label="E-mail:" />
+              <Input name="email" mask="" label="E-mail:" />
             </div>
             <div className="sm:w-4/12">
-              <Input mask="(99)9.9999-9999" label="Telefone:" />
+              <Input name="telefone" mask="(99)9.9999-9999" label="Telefone:" />
             </div>
           </div>
 
           <div className="sm:flex sm:flex-row">
             <div className="sm:w-3/12">
-              <Input mask="99.999-999" label="CEP:" />
+              <Input name="cep" mask="99.999-999" label="CEP:" />
             </div>
 
             <div className="flex text-green mt-2 flex-col sm:w-4/12 ml-2  sm:mr-4 mr-2 ">
@@ -126,18 +126,18 @@ const CadastroProfissional = () => {
             </div>
 
             <div className="sm:w-5/12">
-              <Input mask="" label="Rua:" />
+              <Input name="rua" mask="" label="Rua:" />
             </div>
           </div>
           <div className="sm:flex sm:flex-row">
             <div className="sm:w-2/12">
-              <Input mask="" label="Nº:" />
+              <Input name="numero" mask="" label="Nº:" />
             </div>
             <div className="sm:w-4/12">
-              <Input mask="" label="Bairro:" />
+              <Input name="bairro" mask="" label="Bairro:" />
             </div>
             <div className="sm:w-6/12">
-              <Input mask="" label="Complemento:" />
+              <Input name="complemento" mask="" label="Complemento:" />
             </div>
           </div>
           <div className="sm:flex sm:flex-row">

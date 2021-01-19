@@ -6,7 +6,7 @@ import Input from '../../components/Input';
 const PainelProfissional = () => {
   return (
     <>
-      <Bar route="/profile" logout="true" title="Painel do Profissional" />
+      <Bar route="/profile" logout title="Painel do Profissional" />
       <div className="flex  flex-col bg-gray">
         <div className="bg-purple w-full">
           <div className="py-4 flex items-center flex-col ">

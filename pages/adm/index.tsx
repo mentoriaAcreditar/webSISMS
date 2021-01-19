@@ -13,6 +13,10 @@ const RelatorioPaciente: React.FC = () => {
     setModalOpen(true);
   }
 
+  function handleAddTool() {
+    console.log('ok');
+  }
+
   function toggleModal(): void {
     setModalOpen(!modalOpen);
   }
@@ -41,7 +45,7 @@ const RelatorioPaciente: React.FC = () => {
   ];
   return (
     <>
-      <Bar route="" title="Painel do Administrador" />
+      <Bar route="#" logout title="Painel do Administrador" />
       <div className="flex flex-col space-y-4 bg-gray p-8 ">
         <h1 className="text-2xl">Cadastros</h1>
         <div className="sm:grid sm:grid-cols-2 sm:gap-4 space-y-4 sm:space-y-0">
@@ -53,7 +57,9 @@ const RelatorioPaciente: React.FC = () => {
               {v.map((vt) => (
                 <li className="text-xl   ">
                   <div className="flex flex-row">
-                    <span className="h-10 w-full text-green">{vt.name}</span>
+                    <span className="h-10 w-full text-sm  sm:text-xl text-green">
+                      {vt.name}
+                    </span>
                     <div className="flex flex-row space-x-6">
                       <button
                         className=" flex flex-col justify-center items-center"
@@ -81,7 +87,11 @@ const RelatorioPaciente: React.FC = () => {
             >
               <span className="text-white">Adicionar</span>
             </button>
-            <ModalAddTool isOpen={modalOpen} setIsOpen={toggleModal} />
+            <ModalAddTool
+              handleAddTool={handleAddTool}
+              isOpen={modalOpen}
+              setIsOpen={toggleModal}
+            />
           </div>
           <div className="w-full space-y-4 shadow-xl rounded-lg p-8 bg-white">
             <h1 className="text-xl">Unidades de saúde (US)</h1>
@@ -89,7 +99,9 @@ const RelatorioPaciente: React.FC = () => {
               {v.map((vt) => (
                 <li className="text-xl   ">
                   <div className="flex flex-row">
-                    <span className="h-10 w-full text-green">{vt.name}</span>
+                    <span className="h-10 w-full text-sm sm:text-xl text-green">
+                      {vt.name}
+                    </span>
                     <div className="flex flex-row space-x-6">
                       <button
                         className=" flex flex-col justify-center items-center"
@@ -111,14 +123,17 @@ const RelatorioPaciente: React.FC = () => {
             </ul>
 
             <button
+              onClick={() => openModal()}
               type="button"
               className="rounded-lg bg-purple  p-2 w-4/12 textButtonColor"
             >
-              <span className="text-white" onClick={() => openModal()}>
-                Adicionar
-              </span>
+              <span className="text-white">Adicionar</span>
             </button>
-            <ModalAddUnidades isOpen={modalOpen} setIsOpen={toggleModal} />
+            <ModalAddUnidades
+              handleAddTool={handleAddTool}
+              isOpen={modalOpen}
+              setIsOpen={toggleModal}
+            />
           </div>
           <div className="w-full space-y-4 shadow-xl rounded-lg p-8 bg-white">
             <h1 className="text-xl">Profissionais da unidade de saúde</h1>
@@ -126,7 +141,9 @@ const RelatorioPaciente: React.FC = () => {
               {v.map((vt) => (
                 <li className="text-xl   ">
                   <div className="flex flex-row">
-                    <span className="h-10 w-full text-green">{vt.name}</span>
+                    <span className="h-10 w-full text-sm sm:text-xl text-green">
+                      {vt.name}
+                    </span>
                     <div className="flex flex-row space-x-6">
                       <button
                         className=" flex flex-col justify-center items-center"
