@@ -48,7 +48,7 @@ const RelatorioPaciente: React.FC = () => {
       <Bar route="#" logout title="Painel do Administrador" />
       <div className="flex flex-col space-y-4 bg-gray p-8 ">
         <h1 className="text-2xl">Cadastros</h1>
-        <div className="flex flex-col space-y-4 sm:space-y-0">
+        <div className="sm:grid sm:grid-cols-2 sm:gap-4 space-y-4 sm:space-y-0">
           <div className="w-full space-y-4 shadow-xl rounded-lg p-8 bg-white">
             <h1 className="text-xl">
               Sintomas que os pacientes poderão selecionar

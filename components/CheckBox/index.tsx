@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, InputHTMLAttributes } from 'react';
 import './style.css';
 
 interface CheckBoxPros extends InputHTMLAttributes<HTMLInputElement> {

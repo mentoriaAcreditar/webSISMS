@@ -5,24 +5,24 @@ import CheckBox from '../../components/CheckBox';
 import './style.css';
 
 const Form = () => {
-  const [descricao, setDescricao] = useState();
+  const [descricao, setDescricao] = useState('');
   const sintomas = [
-    { id: 1, name: 'Febre' },
-    { id: 2, name: 'Dor de cabeça' },
-    { id: 3, name: 'Diarréia' },
-    { id: 4, name: 'Espirro' },
-    { id: 5, name: 'Dores no corpo' },
-    { id: 6, name: 'Sem paladar' },
+    { id: '1', name: 'Febre' },
+    { id: '2', name: 'Dor de cabeça' },
+    { id: '3', name: 'Diarréia' },
+    { id: '4', name: 'Espirro' },
+    { id: '5', name: 'Dores no corpo' },
+    { id: '6', name: 'Sem paladar' },
   ];
   const [selectSintomas, setSelectSintomas] = useState(['']);
 
-  function handleResumo(e: Event) {
+  function handleResumo(e: any) {
     setDescricao(descricao);
     console.log(descricao);
   }
 
-  function handleCheck(id) {
-    const checkBox = document.getElementById(id);
+  function handleCheck(id: any) {
+    const checkBox = document.getElementById(id) as HTMLInputElement;
     const { name } = checkBox;
 
     if (checkBox.checked === true) {

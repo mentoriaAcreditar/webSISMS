@@ -19,7 +19,7 @@ class Login extends Component {
             const id = result.credential?.providerId;
             const usuario = result.user;
             console.log(id, ':', usuario?.uid, ':', usuario?.email);
-            router.push('user');
+            router.push('profile');
           })
           .catch((error) => {
             const errorCode = error.code;
@@ -38,37 +38,32 @@ class Login extends Component {
 
   render() {
     return (
-      <>
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-md w-full space-y-8">
-            <div>
-              <img
-                className="mx-auto h-12 w-auto"
-                src="./Logo.svg"
-                alt="Workflow"
-              />
-              <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                Faça login em sua conta
-              </h2>
-              <div className="mt-2 text-center text-sm text-gray-600">
-                <div className="rounded-lg shadow-md">
-                  <button
-                    onClick={() => this.logar()}
-                    className="  block w-full text-center rounded-lg bg-white-800 px-6 py-4 text-xl leading-6 font-semibold font-display text-gray hover:bg-gray-300 focus:outline-none focus:shadow-outline transition ease-in-out duration-150"
-                  >
-                    <div className="grid grid-cols-3">
-                      <div className="place-self-end">
-                        <img className="h-12" src="./google_icon.png" />
-                      </div>
-                      <div className="mt-2">Logar com Google</div>
-                    </div>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div
+        style={{ background: 'url(./background.svg) no-repeat center/cover' }}
+        className="min-h-screen bg-gray flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"
+      >
+        <div className="max-w-md rounded-lg shadow-xs bg-white p-12 w-full space-y-8">
+          <img
+            className="mx-auto h-12 w-auto"
+            src="./Logo.svg"
+            alt="Workflow"
+          />
+          <h2 className="mt-6 text-center text-2xl font-extrabold text-gray-900">
+            Faça login em sua conta
+          </h2>
+
+          <button
+            onClick={() => this.logar()}
+            className="flex flex-row items-center justify-center shadow-lg bg-green w-full h-16 space-x-6
+            rounded-full transition duration-500 ease-in-out  transform hover:-translate-y-1 hover:scale-10 "
+          >
+            <img className="w-12" src="./google_icon.png" />
+            <span className="mt-2 text-white items-center">
+              Logar com Google
+            </span>
+          </button>
         </div>
-      </>
+      </div>
     );
   }
 }
