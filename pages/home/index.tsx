@@ -3,9 +3,9 @@ import firebase from 'firebase/app';
 // import Login from '../signin';
 import Input from '../../components/Input';
 import Nav from '../../components/Nav';
-import { Usuario } from '../../models/usuario';
 import 'firebase/firestore';
-import { Cidadao } from '../../models/cidadao';
+import { Cidade } from '../../model/entidades/cidade';
+import { ReqCidades } from '../../model/requisicoes/req-cidades';
 
 const About = () => {
   return (
@@ -208,21 +208,18 @@ const Footer = () => {
 };
 
 class LandigPage extends Component {
-  usuarios: Cidadao[] = [];
+  cidades: Cidade[] = [];
 
   componentDidMount() {
     this.buscarDados();
   }
 
   async buscarDados() {
-    const db = firebase.firestore();
-    db.collection('usuarios')
-      .get()
-      .then((dados) => {
-        this.usuarios = dados.docs.map((doc) => doc.data() as Cidadao);
-        console.log(this.usuarios);
-        this.setState({ usuarios: this.usuarios });
-      });
+    new ReqCidades().listaDeCidade().then((dados) => {
+      this.cidades = dados.docs.map((doc) => doc.data() as Cidade);
+      console.log(this.cidades);
+      this.setState({ cidades: this.cidades });
+    });
   }
 
   render() {
@@ -245,11 +242,6 @@ class LandigPage extends Component {
                 <img className="w-16 " src="./whats.png" alt="" />
               </a> */}
             </div>
-            <ul>
-              {this.usuarios.map((usuario, index) => (
-                <li key={index}>{usuario.email}</li>
-              ))}
-            </ul>
           </div>
         </div>
 
@@ -258,6 +250,11 @@ class LandigPage extends Component {
         </h1>
 
         <About />
+        <ul>
+          {this.cidades.map((cidade, index) => (
+            <li key={index}>{cidade.nome}</li>
+          ))}
+        </ul>
         {/* <Contact /> */}
         <Faqs />
         <Footer />

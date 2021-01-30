@@ -1,0 +1,74 @@
+{
+    "cidades": {
+        "sdadsads": {
+            "id": "sdadsads",
+            "nome": "tiangua"
+        }
+    },
+    "psfs": {
+        "dgggdfggf": {
+            "id": "dgggdfggf",
+            "nome": "qualquer nome",
+            "idCidade": "sdadsads"
+        }
+    },
+    "pascientes": {
+        "jhklkjhlkjlkj": {
+            "id": "jhklkjhlkjlkj",
+            "nome": "fulanno",
+            "telefone": 999999999,
+            "idPsf": "dgggdfggf",
+            "idCidade": "sdadsads"
+        }
+    },
+    "profissionais": {
+        "lkjjhhugi": {
+            "id": "lkjjhhugi",
+            "nome": "cicrano",
+            "email": "cicrano@e.com",
+            "tipo": "padrão",
+            "idPsf": "dgggdfggf",
+            "idCidade": "sdadsads"
+        }
+    },
+    "metadados_de_sintomas": {
+        "oiuuiyoyuu": {
+            "id": "oiuuiyoyuu",
+            "nome": "Febre",
+            "intencidades": [
+                {
+                    "nome": "Alta",
+                    "prioridade": 0
+                },
+                {
+                    "nome": "Media",
+                    "prioridade": 1
+                }
+            ],
+            "temIntencidade": true,
+            "temFrequencia": false,
+            "critico": true
+        },
+        "fgfhfffghfhf": {
+            "id": "fgfhfffghfhf",
+            "nome": "Espirro",
+            "frequencias": [
+                {
+                    "nome": "Muito frequente",
+                    "prioridade": 0
+                },
+                {
+                    "nome": "frequete",
+                    "prioridade": 1
+                },
+                {
+                    "nome": "esporadicamente",
+                    "prioridade": 2
+                }
+            ],
+            "temIntencidade": false,
+            "temFrequencia": true,
+            "critico": false
+        }
+    }
+}
