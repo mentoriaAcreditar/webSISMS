@@ -1,10 +1,7 @@
-import React, { useRef, useCallback, useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FormHandles } from '@unform/core';
-
+import Bar from '../Bar';
 import Input from '../Input';
-import CheckBox from '../CheckBox';
-import { Form } from './styles';
 import { Profissional } from '../../model/entidades/profissional';
 import { ReqProfissional } from '../../model/requisicoes/req-profissional';
 import { ReqCidades } from '../../model/requisicoes/req-cidades';
@@ -12,47 +9,8 @@ import { Cidade } from '../../model/entidades/cidade';
 
 import { ReqPsf } from '../../model/requisicoes/req-psf';
 import { Psf } from '../../model/entidades/psf';
-import Modal from '../Modal';
 
-interface ITool {
-  _id: number;
-  title: string;
-  description: string;
-  link: string;
-  tags: string;
-}
-
-interface ICreateTools {
-  title: string;
-  description: string;
-  link: string;
-  tags: string;
-}
-
-interface IModalProps {
-  isOpen: boolean;
-  setIsOpen: () => void;
-  handleAddTool: (tool: Omit<ITool, '_id'>) => void;
-}
-
-const ModalAddProfissionais: React.FC<IModalProps> = ({
-  // eslint-disable-next-line react/prop-types
-  isOpen,
-  // eslint-disable-next-line react/prop-types
-  setIsOpen,
-  // eslint-disable-next-line react/prop-types
-  handleAddTool,
-}) => {
-  const formRef = useRef<FormHandles>(null);
-
-  const handleSubmit = useCallback(
-    async (data: ICreateTools) => {
-      await handleAddTool(data);
-      setIsOpen();
-    },
-    [handleAddTool, setIsOpen],
-  );
-
+const CadastroProfissional2 = () => {
   useEffect(() => {
     getCidades();
     getPsfs();
@@ -130,11 +88,18 @@ const ModalAddProfissionais: React.FC<IModalProps> = ({
     await new ReqProfissional().insert(profissional);
     console.log(profissional);
   }
-
   return (
-    <Modal title="Cadastrar Profissional" isOpen={isOpen} setIsOpen={setIsOpen}>
-      <Form ref={formRef} onSubmit={handleSubmit}>
-        <div className=" overflow-auto h-hList w-full ">
+    <div className="flex bg-grayBackground fixed fundo flex-col items-center justify-center mt-6 px-4 sm:px-0 ">
+      <div className="sm:flex sm:flex-col   rounded-xl  justify-center sm:w-8/12 w-full  -mt-4 bg-white  ">
+        <div className="">
+          <h1 className="py-4 px-8 font-bold">Cadastrar profissional</h1>
+          <hr className="text-gray" />
+        </div>
+
+        <form
+          onSubmit={onSubmit}
+          className="sm:overflow-auto overflow-hidden  sm:h-hOverflow rounded-xl sm:px-10  py-4 px-2 bg-white"
+        >
           <Input
             mask=""
             placeholder="Seu nome"
@@ -142,14 +107,9 @@ const ModalAddProfissionais: React.FC<IModalProps> = ({
             name="nome"
             onChange={handleChange}
           />
-          <div className="sm:w-full sm:flex sm:flex-row">
-            <div className="w-1/2">
-              <Input name="rg" mask="99999999-9" label="RG:" />
-            </div>
-
-            <div className="w-1/2">
-              <Input name="cpf" mask="999.999.999-99" label="CPF:" />
-            </div>
+          <div className="sm:w-1/2 sm:flex sm:flex-row">
+            <Input name="rg" mask="99999999-9" label="RG:" />
+            <Input name="cpf" mask="999.999.999-99" label="CPF:" />
           </div>
 
           <div className="sm:flex sm:flex-row">
@@ -246,10 +206,19 @@ const ModalAddProfissionais: React.FC<IModalProps> = ({
               </select>
             </div>
           </div>
-        </div>
-      </Form>
-    </Modal>
+
+          <div className="flex mt-10 flex-row w-full items-center justify-center py-4">
+            <button
+              type="submit"
+              className="bg-primary text-white p-2 rounded-lg w-24"
+            >
+              Salvar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
 
-export default ModalAddProfissionais;
+export default CadastroProfissional2;

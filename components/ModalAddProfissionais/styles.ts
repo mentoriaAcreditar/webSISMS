@@ -6,10 +6,11 @@ export const Form = styled(Unform)`
   flex-direction: column;
   align-items: center;
   /* background: #6554c0; */
-  /* border: solid 2px #6554c0; */
+
   border-radius: 16px;
   background: #fff;
   height: auto;
+  width: 720px;
   bottom: 20px;
   opacity: 1;
   padding: 36px;
