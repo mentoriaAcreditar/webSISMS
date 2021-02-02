@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
 import { Chart } from 'react-google-charts';
 import Bar from '../../components/Bar';
 import './style.css';
-import ModalAddTool from '../../components/ModalAddSintomas';
-import ModalAddUnidades from '../../components/ModalAddUnidades';
-import ModalAddProfissional from '../../components/ModalAddProfissionais';
 import Sintomas from '../../components/Sintomas';
 import Us from '../../components/Us';
-import CadastroPaciente from '../cadastroPaciente';
-import CadastroProfissional from '../../components/CasdastroProfissional2';
 import Profissionais from '../../components/Profissionais';
 
 const Grafh = () => {
@@ -316,7 +310,12 @@ const RelatorioPaciente: React.FC = () => {
           </div>
         </div>
         <div className="w-full  bg-grayBackground">
-          <Bar route="#" logout />
+          <Bar
+            routeProfile="/perfilProfissional"
+            logout
+            user="Antonio Carlos"
+            userCargo="Administrador"
+          />
 
           {page === 'sintomas' ? (
             <Sintomas />

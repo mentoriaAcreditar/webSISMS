@@ -1,16 +1,55 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
-import Bar from '../../components/Bar';
-import Input from '../../components/Input';
+import React, { useRef, useCallback, useEffect, useState } from 'react';
+import { FormHandles } from '@unform/core';
+import Input from '../Input';
+import { Form } from './styles';
 import { Profissional } from '../../model/entidades/profissional';
 import { ReqProfissional } from '../../model/requisicoes/req-profissional';
 import { ReqCidades } from '../../model/requisicoes/req-cidades';
 import { Cidade } from '../../model/entidades/cidade';
-import { useEffect } from 'react';
+
 import { ReqPsf } from '../../model/requisicoes/req-psf';
 import { Psf } from '../../model/entidades/psf';
+import Modal from '../Modal';
 
-const CadastroProfissional = () => {
+interface ITool {
+  _id: number;
+  title: string;
+  description: string;
+  link: string;
+  tags: string;
+}
+
+interface ICreateTools {
+  title: string;
+  description: string;
+  link: string;
+  tags: string;
+}
+
+interface IModalProps {
+  isOpen: boolean;
+  setIsOpen: () => void;
+  handleAddTool: (tool: Omit<ITool, '_id'>) => void;
+}
+
+const ModalAddPaciente: React.FC<IModalProps> = ({
+  // eslint-disable-next-line react/prop-types
+  isOpen,
+  // eslint-disable-next-line react/prop-types
+  setIsOpen,
+  // eslint-disable-next-line react/prop-types
+  handleAddTool,
+}) => {
+  const formRef = useRef<FormHandles>(null);
+
+  const handleSubmit = useCallback(
+    async (data: ICreateTools) => {
+      await handleAddTool(data);
+      setIsOpen();
+    },
+    [handleAddTool, setIsOpen],
+  );
+
   useEffect(() => {
     getCidades();
     getPsfs();
@@ -50,18 +89,18 @@ const CadastroProfissional = () => {
 
   function getCidades() {
     new ReqCidades().listaDeCidade().then((dados) => {
-      var cidades = dados.docs.map((doc) => doc.data() as Cidade);
+      const cidades = dados.docs.map((doc) => doc.data() as Cidade);
       setCidades(cidades);
       console.log(cidades);
-      //setState({ cidades: this.cidades });
+      // setState({ cidades: this.cidades });
     });
   }
   function getPsfs() {
     new ReqPsf().listaDePsf().then((dados) => {
-      var psfs = dados.docs.map((doc) => doc.data() as Psf);
+      const psfs = dados.docs.map((doc) => doc.data() as Psf);
       setPsfs(psfs);
       console.log(psfs);
-      //setState({ cidades: this.cidades });
+      // setState({ cidades: this.cidades });
     });
   }
 
@@ -84,38 +123,15 @@ const CadastroProfissional = () => {
     console.log(psf);
   }
   async function onSubmit(e: any) {
-    e.preventDefault(); //para da termpo salva tem que tira o reload da pagina
+    e.preventDefault(); // para da termpo salva tem que tira o reload da pagina
     await new ReqProfissional().insert(profissional);
     console.log(profissional);
   }
-  return (
-    <>
-      <Bar route="#" title="Cadastro de Profissional" />
-      <div className="flex fundo flex-col items-center justify-center  bg-gray">
-        <div className="bg-purple w-full">
-          {/* <h1 className="mx-2 mt-2 text-white text-xl">
-            Dica: Você pode alterar o cadastro quando quiser.
-          </h1> */}
-          <div className="py-4 flex items-center flex-col ">
-            <div>
-              <img className="z-0 w-32 h-32 relative" src="user.svg" alt="" />
-            </div>
-            <img
-              className="bg-blue6 z-10 rounded-full w-10 p-2 -mt-12 ml-20 h-10  relative"
-              src="camera.svg"
-              alt=""
-            />
-            <div className="flex items-center flex-col  mt-4">
-              <h1 className="font-bold text-white text-2xl">Antonio Carlos</h1>
-              <span className="text-xl">Enfermeiro</span>
-            </div>
-          </div>
-        </div>
 
-        <form
-          onSubmit={onSubmit}
-          className="sm:flex sm:flex-col sm:mb-20  rounded-xl sm:p-16 py-16 px-8 justify-center sm:w-8/12 w-full  -mt-10 bg-white"
-        >
+  return (
+    <Modal title="Cadastrar Paciente" isOpen={isOpen} setIsOpen={setIsOpen}>
+      <Form ref={formRef} onSubmit={handleSubmit}>
+        <div className=" overflow-auto h-hList w-full ">
           <Input
             mask=""
             placeholder="Seu nome"
@@ -123,10 +139,16 @@ const CadastroProfissional = () => {
             name="nome"
             onChange={handleChange}
           />
-          <div className="sm:flex sm:flex-row sm:w-4/12">
-            <Input name="rg" mask="99999999-9" label="RG:" />
-            <Input name="cpf" mask="999.999.999-99" label="CPF:" />
+          <div className="sm:w-full sm:flex sm:flex-row">
+            <div className="w-1/2">
+              <Input name="rg" mask="99999999-9" label="RG:" />
+            </div>
+
+            <div className="w-1/2">
+              <Input name="cpf" mask="999.999.999-99" label="CPF:" />
+            </div>
           </div>
+
           <div className="sm:flex sm:flex-row">
             <div className="sm:w-full">
               <Input
@@ -182,25 +204,6 @@ const CadastroProfissional = () => {
             </div>
           </div>
           <div className="sm:flex sm:flex-row">
-            <div className="flex text-green flex-col sm:w-4/12 ml-2  sm:mr-4 mr-2 mt-6">
-              <span className="text-lg">Profissional</span>
-              <select
-                className="px-2 text-green  mt-2 h-12 bg-white text-sm sm:text-base box-border bg-input border-color rounded-lg"
-                id="tipo"
-                name="tipo"
-                value={selectTipos}
-                onChange={handleChange}
-              >
-                <option className="text-base" disabled selected>
-                  Selecione
-                </option>
-                {tipos.map((tipo) => (
-                  <option key={tipo} value={tipo}>
-                    {tipo}
-                  </option>
-                ))}
-              </select>
-            </div>
             <div className="flex text-green flex-col sm:w-4/12  ml-2  sm:mr-4 mr-2 mt-6">
               <span className="text-lg">PSF</span>
               <select
@@ -221,19 +224,10 @@ const CadastroProfissional = () => {
               </select>
             </div>
           </div>
-
-          <div className="flex mt-10 flex-row w-full items-center justify-center py-4">
-            <button
-              type="submit"
-              className="bg-blue4 text-white p-2 rounded-lg w-24"
-            >
-              Salvar
-            </button>
-          </div>
-        </form>
-      </div>
-    </>
+        </div>
+      </Form>
+    </Modal>
   );
 };
 
-export default CadastroProfissional;
+export default ModalAddPaciente;

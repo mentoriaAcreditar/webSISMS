@@ -3,37 +3,47 @@ import './style.css';
 import Link from 'next/link';
 
 interface BarProps {
-  title?: string;
-  route: string;
+  routeProfile: string;
   left?: boolean;
   logout?: boolean;
+  user?: string;
+  userCargo?: string;
 }
 
 // eslint-disable-next-line react/prop-types
-const Bar: React.FC<BarProps> = ({ title, left, route, logout }) => (
+const Bar: React.FC<BarProps> = ({
+  left,
+  routeProfile,
+  logout,
+  user,
+  userCargo,
+}: BarProps) => (
   <div className="  flex flex-row   p-4 shadow-xs bg-white">
-    <div className="dropdown sm:hidden flex px-4 absolute left-0">
-      <button className="text-primary px-4 p-2 rounded-md justify-center items-center flex flex-row">
-        Cadastros
-        <img src="./chevron-down.svg" alt="" />
+    <div className="dropdown2 sm:hidden flex px-4 absolute left-0">
+      <button
+        type="button"
+        className="text-primary px-4 p-2 rounded-md justify-center items-center flex flex-row"
+      >
+        Menu
+        <img src="./chevron-down3.svg" alt="" />
       </button>
-      <div className="dropdown-content ">
+      <div className="dropdown-content2 ">
         <Link href="cad">
-          <span>Sintomas</span>
+          <span className="cursor-pointer">Sintomas</span>
         </Link>
 
         <Link href="cad">
-          <span>Unidades de saúde (US)</span>
+          <span className="cursor-pointer">Unidades de saúde (US)</span>
         </Link>
 
         <Link href="cadastroProfissional">
-          <span>Profissionais de saúde</span>
+          <span className="cursor-pointer">Profissionais de saúde</span>
         </Link>
       </div>
     </div>
 
     {left ? (
-      <Link href={route}>
+      <Link href="/">
         <div className="flex cursor-pointer flex-row space-x-2">
           <img src="./arrow-left.svg" alt="" />
         </div>
@@ -46,8 +56,8 @@ const Bar: React.FC<BarProps> = ({ title, left, route, logout }) => (
       <div className="flex flex-row justify-center items-center space-x-2 mr-8 absolute right-0">
         <div className="flex flex-row w-full space-x-2">
           <div className="sm:flex flex-col items-end hidden ">
-            <h1 className="font-bold">Antonio Carlos</h1>
-            <span className="text-xs">Administrador</span>
+            <h1 className="font-bold">{user}</h1>
+            <span className="text-xs">{userCargo}</span>
           </div>
 
           <img
@@ -56,30 +66,35 @@ const Bar: React.FC<BarProps> = ({ title, left, route, logout }) => (
             alt=""
           />
           <div className="dropdown ">
-            <button className="text-primary  p-2 rounded-md justify-center items-center flex flex-row">
+            <button
+              type="button"
+              className="text-primary  p-2 rounded-md justify-center items-center flex flex-row"
+            >
               <img src="./chevron-down2.svg" alt="" />
             </button>
             <div className="dropdown-content ">
-              <Link href="cad">
-                <span>Perfil</span>
+              <Link href={routeProfile}>
+                <div className="flex flex-row cursor-pointer hover:bg-gray">
+                  <img className="w-8" src="./user3.svg" alt="" />
+                  <span>Perfil</span>
+                </div>
               </Link>
 
-              <Link href="cad">
-                <span>Ajuda</span>
+              <Link href={routeProfile}>
+                <div className="flex flex-row  cursor-pointer hover:bg-gray">
+                  <img className="w-8" src="./log-out2.svg " alt="" />
+                  <span>Ajuda</span>
+                </div>
               </Link>
 
-              <Link href="cadastroProfissional">
-                <span>Sair</span>
+              <Link href="/">
+                <div className="flex flex-row cursor-pointer hover:bg-gray">
+                  <img className="w-8" src="./log-out2.svg" alt="" />
+                  <span>Sair</span>
+                </div>
               </Link>
             </div>
           </div>
-        </div>
-        <div className="flex flex-row space-x-4">
-          <Link href="/profile">
-            <div className="flex cursor-pointer flex-row space-x-2">
-              <img className="w-8" src="./log-out2.svg" alt="" />
-            </div>
-          </Link>
         </div>
       </div>
     ) : (

@@ -1,16 +1,16 @@
 import React from 'react';
 import Link from 'next/link';
-import Bar from '../../components/Bar';
-import Input from '../../components/Input';
 
-const RelatorioDescritivo = () => {
+const RelatorioDescritivo = (): JSX.Element => {
   return (
     <>
-      <Bar
-        route="relatorioPacientes"
-        left
-        title="Relatório descritivo do paciente"
-      />
+      <div className="  flex flex-row   p-4 shadow-xs bg-purpleDark">
+        <Link href="/painelProfissional">
+          <div className="flex cursor-pointer flex-row space-x-2">
+            <img src="./arrow-left.svg" alt="" />
+          </div>
+        </Link>
+      </div>
       <div className="flex  flex-col bg-gray">
         <div className="bg-purple w-full">
           <div className="py-4 flex items-center flex-col ">
@@ -152,21 +152,3 @@ const RelatorioDescritivo = () => {
 };
 
 export default RelatorioDescritivo;
-{
-  /* <div className="flex flex-row mt-4  justify-center space-x-4">
-            <div className="flex flex-col rounded-2xl w-2/12 items-center  ">
-              <div className="flex flex-col items-center w-full rounded-t-2xl rounded-h-2xl bg-opacity-25 bg-green  text-green">
-                <h1>Dia 01(10/02/2021)</h1>
-                <span className="text-sm">às 13:43</span>
-              </div>
-              <div className="flex flex-col items-center w-full rounded-b-2xl bg-blue4">
-                <span>Risco de saúde</span>
-                <h1 className="text-xl text-green2">Baixo</h1>
-                <h1>Sintomas</h1>
-                <p className="text-center">
-                  Tosse, Febre, Diarréria, Falta de ar
-                </p>
-              </div>
-            </div>
-          </div> */
-}

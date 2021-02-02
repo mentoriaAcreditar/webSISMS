@@ -1,9 +1,4 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
-import Bar from '../Bar';
-
-import ModalAddTool from '../ModalAddSintomas';
-import ModalAddUnidades from '../ModalAddUnidades';
 import ModalAddProfissional from '../ModalAddProfissionais';
 
 const Profissionais: React.FC = () => {
@@ -113,19 +108,25 @@ const Profissionais: React.FC = () => {
                     {vt.cidade}
                   </span>
                   <div className="flex flex-row space-x-6  absolute right-0 mr-4">
-                    <button
-                      className="hover:bg-primary flex flex-col justify-center items-center bg-gray rounded-full p-2"
-                      type="button"
-                    >
-                      <img src="./edit3.svg" alt="" />
-                    </button>
+                    <div className="tooltip">
+                      <button
+                        className="hover:bg-primary flex flex-col justify-center items-center bg-gray rounded-full p-2"
+                        type="button"
+                      >
+                        <img src="./edit3.svg" alt="" />
+                        <span className="tooltiptext">Editar</span>
+                      </button>
+                    </div>
 
-                    <button
-                      className="hover:bg-primary flex flex-col justify-center items-center bg-gray rounded-full p-2 "
-                      type="button"
-                    >
-                      <img src="./trash3.svg" alt="" />
-                    </button>
+                    <div className="tooltip">
+                      <button
+                        className="hover:bg-primary flex flex-col justify-center items-center bg-gray rounded-full p-2 "
+                        type="button"
+                      >
+                        <span className="tooltiptext">Excluir</span>
+                        <img src="./trash3.svg" alt="" />
+                      </button>
+                    </div>
                   </div>
                 </button>
               </li>

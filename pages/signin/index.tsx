@@ -1,9 +1,7 @@
-import Head from 'next/head';
+import React from 'react';
 import Link from 'next/link';
 
-import Input from '../../components/Input';
-
-const Login = () => {
+const Login = (): JSX.Element => {
   return (
     <div
       className="  sm:flex w-full relative "

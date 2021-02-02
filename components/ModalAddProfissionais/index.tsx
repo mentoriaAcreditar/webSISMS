@@ -1,15 +1,11 @@
 import React, { useRef, useCallback, useEffect, useState } from 'react';
-import Link from 'next/link';
 import { FormHandles } from '@unform/core';
-
 import Input from '../Input';
-import CheckBox from '../CheckBox';
 import { Form } from './styles';
 import { Profissional } from '../../model/entidades/profissional';
 import { ReqProfissional } from '../../model/requisicoes/req-profissional';
 import { ReqCidades } from '../../model/requisicoes/req-cidades';
 import { Cidade } from '../../model/entidades/cidade';
-
 import { ReqPsf } from '../../model/requisicoes/req-psf';
 import { Psf } from '../../model/entidades/psf';
 import Modal from '../Modal';

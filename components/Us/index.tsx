@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
-import Bar from '../Bar';
-
-import ModalAddTool from '../ModalAddSintomas';
 import ModalAddUnidades from '../ModalAddUnidades';
-import ModalAddProfissional from '../ModalAddProfissionais';
 
 const Us: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -113,19 +108,25 @@ const Us: React.FC = () => {
                     {vt.responsvel}
                   </span>
                   <div className="flex flex-row space-x-6  absolute right-0 mr-4">
-                    <button
-                      className="hover:bg-primary flex flex-col justify-center items-center bg-gray rounded-full p-2"
-                      type="button"
-                    >
-                      <img src="./edit3.svg" alt="" />
-                    </button>
+                    <div className="tooltip">
+                      <button
+                        className="hover:bg-primary flex flex-col justify-center items-center bg-gray rounded-full p-2"
+                        type="button"
+                      >
+                        <img src="./edit3.svg" alt="" />
+                        <span className="tooltiptext">Editar</span>
+                      </button>
+                    </div>
 
-                    <button
-                      className="hover:bg-primary flex flex-col justify-center items-center bg-gray rounded-full p-2 "
-                      type="button"
-                    >
-                      <img src="./trash3.svg" alt="" />
-                    </button>
+                    <div className="tooltip">
+                      <button
+                        className="hover:bg-primary flex flex-col justify-center items-center bg-gray rounded-full p-2"
+                        type="button"
+                      >
+                        <img src="./trash3.svg" alt="" />
+                        <span className="tooltiptext">Editar</span>
+                      </button>
+                    </div>
                   </div>
                 </button>
               </li>

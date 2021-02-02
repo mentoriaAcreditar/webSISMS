@@ -1,10 +1,8 @@
 import React, { useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { FormHandles } from '@unform/core';
-
 import RadioButton from '../RadioButton';
 import { Form } from './styles';
-
 import Modal from '../Modal';
 
 interface ITool {

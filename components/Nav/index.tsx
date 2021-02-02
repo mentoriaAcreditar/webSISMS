@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
-const Nav = () => {
+const Nav = (): JSX.Element => {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <>

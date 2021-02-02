@@ -1,21 +1,26 @@
 import { IEntidade } from './i-entidade';
 
 export class Profissional implements IEntidade {
-    id: string = '';
-    nome: string = '';
-    email: string = '';
-    tipo: string = '';
-    idPsf: string = '';
-    idCidade: string = '';
+  id = '';
 
-    toData() {
-        return {
-            id: this.id,
-            nome: this.nome,
-            email: this.email,
-            tipo: this.tipo,
-            idPsf: this.idPsf,
-            idCidade: this.idCidade,
-        };
-    }
+  nome = '';
+
+  email = '';
+
+  tipo = '';
+
+  idPsf = '';
+
+  idCidade = '';
+
+  toData() {
+    return {
+      id: this.id,
+      nome: this.nome,
+      email: this.email,
+      tipo: this.tipo,
+      idPsf: this.idPsf,
+      idCidade: this.idCidade,
+    };
+  }
 }
