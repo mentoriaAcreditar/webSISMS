@@ -47,7 +47,7 @@ const Modal: React.FC<IModalProps> = ({
         },
         overlay: {
           // backgroundColor: '#F5F4F6',
-          overflowY: 'auto',
+          overflowY: 'hidden',
         },
       }}
     >
@@ -61,30 +61,6 @@ const Modal: React.FC<IModalProps> = ({
       <hr className="text-gray" />
 
       {children}
-      <hr className="text-gray" />
-      <div className="flex flex-row">
-        <div className="mx-10 flex flex-row  w-full my-4">
-          <button className="flex flex-row space-x-2" type="button">
-            <img src="./trash-2.svg" alt="" />
-            <span className="text-red">Remover</span>
-          </button>
-        </div>
-        <div className="flex flex-row items-center mr-10 space-x-4">
-          <button
-            onClick={setIsOpen}
-            className=" w-20 text-gray-400 h-10 rounded "
-            type="button"
-          >
-            Cancelar
-          </button>
-          <button
-            className="bg-purple text-white w-20 h-10 rounded p-2"
-            type="button"
-          >
-            Salvar
-          </button>
-        </div>
-      </div>
     </ReactModal>
   );
 };

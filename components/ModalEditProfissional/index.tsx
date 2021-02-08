@@ -1,35 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Bar from '../Bar';
-import Input from '../Input';
+import React, { useRef, useCallback, useEffect, useState } from 'react';
+import { FormHandles } from '@unform/core';
+import Input from '../Input2';
+import { Form } from './styles';
 import { Profissional } from '../../model/entidades/profissional';
 import { ReqProfissional } from '../../model/requisicoes/req-profissional';
 import { ReqCidades } from '../../model/requisicoes/req-cidades';
 import { Cidade } from '../../model/entidades/cidade';
-
 import { ReqPsf } from '../../model/requisicoes/req-psf';
 import { Psf } from '../../model/entidades/psf';
+import Modal from '../Modal';
 
-const CadastroProfissional2 = () => {
+interface IModalProps {
+  isOpen: boolean;
+  setIsOpen: () => void;
+  handleUpdateFood: (profissional: Profissional) => void;
+  editingProfissional: Profissional;
+}
+
+const ModalEditProfissionais: React.FC<IModalProps> = ({
+  // eslint-disable-next-line react/prop-types
+  isOpen,
+  // eslint-disable-next-line react/prop-types
+  setIsOpen,
+  // eslint-disable-next-line react/prop-types
+  editingProfissional,
+  handleUpdateFood,
+}) => {
+  const formRef = useRef<FormHandles>(null);
+
   useEffect(() => {
     getCidades();
     getPsfs();
   }, []);
 
-  const [profissional, setProfissional] = useState({
-    ...new Profissional(),
-    toData: new Profissional().toData,
-  });
+  const handleSubmit = useCallback(
+    async (data: Profissional) => {
+      console.log('data', data);
+      await handleUpdateFood(data);
+      setIsOpen();
+    },
+    [handleUpdateFood, setIsOpen],
+  );
 
-  function handleChange(evt: any) {
-    const { value } = evt.target;
-    setProfissional({
-      ...profissional,
-      [evt.target.name]: value,
-    });
-  }
-
-  console.log(profissional);
   const [tipos, setTipos] = useState([
     'admin',
     'gerente',
@@ -52,67 +64,56 @@ const CadastroProfissional2 = () => {
     new ReqCidades().listaDeCidade().then((dados) => {
       const cidades = dados.docs.map((doc) => doc.data() as Cidade);
       setCidades(cidades);
-      console.log(cidades);
+
       // setState({ cidades: this.cidades });
     });
   }
-
   function getPsfs() {
     new ReqPsf().listaDePsf().then((dados) => {
       const psfs = dados.docs.map((doc) => doc.data() as Psf);
       setPsfs(psfs);
-      console.log(psfs);
+
       // setState({ cidades: this.cidades });
     });
   }
 
-  async function onSubmit(e: any) {
-    e.preventDefault(); // para da termpo salva tem que tira o reload da pagina
-    await new ReqProfissional().insert(profissional);
-    console.log(profissional);
-  }
-
   return (
-    <div className="flex bg-grayBackground fixed fundo flex-col items-center justify-center mt-6 px-4 sm:px-0 ">
-      <div className="sm:flex sm:flex-col   rounded-xl  justify-center sm:w-8/12 w-full  -mt-4 bg-white  ">
-        <div className="">
-          <h1 className="py-4 px-8 font-bold">Cadastrar profissional</h1>
-          <hr className="text-gray" />
-        </div>
-
-        <form
-          onSubmit={onSubmit}
-          className="sm:overflow-auto overflow-hidden  sm:h-hOverflow rounded-xl sm:px-10  py-4 px-2 bg-white"
-        >
+    <Modal title="Editar Profissional" isOpen={isOpen} setIsOpen={setIsOpen}>
+      <Form
+        ref={formRef}
+        onSubmit={handleSubmit}
+        initialData={editingProfissional}
+      >
+        <Input className="text-white" name="id" />
+        <div className=" overflow-auto h-hList w-full ">
           <Input
-            mask=""
-            placeholder="Seu nome"
             label="Nome completo:"
             name="nome"
-            onChange={handleChange}
+            placeholder="Nome completo"
           />
-          <div className="sm:w-1/2 sm:flex sm:flex-row">
-            <Input name="rg" mask="99999999-9" label="RG:" />
-            <Input name="cpf" mask="999.999.999-99" label="CPF:" />
+
+          <div className="sm:w-full sm:flex sm:flex-row">
+            <div className="w-1/2">
+              <Input label="E-mail:" name="email" placeholder="E-mail" />
+            </div>
+
+            <div className="w-1/2">
+              <Input label="Tipo" name="tipo" placeholder="Tipo" />
+            </div>
           </div>
 
-          <div className="sm:flex sm:flex-row">
+          {/* <div className="sm:flex sm:flex-row">
             <div className="sm:w-full">
-              <Input
-                name="email"
-                mask=""
-                label="E-mail:"
-                onChange={handleChange}
-              />
+              <Input name="email" placeholder="E-mail" />
             </div>
             <div className="sm:w-4/12">
-              <Input name="telefone" mask="(99)9.9999-9999" label="Telefone:" />
+              <Input name="email" placeholder="E-mail" />
             </div>
-          </div>
+          </div> */}
 
-          <div className="sm:flex sm:flex-row">
+          {/* <div className="sm:flex sm:flex-row">
             <div className="sm:w-3/12">
-              <Input name="cep" mask="99.999-999" label="CEP:" />
+              <Input name="email" placeholder="E-mail" />
             </div>
 
             <div className="flex text-green mt-2 flex-col sm:w-4/12 ml-2  sm:mr-4 mr-2 ">
@@ -122,7 +123,7 @@ const CadastroProfissional2 = () => {
                 id="cidade"
                 name="idCidade"
                 value={selectCidade}
-                onChange={handleChange}
+                // onChange={handleChange}
               >
                 <option className="text-base" disabled selected>
                   Selecione
@@ -136,20 +137,20 @@ const CadastroProfissional2 = () => {
             </div>
 
             <div className="sm:w-5/12">
-              <Input name="rua" mask="" label="Rua:" />
+              <Input name="email" placeholder="E-mail" />
             </div>
           </div>
           <div className="sm:flex sm:flex-row">
             <div className="sm:w-2/12">
-              <Input name="numero" mask="" label="Nº:" />
+              <Input name="email" placeholder="E-mail" />
             </div>
             <div className="sm:w-4/12">
-              <Input name="bairro" mask="" label="Bairro:" />
+              <Input name="email" placeholder="E-mail" />
             </div>
             <div className="sm:w-6/12">
-              <Input name="complemento" mask="" label="Complemento:" />
+              <Input name="email" placeholder="E-mail" />
             </div>
-          </div>
+          </div> */}
           <div className="sm:flex sm:flex-row">
             <div className="flex text-green flex-col sm:w-4/12 ml-2  sm:mr-4 mr-2 mt-6">
               <span className="text-lg">Profissional</span>
@@ -158,7 +159,7 @@ const CadastroProfissional2 = () => {
                 id="tipo"
                 name="tipo"
                 value={selectTipos}
-                onChange={handleChange}
+                // onChange={handleChange}
               >
                 <option className="text-base" disabled selected>
                   Selecione
@@ -177,7 +178,7 @@ const CadastroProfissional2 = () => {
                 id="idPsf"
                 name="idPsf"
                 value={selectPsf}
-                onChange={handleChange}
+                // onChange={handleChange}
               >
                 <option className="text-base" disabled selected>
                   Selecione
@@ -190,19 +191,30 @@ const CadastroProfissional2 = () => {
               </select>
             </div>
           </div>
+        </div>
 
-          <div className="flex mt-10 flex-row w-full items-center justify-center py-4">
+        <div className="w-full  flex mt-10 flex-row justify-end  ">
+          <div className=" flex flex-row space-x-4 px-4">
             <button
+              onClick={setIsOpen}
+              className=" w-20 text-gray-400 h-10 rounded "
+              type="button"
+            >
+              Cancelar
+            </button>
+
+            <button
+              data-testid="edit-food-button"
+              className="bg-purple text-white w-20 h-10 rounded p-2"
               type="submit"
-              className="bg-primary text-white p-2 rounded-lg w-24"
             >
               Salvar
             </button>
           </div>
-        </form>
-      </div>
-    </div>
+        </div>
+      </Form>
+    </Modal>
   );
 };
 
-export default CadastroProfissional2;
+export default ModalEditProfissionais;

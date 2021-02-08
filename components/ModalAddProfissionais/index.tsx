@@ -10,25 +10,9 @@ import { ReqPsf } from '../../model/requisicoes/req-psf';
 import { Psf } from '../../model/entidades/psf';
 import Modal from '../Modal';
 
-interface ITool {
-  _id: number;
-  title: string;
-  description: string;
-  link: string;
-  tags: string;
-}
-
-interface ICreateTools {
-  title: string;
-  description: string;
-  link: string;
-  tags: string;
-}
-
 interface IModalProps {
   isOpen: boolean;
   setIsOpen: () => void;
-  handleAddTool: (tool: Omit<ITool, '_id'>) => void;
 }
 
 const ModalAddProfissionais: React.FC<IModalProps> = ({
@@ -41,14 +25,6 @@ const ModalAddProfissionais: React.FC<IModalProps> = ({
 }) => {
   const formRef = useRef<FormHandles>(null);
 
-  const handleSubmit = useCallback(
-    async (data: ICreateTools) => {
-      await handleAddTool(data);
-      setIsOpen();
-    },
-    [handleAddTool, setIsOpen],
-  );
-
   useEffect(() => {
     getCidades();
     getPsfs();
@@ -59,7 +35,17 @@ const ModalAddProfissionais: React.FC<IModalProps> = ({
     toData: new Profissional().toData,
   });
 
-  function handleChange(evt: any) {
+  async function onSubmit() {
+    await new ReqProfissional().insert(profissional);
+  }
+
+  const handleSubmit = useCallback(async () => {
+    await handleAddTool();
+    onSubmit();
+    setIsOpen();
+  }, [onSubmit, setIsOpen]);
+
+  function handleChange(evt: Event) {
     const { value } = evt.target;
     setProfissional({
       ...profissional,
@@ -67,7 +53,6 @@ const ModalAddProfissionais: React.FC<IModalProps> = ({
     });
   }
 
-  console.log(profissional);
   const [tipos, setTipos] = useState([
     'admin',
     'gerente',
@@ -90,7 +75,7 @@ const ModalAddProfissionais: React.FC<IModalProps> = ({
     new ReqCidades().listaDeCidade().then((dados) => {
       const cidades = dados.docs.map((doc) => doc.data() as Cidade);
       setCidades(cidades);
-      console.log(cidades);
+
       // setState({ cidades: this.cidades });
     });
   }
@@ -98,55 +83,21 @@ const ModalAddProfissionais: React.FC<IModalProps> = ({
     new ReqPsf().listaDePsf().then((dados) => {
       const psfs = dados.docs.map((doc) => doc.data() as Psf);
       setPsfs(psfs);
-      console.log(psfs);
+
       // setState({ cidades: this.cidades });
     });
-  }
-
-  function handleSelectTipo(event: any) {
-    const tipo = event.target.value;
-    setSelectTipos(tipo);
-    profissional.tipo = tipo;
-    console.log(tipo);
-  }
-
-  function handleSelectCidade(event: any) {
-    const cidade = event.target.value;
-    setSelectCidade(cidade);
-    console.log(cidade);
-  }
-
-  function handleSelectPsf(event: any) {
-    const psf = event.target.value;
-    setSelectCidade(psf);
-    console.log(psf);
-  }
-  async function onSubmit(e: any) {
-    e.preventDefault(); // para da termpo salva tem que tira o reload da pagina
-    await new ReqProfissional().insert(profissional);
-    console.log(profissional);
   }
 
   return (
     <Modal title="Cadastrar Profissional" isOpen={isOpen} setIsOpen={setIsOpen}>
       <Form ref={formRef} onSubmit={handleSubmit}>
-        <div className=" overflow-auto h-hList w-full ">
+        <div className=" overflow-auto w-full h-hList ">
           <Input
             mask=""
-            placeholder="Seu nome"
             label="Nome completo:"
             name="nome"
             onChange={handleChange}
           />
-          <div className="sm:w-full sm:flex sm:flex-row">
-            <div className="w-1/2">
-              <Input name="rg" mask="99999999-9" label="RG:" />
-            </div>
-
-            <div className="w-1/2">
-              <Input name="cpf" mask="999.999.999-99" label="CPF:" />
-            </div>
-          </div>
 
           <div className="sm:flex sm:flex-row">
             <div className="sm:w-full">
@@ -157,16 +108,9 @@ const ModalAddProfissionais: React.FC<IModalProps> = ({
                 onChange={handleChange}
               />
             </div>
-            <div className="sm:w-4/12">
-              <Input name="telefone" mask="(99)9.9999-9999" label="Telefone:" />
-            </div>
           </div>
 
           <div className="sm:flex sm:flex-row">
-            <div className="sm:w-3/12">
-              <Input name="cep" mask="99.999-999" label="CEP:" />
-            </div>
-
             <div className="flex text-green mt-2 flex-col sm:w-4/12 ml-2  sm:mr-4 mr-2 ">
               <span className="">Cidade:</span>
               <select
@@ -186,22 +130,8 @@ const ModalAddProfissionais: React.FC<IModalProps> = ({
                 ))}
               </select>
             </div>
+          </div>
 
-            <div className="sm:w-5/12">
-              <Input name="rua" mask="" label="Rua:" />
-            </div>
-          </div>
-          <div className="sm:flex sm:flex-row">
-            <div className="sm:w-2/12">
-              <Input name="numero" mask="" label="Nº:" />
-            </div>
-            <div className="sm:w-4/12">
-              <Input name="bairro" mask="" label="Bairro:" />
-            </div>
-            <div className="sm:w-6/12">
-              <Input name="complemento" mask="" label="Complemento:" />
-            </div>
-          </div>
           <div className="sm:flex sm:flex-row">
             <div className="flex text-green flex-col sm:w-4/12 ml-2  sm:mr-4 mr-2 mt-6">
               <span className="text-lg">Profissional</span>
@@ -241,6 +171,25 @@ const ModalAddProfissionais: React.FC<IModalProps> = ({
                 ))}
               </select>
             </div>
+          </div>
+        </div>
+
+        <div className="w-full  flex mt-10 flex-row justify-end  ">
+          <div className=" flex flex-row space-x-4 px-4">
+            <button
+              onClick={setIsOpen}
+              className=" w-20 text-gray-400 h-10 rounded "
+              type="button"
+            >
+              Cancelar
+            </button>
+
+            <button
+              className="bg-purple text-white w-20 h-10 rounded p-2"
+              type="submit"
+            >
+              Salvar
+            </button>
           </div>
         </div>
       </Form>

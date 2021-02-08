@@ -5,24 +5,18 @@ import React, {
   useState,
   useCallback,
 } from 'react';
-import InputMask from 'react-input-mask';
+
+import { IconBaseProps } from 'react-icons';
 import { useField } from '@unform/core';
 
-interface IInput extends InputHTMLAttributes<HTMLInputElement> {
+interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
-  label: string;
-  mask: string;
+  icon?: React.ComponentType<IconBaseProps>;
 }
-const Input: React.FC<IInput> = ({
-  label,
-  name,
-  id,
-  value,
-  onChange,
-  mask,
-  ...rest
-}: IInput) => {
+
+const Input: React.FC<IInputProps> = ({ name, icon: Icon, label, ...rest }) => {
   const inputRef = useRef<HTMLInputElement>(null);
+
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
 
@@ -45,24 +39,24 @@ const Input: React.FC<IInput> = ({
       path: 'value',
     });
   }, [fieldName, registerField]);
+
   return (
-    <div className="flex flex-col p-2  ">
+    <div
+      isFilled={isFilled}
+      isFocused={isFocused}
+      className="flex flex-col p-2  "
+    >
       <label className="text-green mx-2" htmlFor="#">
         {label}
       </label>
 
-      <InputMask
-        id={id}
-        value={value}
+      <input
         name={name}
-        onChange={onChange}
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
         defaultValue={defaultValue}
         className="p-4 h-10  bg-input box-border  text-grayTextBase bg-input border-color rounded-lg"
         type="text"
-        mask={mask}
-        onBlur
         ref={inputRef}
         {...rest}
       />

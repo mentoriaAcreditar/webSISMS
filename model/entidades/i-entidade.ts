@@ -1,3 +1,3 @@
 export interface IEntidade {
-    toData(): any;
+  toData(): any;
 }

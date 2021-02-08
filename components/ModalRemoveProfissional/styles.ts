@@ -10,7 +10,7 @@ export const Form = styled(Unform)`
   border-radius: 16px;
   background: #fff;
   height: auto;
-  width: 520px;
+  width: 720px;
   bottom: 20px;
   opacity: 1;
   padding: 36px;
