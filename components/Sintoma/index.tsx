@@ -9,7 +9,7 @@ interface IProps {
   handleEditProfissional: (food: Profissional) => void;
 }
 
-const Prof: React.FC<IProps> = ({
+const Sintoma: React.FC<IProps> = ({
   profissional,
   handleEditProfissional,
   handleDelete,
@@ -79,4 +79,4 @@ const Prof: React.FC<IProps> = ({
   );
 };
 
-export default Prof;
+export default Sintoma;

@@ -1,11 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const PerfilProfissional = () => {
+  const router = useRouter();
+  const { perfil } = router.query;
   return (
     <>
       <div className="  flex flex-row   p-4 shadow-xs bg-purpleDark">
-        <Link href="/painelProfissional">
+        <Link href="/">
           <div className="flex cursor-pointer flex-row space-x-2">
             <img src="./arrow-left.svg" alt="" />
           </div>
@@ -25,7 +28,7 @@ const PerfilProfissional = () => {
               <div>
                 <img className="z-0 w-18 h-18 relative" src="user.svg" alt="" />
               </div>
-              <h1 className="font-bold text-secondary">Antonio Carlos</h1>
+              <h1 className="font-bold text-secondary">{perfil}</h1>
               <h1>Cargo | US Tal</h1>
               <span>Viçosa do Ceará, Ceará, Brasil</span>
             </div>

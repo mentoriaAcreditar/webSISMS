@@ -2,47 +2,43 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import ModalRemoveProfissional from '../ModalRemoveProfissional';
 import { Profissional } from '../../model/entidades/profissional';
+import ModalRemoveCidade from '../ModalRemoveCidade';
+import { Cidade } from '../../model/entidades/cidade';
 
 interface IProps {
-  profissional: Profissional;
-  handleDelete: (profissional: Profissional) => {};
-  handleEditProfissional: (food: Profissional) => void;
+  cidade: Cidade;
+  handleDelete: (cidade: Cidade) => {};
+  handleEditCidade: (cidade: Cidade) => void;
 }
 
-const Prof: React.FC<IProps> = ({
-  profissional,
-  handleEditProfissional,
+const City: React.FC<IProps> = ({
+  cidade,
+  handleEditCidade,
   handleDelete,
 }: IProps) => {
-  const [modalRemoveProfissional, setModalRemoveProfissional] = useState(false);
+  const [modalRemovecidade, setModalRemovecidade] = useState(false);
 
   function openModalRemove() {
-    setModalRemoveProfissional(true);
+    setModalRemovecidade(true);
   }
 
   function toggleModalRemove(): void {
-    setModalRemoveProfissional(!modalRemoveProfissional);
+    setModalRemovecidade(!modalRemovecidade);
   }
 
   function setEditingFood(): void {
-    handleEditProfissional(profissional);
+    handleEditCidade(cidade);
   }
 
   return (
-    <li key={profissional.id} className="">
-      <Link href={`perfilProfissional/${profissional.nome}`}>
+    <li key={cidade.id} className="">
+      <Link href={`perfilcidade/${cidade.nome}`}>
         <button
           type="button"
           className="hover:bg-white hover:shadow-lg hover:border-transparent flex group relative  py-2 flex-row w-full"
         >
-          <span className="text-secondary py-2   w-3/12 text-sm sm:text-lg ">
-            {profissional.nome}
-          </span>
-          <span className=" w-3/12 text-sm sm:text-lg py-2 text-grayText">
-            {profissional.tipo}
-          </span>
-          <span className=" w-3/12 hidden sm:hidden md:hidden lg:flex text-center text-sm py-2 sm:text-lg text-grayText">
-            {profissional.email}
+          <span className="text-secondary py-2   w-6/12 text-sm sm:text-lg ">
+            {cidade.nome}
           </span>
         </button>
       </Link>
@@ -68,10 +64,10 @@ const Prof: React.FC<IProps> = ({
             <img src="./trash3.svg" alt="" />
           </button>
 
-          <ModalRemoveProfissional
-            isOpen={modalRemoveProfissional}
+          <ModalRemoveCidade
+            isOpen={modalRemovecidade}
             setIsOpen={toggleModalRemove}
-            handleRemoveProfissional={() => handleDelete(profissional)}
+            handleRemoveCidade={() => handleDelete(cidade)}
           />
         </div>
       </div>
@@ -79,4 +75,4 @@ const Prof: React.FC<IProps> = ({
   );
 };
 
-export default Prof;
+export default City;

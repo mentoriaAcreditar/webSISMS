@@ -14,32 +14,26 @@ interface IModalProps {
   isOpen: boolean;
   setIsOpen: () => void;
   handleUpdateFood: (profissional: Profissional) => void;
-  editingProfissional: Profissional;
+  editingCidade: Cidade;
 }
 
-const ModalEditProfissionais: React.FC<IModalProps> = ({
+const ModalEditCidade: React.FC<IModalProps> = ({
   // eslint-disable-next-line react/prop-types
   isOpen,
   // eslint-disable-next-line react/prop-types
   setIsOpen,
   // eslint-disable-next-line react/prop-types
-  editingProfissional,
-  handleUpdateFood,
+  editingCidade,
+  handleUpdateCidade,
 }) => {
   const formRef = useRef<FormHandles>(null);
 
-  useEffect(() => {
-    getCidades();
-    getPsfs();
-  }, []);
-
   const handleSubmit = useCallback(
-    async (data: Profissional) => {
-      console.log('data', data);
-      await handleUpdateFood(data);
+    async (data: Cidade) => {
+      await handleUpdateCidade(data);
       setIsOpen();
     },
-    [handleUpdateFood, setIsOpen],
+    [handleUpdateCidade, setIsOpen],
   );
 
   const [tipos, setTipos] = useState([
@@ -79,69 +73,14 @@ const ModalEditProfissionais: React.FC<IModalProps> = ({
 
   return (
     <Modal title="Editar Profissional" isOpen={isOpen} setIsOpen={setIsOpen}>
-      <Form
-        ref={formRef}
-        onSubmit={handleSubmit}
-        initialData={editingProfissional}
-      >
+      <Form ref={formRef} onSubmit={handleSubmit} initialData={editingCidade}>
         <Input className="text-white" name="id" />
         <div className=" overflow-auto h-hList w-full ">
           <Input
-            label="Nome completo:"
+            label="Nome da cidade:"
             name="nome"
             placeholder="Nome completo"
           />
-
-          <div className="sm:w-full sm:flex sm:flex-row">
-            <div className="w-1/2">
-              <Input label="E-mail:" name="email" placeholder="E-mail" />
-            </div>
-
-            <div className="w-1/2">
-              <Input label="Tipo" name="tipo" placeholder="Tipo" />
-            </div>
-          </div>
-
-          <div className="sm:flex sm:flex-row">
-            <div className="flex text-green flex-col sm:w-4/12 ml-2  sm:mr-4 mr-2 mt-6">
-              <span className="text-lg">Profissional</span>
-              <select
-                className="px-2 text-grayTextBase   mt-2 h-12 bg-white text-sm sm:text-base box-border bg-input border-color rounded-lg"
-                id="tipo"
-                name="tipo"
-                value={selectTipos}
-                // onChange={handleChange}
-              >
-                <option className="text-base" disabled selected>
-                  Selecione
-                </option>
-                {tipos.map((tipo) => (
-                  <option key={tipo} value={tipo}>
-                    {tipo}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="flex text-green flex-col sm:w-4/12  ml-2  sm:mr-4 mr-2 mt-6">
-              <span className="text-lg">PSF</span>
-              <select
-                className="p-2 text-grayTextBase space-x-2 mt-2 h-12 bg-white text-sm sm:text-base box-border bg-input border-color rounded-lg"
-                id="idPsf"
-                name="idPsf"
-                value={selectPsf}
-                // onChange={handleChange}
-              >
-                <option className="text-base" disabled selected>
-                  Selecione
-                </option>
-                {psfs.map((psf) => (
-                  <option key={psf.id} value={psf.id}>
-                    {psf.nome}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
         </div>
 
         <div className="w-full  flex mt-10 flex-row justify-end  ">
@@ -168,4 +107,4 @@ const ModalEditProfissionais: React.FC<IModalProps> = ({
   );
 };
 
-export default ModalEditProfissionais;
+export default ModalEditCidade;

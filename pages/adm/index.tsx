@@ -5,6 +5,7 @@ import './style.css';
 import Sintomas from '../../components/Sintomas';
 import Us from '../../components/Us';
 import Profissionais from '../../components/Profissionais';
+import Cidades from '../../components/Cidades';
 
 const Grafh = () => {
   return (
@@ -194,7 +195,7 @@ const Dashboard = () => {
 
 const RelatorioPaciente: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [page, setPage] = useState('');
+  const [page, setPage] = useState('dashboard');
 
   function handleSetPage(name: string) {
     setPage(name);
@@ -288,6 +289,19 @@ const RelatorioPaciente: React.FC = () => {
 
             <button
               type="button"
+              onClick={() => handleSetPage('cidades')}
+              className={
+                page === 'cidades'
+                  ? 'space-x-2 px-6 p-4 bg-primary  cursor-pointer flex flex-row text-white'
+                  : 'space-x-2 px-6 p-4  focus:ring-bg-primary  cursor-pointer flex flex-row text-white'
+              }
+            >
+              <img src="./thermometer.svg" alt="" />
+              <span className="">Cidades</span>
+            </button>
+
+            <button
+              type="button"
               onClick={() => handleSetPage('us')}
               className={
                 page === 'us'
@@ -323,6 +337,8 @@ const RelatorioPaciente: React.FC = () => {
             <Us />
           ) : page === 'cadastro' ? (
             <Profissionais />
+          ) : page === 'cidades' ? (
+            <Cidades />
           ) : (
             <Dashboard />
           )}

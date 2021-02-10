@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import Bar from '../../components/Bar';
 import Sintomas from '../../components/Sintomas';
 import Us from '../../components/Us';

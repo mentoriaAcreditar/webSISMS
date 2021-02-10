@@ -106,7 +106,7 @@ const Sintomas: React.FC = () => {
                   <div className="flex flex-row space-x-6  absolute right-0 mr-4">
                     <div className="tooltip">
                       <button
-                        className="hover:bg-primary flex flex-col justify-center items-center bg-gray rounded-full p-2"
+                        className="hover:bg-blue-400 flex flex-col justify-center items-center bg-gray rounded-full p-2"
                         type="button"
                       >
                         <img src="./edit3.svg" alt="" />
@@ -115,7 +115,7 @@ const Sintomas: React.FC = () => {
                     </div>
                     <div className="tooltip">
                       <button
-                        className="hover:bg-primary flex flex-col justify-center items-center bg-gray rounded-full p-2 "
+                        className="hover:bg-red-500 flex flex-col justify-center items-center bg-gray rounded-full p-2 "
                         type="button"
                       >
                         <img src="./trash3.svg" alt="" />
