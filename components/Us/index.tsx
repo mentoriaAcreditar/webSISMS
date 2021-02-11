@@ -1,61 +1,90 @@
-import React, { useState } from 'react';
-import ModalAddUnidades from '../ModalAddUnidades';
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import Bar from '../Bar';
+import ModalAddTool from '../ModalAddSintomas';
+import { Cidade } from '../../model/entidades/cidade';
+import { ReqCidades } from '../../model/requisicoes/req-cidades';
+import City from '../City';
+import ModalAddCidade from '../ModalAddCidade';
+import ModalEditCidade from '../ModalEditCidade';
+import PSF from '../PSF';
+import { ReqPsf } from '../../model/requisicoes/req-psf';
+import ModalAddPsf from '../ModalAddPsf';
+import { Psf } from '../../model/entidades/psf';
+import ModalEditPsf from '../ModalEditPsf';
 
 const Us: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [selectCidade, setSelectCidade] = useState();
+  const [modalEditOpen, setModalEditOpen] = useState(false);
+  const [editingPsf, setEditingPsf] = useState<Psf>({} as Psf);
+
+  const [psfs, setPsf] = useState([{ ...new Psf(), toData: new Psf().toData }]);
+
+  useEffect(() => {
+    getpsf();
+  }, []);
 
   function openModal() {
     setModalOpen(true);
   }
 
   function handleAddTool() {
-    console.log('ok');
+    getpsf();
   }
 
   function toggleModal(): void {
     setModalOpen(!modalOpen);
   }
-  const v = [
-    {
-      name: 'US Sitio tal',
-      endereco: 'Sitio camcimbão',
-      responsvel: 'Fulano',
-    },
-    {
-      name: 'US Sitio tal',
-      endereco: 'Sitio camcimbão',
-      responsvel: 'Fulano',
-    },
-    {
-      name: 'US Sitio tal',
-      endereco: 'Sitio camcimbão',
-      responsvel: 'Fulano',
-    },
-    {
-      name: 'US Sitio tal',
-      endereco: 'Sitio camcimbão',
-      responsvel: 'Fulano',
-    },
-    {
-      name: 'US Sitio tal',
-      endereco: 'Sitio camcimbão',
-      responsvel: 'Fulano',
-    },
-    {
-      name: 'US Sitio tal',
-      endereco: 'Sitio camcimbão',
-      responsvel: 'Fulano',
-    },
-    {
-      name: 'US Sitio tal',
-      endereco: 'Sitio camcimbão',
-      responsvel: 'Fulano',
-    },
-  ];
+
+  function toggleEditModal(): void {
+    setModalEditOpen(!modalEditOpen);
+  }
+
+  function handleEditpsf(psf: Psf) {
+    setEditingPsf(psf);
+    toggleEditModal();
+  }
+
+  function getpsf() {
+    new ReqPsf().listaDePsf().then((dados) => {
+      const cities = dados.docs.map((doc) => doc.data() as Psf);
+      setPsf(cities);
+
+      // setState({ psf: this.psf });
+    });
+  }
+
+  async function handleRemovepsf(psf: Psf) {
+    await new ReqPsf().delete(psf);
+    const pIndex = psfs.findIndex((p) => p.id === psf.id);
+    const pp = [...psfs];
+    pp.splice(pIndex, 1);
+    setPsf(pp);
+  }
+
+  async function handleUpdatepsf(psf: Psf) {
+    const newP: Psf = {
+      id: psf.id,
+      nome: psf.nome,
+
+      toData() {
+        return {
+          nome: this.nome,
+        };
+      },
+    };
+
+    await new ReqPsf().save(newP);
+    const todosIndex = psfs.findIndex((t) => t.id === psf.id);
+    psfs.splice(todosIndex, 1);
+    setPsf([...psfs, newP]);
+  }
+
   return (
     <div className="flex flex-col space-y-4 px-8 py-4 ">
       <div className="py-4 relative  flex flex-row items-center">
-        <h1 className="font-bold text-2xl">Unidades de saúde</h1>
+        <h1 className="font-bold text-2xl">PSFs</h1>
         <div className="p-2 flex flex-row  absolute right-0 space-x-2">
           <button
             onClick={() => openModal()}
@@ -75,61 +104,35 @@ const Us: React.FC = () => {
           </button>
         </div>
 
-        <ModalAddUnidades
-          handleAddTool={handleAddTool}
+        <ModalAddPsf
+          handleAddPsf={handleAddTool}
           isOpen={modalOpen}
           setIsOpen={toggleModal}
+        />
+        <ModalEditPsf
+          isOpen={modalEditOpen}
+          setIsOpen={toggleEditModal}
+          editingPsf={editingPsf}
+          handleUpdatePsf={handleUpdatepsf}
         />
       </div>
       <div className=" space-y-4 sm:space-y-0">
         <div className="w-full shadow-lg rounded-lg ">
           <div className="p-4 relative text-secondary bg-white font-bold flex flex-row ">
-            <span className="text-center w-3/12">Nome</span>
-            <span className="w-3/12 text-center ">Endereço</span>
-            <span className="w-3/12 text-center  ">Responsável</span>
+            <span className="text-center w-6/12">Nome</span>
+
             <span className="absolute right-0 mr-10 ">Ações</span>
           </div>
 
           <hr className="text-grayBackground" />
           <ul className=" h-hList  shadow-xs  divide-y overflow-auto divide-gray  w-full ">
-            {v.map((vt) => (
-              <li className="">
-                <button
-                  type="button"
-                  className="hover:bg-white hover:shadow-lg hover:border-transparent flex group relative  py-2 flex-row w-full"
-                >
-                  <span className="text-secondary py-2   w-3/12 text-sm sm:text-lg ">
-                    {vt.name}
-                  </span>
-                  <span className=" w-3/12 text-sm sm:text-lg py-2 text-grayText">
-                    {vt.endereco}
-                  </span>
-                  <span className=" w-3/12 text-center text-sm py-2 sm:text-lg text-grayText">
-                    {vt.responsvel}
-                  </span>
-                  <div className="flex flex-row space-x-6  absolute right-0 mr-4">
-                    <div className="tooltip">
-                      <button
-                        className="hover:bg-primary flex flex-col justify-center items-center bg-gray rounded-full p-2"
-                        type="button"
-                      >
-                        <img src="./edit3.svg" alt="" />
-                        <span className="tooltiptext">Editar</span>
-                      </button>
-                    </div>
-
-                    <div className="tooltip">
-                      <button
-                        className="hover:bg-primary flex flex-col justify-center items-center bg-gray rounded-full p-2"
-                        type="button"
-                      >
-                        <img src="./trash3.svg" alt="" />
-                        <span className="tooltiptext">Editar</span>
-                      </button>
-                    </div>
-                  </div>
-                </button>
-              </li>
+            {psfs.map((psf) => (
+              <PSF
+                key={psf.id}
+                psf={psf}
+                handleDelete={handleRemovepsf}
+                handleEditpsf={handleEditpsf}
+              />
             ))}
           </ul>
         </div>
