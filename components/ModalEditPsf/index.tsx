@@ -2,11 +2,7 @@ import React, { useRef, useCallback, useEffect, useState } from 'react';
 import { FormHandles } from '@unform/core';
 import Input from '../Input';
 import { Form } from './styles';
-import { Profissional } from '../../model/entidades/profissional';
-import { ReqProfissional } from '../../model/requisicoes/req-profissional';
-import { Reqpsf } from '../../model/requisicoes/req-cidades';
 import { Cidade } from '../../model/entidades/cidade';
-import { ReqPsf } from '../../model/requisicoes/req-psf';
 import { Psf } from '../../model/entidades/psf';
 import Modal from '../Modal';
 
@@ -29,7 +25,7 @@ const ModalEditPsf: React.FC<IModalProps> = ({
   const formRef = useRef<FormHandles>(null);
 
   const handleSubmit = useCallback(
-    async (data: Cidade) => {
+    async (data: Psf) => {
       await handleUpdatePsf(data);
       setIsOpen();
     },
@@ -57,7 +53,7 @@ const ModalEditPsf: React.FC<IModalProps> = ({
   return (
     <Modal title="Editar PSF" isOpen={isOpen} setIsOpen={setIsOpen}>
       <Form ref={formRef} onSubmit={handleSubmit} initialData={editingPsf}>
-        <Input className="text-white" name="id" />
+        <Input label="" className="text-white" name="id" />
         <div className=" overflow-auto h-hList w-full ">
           <Input
             label="Nome da cidade:"

@@ -3,7 +3,6 @@ import { FormHandles } from '@unform/core';
 import Input from '../Input';
 import { Form } from './styles';
 import { Profissional } from '../../model/entidades/profissional';
-import { ReqProfissional } from '../../model/requisicoes/req-profissional';
 import { ReqCidades } from '../../model/requisicoes/req-cidades';
 import { Cidade } from '../../model/entidades/cidade';
 import { ReqPsf } from '../../model/requisicoes/req-psf';
@@ -13,6 +12,7 @@ import Modal from '../Modal';
 interface IModalProps {
   isOpen: boolean;
   setIsOpen: () => void;
+  handleAddTool: (data: Profissional) => void;
 }
 
 const ModalAddProfissionais: React.FC<IModalProps> = ({
@@ -30,28 +30,38 @@ const ModalAddProfissionais: React.FC<IModalProps> = ({
     getPsfs();
   }, []);
 
-  const [profissional, setProfissional] = useState({
-    ...new Profissional(),
-    toData: new Profissional().toData,
-  });
+  const [cid, setCid] = useState('');
+  const [tipo, setTipo] = useState('');
+  const [psf, setPsf] = useState('');
 
-  async function onSubmit() {
-    await new ReqProfissional().insert(profissional);
+  function handleSelectCidade(event: React.ChangeEvent<HTMLSelectElement>) {
+    const city = event.target.value;
+    setCid(city);
   }
 
-  const handleSubmit = useCallback(async () => {
-    await handleAddTool();
-    onSubmit();
-    setIsOpen();
-  }, [onSubmit, setIsOpen]);
-
-  function handleChange(evt: Event) {
-    const { value } = evt.target;
-    setProfissional({
-      ...profissional,
-      [evt.target.name]: value,
-    });
+  function handleSelectTipo(event: React.ChangeEvent<HTMLSelectElement>) {
+    const tipo = event.target.value;
+    setTipo(tipo);
   }
+
+  function handleSelectPsf(event: React.ChangeEvent<HTMLSelectElement>) {
+    const psf = event.target.value;
+    setPsf(psf);
+  }
+
+  const handleSubmit = useCallback(
+    async (data: Profissional) => {
+      data.idCidade = cid;
+      data.idPsf = psf;
+      data.tipo = tipo;
+      console.log(cid);
+      console.log(psf);
+      console.log(tipo);
+      await handleAddTool(data);
+      setIsOpen();
+    },
+    [handleAddTool, cid, psf, tipo, setIsOpen],
+  );
 
   const [tipos, setTipos] = useState([
     'admin',
@@ -92,21 +102,11 @@ const ModalAddProfissionais: React.FC<IModalProps> = ({
     <Modal title="Cadastrar Profissional" isOpen={isOpen} setIsOpen={setIsOpen}>
       <Form ref={formRef} onSubmit={handleSubmit}>
         <div className=" overflow-auto w-full h-hList ">
-          <Input
-            mask=""
-            label="Nome completo:"
-            name="nome"
-            onChange={handleChange}
-          />
+          <Input label="Nome completo:" name="nome" />
 
           <div className="sm:flex sm:flex-row">
             <div className="sm:w-full">
-              <Input
-                name="email"
-                mask=""
-                label="E-mail:"
-                onChange={handleChange}
-              />
+              <Input name="email" label="E-mail:" />
             </div>
           </div>
 
@@ -115,10 +115,10 @@ const ModalAddProfissionais: React.FC<IModalProps> = ({
               <span className="">Cidade:</span>
               <select
                 className="px-2  text-grayTextBase space-x-2  h-10 bg-white text-sm sm:text-base box-border t border-color rounded-lg"
-                id="cidade"
+                id="idCidade"
                 name="idCidade"
                 value={selectCidade}
-                onChange={handleChange}
+                onChange={handleSelectCidade}
               >
                 <option className="text-base" disabled selected>
                   Selecione
@@ -140,7 +140,7 @@ const ModalAddProfissionais: React.FC<IModalProps> = ({
                 id="tipo"
                 name="tipo"
                 value={selectTipos}
-                onChange={handleChange}
+                onChange={handleSelectTipo}
               >
                 <option className="text-base" disabled selected>
                   Selecione
@@ -159,7 +159,7 @@ const ModalAddProfissionais: React.FC<IModalProps> = ({
                 id="idPsf"
                 name="idPsf"
                 value={selectPsf}
-                onChange={handleChange}
+                onChange={handleSelectPsf}
               >
                 <option className="text-base" disabled selected>
                   Selecione

@@ -3,7 +3,6 @@ import { FormHandles } from '@unform/core';
 import Input from '../Input';
 import { Form } from './styles';
 import { Profissional } from '../../model/entidades/profissional';
-import { ReqProfissional } from '../../model/requisicoes/req-profissional';
 import { ReqCidades } from '../../model/requisicoes/req-cidades';
 import { Cidade } from '../../model/entidades/cidade';
 import { ReqPsf } from '../../model/requisicoes/req-psf';
@@ -13,7 +12,7 @@ import Modal from '../Modal';
 interface IModalProps {
   isOpen: boolean;
   setIsOpen: () => void;
-  handleUpdateFood: (profissional: Profissional) => void;
+  handleUpdateCidade: (cidade: Cidade) => void;
   editingCidade: Cidade;
 }
 
@@ -74,7 +73,7 @@ const ModalEditCidade: React.FC<IModalProps> = ({
   return (
     <Modal title="Editar Profissional" isOpen={isOpen} setIsOpen={setIsOpen}>
       <Form ref={formRef} onSubmit={handleSubmit} initialData={editingCidade}>
-        <Input className="text-white" name="id" />
+        <Input label="" className="text-white" name="id" />
         <div className=" overflow-auto h-hList w-full ">
           <Input
             label="Nome da cidade:"

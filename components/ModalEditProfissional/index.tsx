@@ -84,21 +84,32 @@ const ModalEditProfissionais: React.FC<IModalProps> = ({
         onSubmit={handleSubmit}
         initialData={editingProfissional}
       >
-        <Input className="text-white" name="id" />
+        <Input label="" className="text-white" name="id" />
         <div className=" overflow-auto h-hList w-full ">
           <Input
             label="Nome completo:"
             name="nome"
             placeholder="Nome completo"
           />
-
-          <div className="sm:w-full sm:flex sm:flex-row">
-            <div className="w-1/2">
-              <Input label="E-mail:" name="email" placeholder="E-mail" />
-            </div>
-
-            <div className="w-1/2">
-              <Input label="Tipo" name="tipo" placeholder="Tipo" />
+          <Input label="E-mail:" name="email" placeholder="E-mail" />
+          <div className="sm:flex sm:flex-row">
+            <div className="flex text-green mt-2 flex-col sm:w-4/12 ml-2  sm:mr-4 mr-2 ">
+              <span className="">Cidade:</span>
+              <select
+                className="px-2  text-grayTextBase space-x-2  h-10 bg-white text-sm sm:text-base box-border t border-color rounded-lg"
+                id="idCidade"
+                name="idCidade"
+                value={selectCidade}
+              >
+                <option className="text-base" disabled selected>
+                  Selecione
+                </option>
+                {cidades.map((cidade) => (
+                  <option key={cidade.id} value={cidade.id}>
+                    {cidade.nome}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
 
@@ -148,7 +159,7 @@ const ModalEditProfissionais: React.FC<IModalProps> = ({
           <div className=" flex flex-row space-x-4 px-4">
             <button
               onClick={setIsOpen}
-              className=" w-20 text-gray-400 h-10 rounded "
+              className=" w-20 text-gray-400 h-10 rounded shadow-xs"
               type="button"
             >
               Cancelar

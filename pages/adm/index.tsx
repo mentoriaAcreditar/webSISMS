@@ -296,7 +296,7 @@ const RelatorioPaciente: React.FC = () => {
                   : 'space-x-2 px-6 p-4  focus:ring-bg-primary  cursor-pointer flex flex-row text-white'
               }
             >
-              <img src="./thermometer.svg" alt="" />
+              <img src="./map.svg" alt="" />
               <span className="">Cidades</span>
             </button>
 

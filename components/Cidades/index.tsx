@@ -10,7 +10,6 @@ import ModalEditCidade from '../ModalEditCidade';
 
 const Cidades: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectCidade, setSelectCidade] = useState();
   const [modalEditOpen, setModalEditOpen] = useState(false);
   const [editingCidade, setEditingCidade] = useState<Cidade>({} as Cidade);
 
@@ -26,8 +25,22 @@ const Cidades: React.FC = () => {
     setModalOpen(true);
   }
 
-  function handleAddTool() {
-    console.log('ok');
+  async function handleAddTool(cidade: Cidade) {
+    const newP: Cidade = {
+      id: cidade.id,
+      nome: cidade.nome,
+
+      toData() {
+        return {
+          id: this.id,
+          nome: this.nome,
+        };
+      },
+    };
+
+    await new ReqCidades().insert(newP);
+
+    setCidades([...cidades, newP]);
   }
 
   function toggleModal(): void {
@@ -54,7 +67,7 @@ const Cidades: React.FC = () => {
 
   async function handleRemoveCidade(cidade: Cidade) {
     await new ReqCidades().delete(cidade);
-    const pIndex = cidades.findIndex((p) => p.id === cidades.id);
+    const pIndex = cidades.findIndex((p) => p.id === cidade.id);
     const pp = [...cidades];
     pp.splice(pIndex, 1);
     setCidades(pp);
@@ -67,6 +80,7 @@ const Cidades: React.FC = () => {
 
       toData() {
         return {
+          id: this.id,
           nome: this.nome,
         };
       },

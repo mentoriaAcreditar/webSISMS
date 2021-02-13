@@ -1,12 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
-import Bar from '../Bar';
-import ModalAddTool from '../ModalAddSintomas';
-import { Cidade } from '../../model/entidades/cidade';
-import { ReqCidades } from '../../model/requisicoes/req-cidades';
-import City from '../City';
-import ModalAddCidade from '../ModalAddCidade';
-import ModalEditCidade from '../ModalEditCidade';
 import PSF from '../PSF';
 import { ReqPsf } from '../../model/requisicoes/req-psf';
 import ModalAddPsf from '../ModalAddPsf';
@@ -15,7 +7,6 @@ import ModalEditPsf from '../ModalEditPsf';
 
 const Us: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectCidade, setSelectCidade] = useState();
   const [modalEditOpen, setModalEditOpen] = useState(false);
   const [editingPsf, setEditingPsf] = useState<Psf>({} as Psf);
 
@@ -29,8 +20,23 @@ const Us: React.FC = () => {
     setModalOpen(true);
   }
 
-  function handleAddTool() {
-    getpsf();
+  async function handleAddTool(psf: Psf) {
+    const newP: Psf = {
+      id: psf.id,
+      nome: psf.nome,
+      idCidade: psf.idCidade,
+
+      toData() {
+        return {
+          id: psf.id,
+          nome: this.nome,
+          idCidade: this.idCidade,
+        };
+      },
+    };
+
+    await new ReqPsf().insert(newP);
+    setPsf([...psfs, newP]);
   }
 
   function toggleModal(): void {
@@ -67,10 +73,13 @@ const Us: React.FC = () => {
     const newP: Psf = {
       id: psf.id,
       nome: psf.nome,
+      idCidade: psf.idCidade,
 
       toData() {
         return {
+          id: this.id,
           nome: this.nome,
+          idCidade: this.idCidade,
         };
       },
     };
@@ -119,9 +128,9 @@ const Us: React.FC = () => {
       <div className=" space-y-4 sm:space-y-0">
         <div className="w-full shadow-lg rounded-lg ">
           <div className="p-4 relative text-secondary bg-white font-bold flex flex-row ">
-            <span className="text-center w-6/12">Nome</span>
-
-            <span className="absolute right-0 mr-10 ">Ações</span>
+            <span className="text-center w-4/12">PSF</span>
+            <span className="text-center w-4/12">Cidade</span>
+            <span className="absolute right-0 mr-20 ">Ações</span>
           </div>
 
           <hr className="text-grayBackground" />

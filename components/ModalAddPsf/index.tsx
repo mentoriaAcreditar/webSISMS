@@ -2,7 +2,6 @@ import React, { useRef, useCallback, useEffect, useState } from 'react';
 import { FormHandles } from '@unform/core';
 import Input from '../Input';
 import { Form } from './styles';
-import { ReqPsf } from '../../model/requisicoes/req-psf';
 import { Psf } from '../../model/entidades/psf';
 import Modal from '../Modal';
 import { Cidade } from '../../model/entidades/cidade';
@@ -11,7 +10,7 @@ import { ReqCidades } from '../../model/requisicoes/req-cidades';
 interface IModalProps {
   isOpen: boolean;
   setIsOpen: () => void;
-  handleAddPsf: () => void;
+  handleAddPsf: (data: Psf) => void;
 }
 
 const ModalAddPsf: React.FC<IModalProps> = ({
@@ -28,33 +27,22 @@ const ModalAddPsf: React.FC<IModalProps> = ({
     getCidades();
   }, []);
 
-  async function onSubmit() {
-    await new ReqPsf().insert(psf);
-    console.log(psf);
+  const [cid, setCid] = useState('');
+
+  function handleSelectCidade(event: React.ChangeEvent<HTMLSelectElement>) {
+    const city = event.target.value;
+    setCid(city);
   }
 
   const handleSubmit = useCallback(
-    async (data) => {
+    async (data: Psf) => {
+      data.idCidade = cid;
+
       await handleAddPsf(data);
-      onSubmit();
-      console.log('a', data);
       setIsOpen();
     },
-    [handleAddPsf, setIsOpen],
+    [handleAddPsf, cid, setIsOpen],
   );
-
-  const [psf, setPsf] = useState({
-    ...new Psf(),
-    toData: new Psf().toData,
-  });
-
-  function handleChange(evt: Event) {
-    const { value } = evt.target;
-    setPsf({
-      ...psf,
-      [evt.target.name]: value,
-    });
-  }
 
   const [cidades, setCidades] = useState([
     { ...new Cidade(), toData: new Cidade().toData },
@@ -71,16 +59,10 @@ const ModalAddPsf: React.FC<IModalProps> = ({
   }
 
   return (
-    <Modal title="Cadastrar psf" isOpen={isOpen} setIsOpen={setIsOpen}>
+    <Modal title="Cadastrar PSF" isOpen={isOpen} setIsOpen={setIsOpen}>
       <Form ref={formRef} onSubmit={handleSubmit}>
         <div className=" overflow-auto h-hList w-full ">
-          <Input
-            mask=""
-            placeholder="Seu nome"
-            label="Nome da psf:"
-            name="nome"
-            onChange={handleChange}
-          />
+          <Input label="Nome do PSF:" name="nome" />
           <div className="flex text-green mt-2 flex-col sm:w-4/12 ml-2  sm:mr-4 mr-2 ">
             <span className="">Cidade:</span>
             <select
@@ -88,7 +70,7 @@ const ModalAddPsf: React.FC<IModalProps> = ({
               id="idCidade"
               name="idCidade"
               value={selectCidade}
-              onChange={handleChange}
+              onChange={handleSelectCidade}
             >
               <option className="text-base" disabled selected>
                 Selecione
@@ -106,7 +88,7 @@ const ModalAddPsf: React.FC<IModalProps> = ({
           <div className=" flex flex-row space-x-4 px-4">
             <button
               onClick={setIsOpen}
-              className=" w-20 text-gray-400 h-10 rounded "
+              className=" w-20 text-gray-400 h-10 rounded shadow-xs"
               type="button"
             >
               Cancelar

@@ -6,15 +6,14 @@ import React, {
   useCallback,
 } from 'react';
 
-import { IconBaseProps } from 'react-icons';
 import { useField } from '@unform/core';
 
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
-  icon?: React.ComponentType<IconBaseProps>;
+  readonly label: string;
 }
 
-const Input: React.FC<IInputProps> = ({ name, icon: Icon, label, ...rest }) => {
+const Input: React.FC<IInputProps> = ({ name, label, ...rest }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [isFocused, setIsFocused] = useState(false);
@@ -41,11 +40,7 @@ const Input: React.FC<IInputProps> = ({ name, icon: Icon, label, ...rest }) => {
   }, [fieldName, registerField]);
 
   return (
-    <div
-      isFilled={isFilled}
-      isFocused={isFocused}
-      className="flex flex-col p-2  "
-    >
+    <div className="flex flex-col p-2  ">
       <label className="text-green mx-2" htmlFor="#">
         {label}
       </label>

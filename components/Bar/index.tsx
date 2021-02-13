@@ -82,7 +82,7 @@ const Bar: React.FC<BarProps> = ({
 
               <Link href={routeProfile}>
                 <div className="flex flex-row  cursor-pointer hover:bg-gray">
-                  <img className="w-8" src="./log-out2.svg " alt="" />
+                  <img className="w-8" src="./help-circle.svg " alt="" />
                   <span>Ajuda</span>
                 </div>
               </Link>

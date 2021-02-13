@@ -32,10 +32,11 @@ const Profissionais: React.FC = () => {
   const [selectPsf, setSelectPsf] = useState();
 
   useState(() => {
-    loadProfissionais();
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     getCidades();
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     getPsfs();
-  }, []);
+  });
 
   function openModal() {
     setModalOpen(true);
@@ -65,15 +66,38 @@ const Profissionais: React.FC = () => {
     });
   }
 
-  function loadProfissionais() {
-    if (selectPsf === true) {
-      getProfissionaisByPsf(psf);
-    }
-    getProfissionais();
-  }
+  // function loadProfissionais() {
+  //   if (selectPsf === true) {
+  //     getProfissionaisByPsf(psf);
+  //   }
+  //   getProfissionais();
+  // }
 
-  function handleAddTool() {
-    getProfissionais();
+  async function handleAddTool(profissional: Profissional) {
+    const newP: Profissional = {
+      id: profissional.id,
+      nome: profissional.nome,
+      email: profissional.email,
+      tipo: profissional.tipo,
+      idPsf: profissional.idPsf,
+      idCidade: profissional.idCidade,
+      toData() {
+        return {
+          id: this.id,
+          nome: this.nome,
+          email: this.email,
+          tipo: this.tipo,
+          idPsf: this.idPsf,
+          idCidade: this.idCidade,
+        };
+      },
+    };
+
+    console.log(newP);
+
+    await new ReqProfissional().insert(newP);
+
+    setProfissionais([...profissionais, newP]);
   }
 
   async function handleRemoveTool(profissional: Profissional) {
@@ -99,15 +123,16 @@ const Profissionais: React.FC = () => {
       nome: profissional.nome,
       email: profissional.email,
       tipo: profissional.tipo,
-      // idPsf: profissional.idPsf,
-      // idCidade: profissional.idCidade,
+      idPsf: profissional.idPsf,
+      idCidade: profissional.idCidade,
       toData() {
         return {
+          id: this.id,
           nome: this.nome,
           email: this.email,
           tipo: this.tipo,
-          // idPsf: this.idPsf,
-          // idCidade: this.idCidade,
+          idPsf: this.idPsf,
+          idCidade: this.idCidade,
         };
       },
     };
@@ -129,8 +154,8 @@ const Profissionais: React.FC = () => {
 
   function getCidades() {
     new ReqCidades().listaDeCidade().then((dados) => {
-      const cidades = dados.docs.map((doc) => doc.data() as Cidade);
-      setCidades(cidades);
+      const cids = dados.docs.map((doc) => doc.data() as Cidade);
+      setCidades(cids);
 
       // setState({ cidades: this.cidades });
     });

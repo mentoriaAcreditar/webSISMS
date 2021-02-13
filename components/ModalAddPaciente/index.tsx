@@ -133,7 +133,6 @@ const ModalAddPaciente: React.FC<IModalProps> = ({
       <Form ref={formRef} onSubmit={handleSubmit}>
         <div className=" overflow-auto h-hList w-full ">
           <Input
-            mask=""
             placeholder="Seu nome"
             label="Nome completo:"
             name="nome"
@@ -141,31 +140,26 @@ const ModalAddPaciente: React.FC<IModalProps> = ({
           />
           <div className="sm:w-full sm:flex sm:flex-row">
             <div className="w-1/2">
-              <Input name="rg" mask="99999999-9" label="RG:" />
+              <Input name="rg" label="RG:" />
             </div>
 
             <div className="w-1/2">
-              <Input name="cpf" mask="999.999.999-99" label="CPF:" />
+              <Input name="cpf" label="CPF:" />
             </div>
           </div>
 
           <div className="sm:flex sm:flex-row">
             <div className="sm:w-full">
-              <Input
-                name="email"
-                mask=""
-                label="E-mail:"
-                onChange={handleChange}
-              />
+              <Input name="email" label="E-mail:" onChange={handleChange} />
             </div>
             <div className="sm:w-4/12">
-              <Input name="telefone" mask="(99)9.9999-9999" label="Telefone:" />
+              <Input name="telefone" label="Telefone:" />
             </div>
           </div>
 
           <div className="sm:flex sm:flex-row">
             <div className="sm:w-3/12">
-              <Input name="cep" mask="99.999-999" label="CEP:" />
+              <Input name="cep" label="CEP:" />
             </div>
 
             <div className="flex text-green mt-2 flex-col sm:w-4/12 ml-2  sm:mr-4 mr-2 ">
@@ -189,18 +183,18 @@ const ModalAddPaciente: React.FC<IModalProps> = ({
             </div>
 
             <div className="sm:w-5/12">
-              <Input name="rua" mask="" label="Rua:" />
+              <Input name="rua" label="Rua:" />
             </div>
           </div>
           <div className="sm:flex sm:flex-row">
             <div className="sm:w-2/12">
-              <Input name="numero" mask="" label="Nº:" />
+              <Input name="numero" label="Nº:" />
             </div>
             <div className="sm:w-4/12">
-              <Input name="bairro" mask="" label="Bairro:" />
+              <Input name="bairro" label="Bairro:" />
             </div>
             <div className="sm:w-6/12">
-              <Input name="complemento" mask="" label="Complemento:" />
+              <Input name="complemento" label="Complemento:" />
             </div>
           </div>
           <div className="sm:flex sm:flex-row">

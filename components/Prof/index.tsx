@@ -29,11 +29,11 @@ const Prof: React.FC<IProps> = ({
   }
 
   return (
-    <li key={profissional.id} className="">
+    <li key={profissional.id} className="relative">
       <Link href={`perfilProfissional/${profissional.nome}`}>
         <button
           type="button"
-          className="hover:bg-white hover:shadow-lg hover:border-transparent flex group relative  py-2 flex-row w-full"
+          className="hover:bg-white hover:shadow-lg hover:border-transparent flex group   py-2 flex-row w-full"
         >
           <span className="text-secondary py-2   w-3/12 text-sm sm:text-lg ">
             {profissional.nome}
