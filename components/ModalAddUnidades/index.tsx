@@ -73,12 +73,12 @@ const ModalAddUnidades: React.FC<IModalProps> = ({
               value="Não se aplica"
             />
             <table>
-              <tr className="sm:text-sm  text-sm bg-purple border  border-purple  text-white  flex-row mr-2 space-x-4">
+              <tr className="sm:text-sm  text-sm bg-primary border  border-prbg-primary  text-white  flex-row mr-2 space-x-4">
                 <td className=" bg-purle   text-white  flex-row space-x-4">
                   Período
                 </td>
                 <td>Descrição</td>
-                <td className=" bg-purple  text-white  sm:pr-8 flex-row p-2 sm:space-x-4">
+                <td className=" bg-primary  text-white  sm:pr-8 flex-row p-2 sm:space-x-4">
                   Ações
                 </td>
               </tr>
@@ -103,7 +103,7 @@ const ModalAddUnidades: React.FC<IModalProps> = ({
                 </td>
               </tr>
             </table>
-            <button className="bg-purple rounded-md p-2" type="button">
+            <button className="bg-primary rounded-md p-2" type="button">
               <span className="text-white">Adicionar Frequencia</span>
             </button>
           </div>
@@ -116,12 +116,12 @@ const ModalAddUnidades: React.FC<IModalProps> = ({
               value="Não se aplica"
             />
             <table>
-              <tr className="sm:text-sm  text-sm bg-purple border border-purple   text-white   flex-row mr-2 space-x-4">
+              <tr className="sm:text-sm  text-sm bg-primary border border-prbg-primary   text-white   flex-row mr-2 space-x-4">
                 <td className=" bg-purle   text-white    flex-row p-2 space-x-4">
                   Prioridade
                 </td>
                 <td>Descrição</td>
-                <td className=" bg-purple  text-white flex-row p-2 sm:space-x-4">
+                <td className=" bg-primary  text-white flex-row p-2 sm:space-x-4">
                   Ações
                 </td>
               </tr>

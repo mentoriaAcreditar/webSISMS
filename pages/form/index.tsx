@@ -79,7 +79,7 @@ const Form = () => {
         />
         <button
           type="submit"
-          className="bg-purple text-blue2 p-2 w-40 rounded-lg mt-4"
+          className="bg-primary text-blue2 p-2 w-40 rounded-lg mt-4"
           onClick={handleResumo}
         >
           <span className="text-white">Pronto</span>

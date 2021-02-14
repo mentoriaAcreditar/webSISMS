@@ -15,12 +15,17 @@ module.exports = {
         grayTextBase: "#6a6180",
         // red: "#E33D3D",
 
-        secondary: "#373B53",
-        primary: "#6F52ED",
+        // secondary: "#373B53",
+        // primary: "#6F52ED",
         cinza: "#D5D9E0",
         grayBackground: "#F8F8FB",
         blueS: "#7FC2FF",
-        blueBlack: "#5FABE6"
+        blueBlack: "#5FABE6",
+
+        secondary: "#3F3D56",
+        primary: "#7FC2FF",
+        primaryDark: "#81BBF0",
+        
 
       },
       textColor: {

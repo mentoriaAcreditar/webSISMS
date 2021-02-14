@@ -35,7 +35,7 @@ const PSF: React.FC<IProps> = ({
           {psf.nome}
         </span>
 
-        <span className="text-secondary py-2  hidden sm:flex text-center  w-4/12 text-sm sm:text-lg ">
+        <span className="text-secondary py-2 text-center  w-4/12 text-sm sm:text-lg ">
           {psf.idCidade}
         </span>
 

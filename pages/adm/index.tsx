@@ -10,8 +10,8 @@ import Cidades from '../../components/Cidades';
 const Grafh = () => {
   return (
     <Chart
-      width="280px"
-      height="280px"
+      width="20rem"
+      height="14rem"
       chartType="PieChart"
       loader={<div>Loading Chart</div>}
       data={[
@@ -27,7 +27,7 @@ const Grafh = () => {
         // Just add this option
         pieHole: 0.4,
       }}
-      rootProps={{ 'data-testid': '3' }}
+      rootProps={{ 'data-testid': '2' }}
     />
   );
 };
@@ -35,8 +35,8 @@ const Grafh = () => {
 const GrafhBar = () => {
   return (
     <Chart
-      width="380px"
-      height="300px"
+      width="20rem"
+      height="18rem"
       chartType="Bar"
       loader={<div>Loading Chart</div>}
       data={[
@@ -54,7 +54,7 @@ const GrafhBar = () => {
         },
       }}
       // For tests
-      rootProps={{ 'data-testid': '2' }}
+      rootProps={{ 'data-testid': '1' }}
     />
   );
 };
@@ -72,7 +72,7 @@ const Dashboard = () => {
           <span className="text-white">Novo Dashboard</span>
         </button>
       </div>
-      <div className="sm:grid sm:grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4   sm:gap-2 space-y-4 sm:space-y-0">
+      <div className="sm:grid sm:grid-cols-2 md:grid md:grid-cols-3 lg:grid-2 lg:grid-cols-4   sm:gap-2 space-y-4 sm:space-y-0">
         <div className="shadow-md relative flex  flex-row p-8 space-x-4 bg-white rounded-lg">
           <img
             className="bg-primary absolute left-0 ml-4 rounded-full"
@@ -84,7 +84,7 @@ const Dashboard = () => {
         <div className="shadow-md relative flex flex-row p-8 space-x-4 bg-white rounded-lg">
           <img
             className="bg-primary absolute left-0 ml-2  rounded-full"
-            src="./unid.svg"
+            src="./userwhite.svg"
             alt=""
           />
           <h1>Total de Profissionais</h1>
@@ -95,19 +95,19 @@ const Dashboard = () => {
             src="./unid.svg"
             alt=""
           />
-          <h1>Total de US</h1>
+          <h1>Total de pacientes</h1>
         </div>
         <div className="shadow-md flex relative flex-row p-8 space-x-4 bg-white rounded-lg">
           <img
-            className="bg-primary  absolute left-0 ml-2 rounded-full"
+            className="bg-primary   absolute left-0 ml-2 rounded-full"
             src="./unid.svg"
             alt=""
           />
-          <h1>Total de US</h1>
+          <h1>Total de cidades</h1>
         </div>
       </div>
 
-      <div className="sm:grid sm:grid-cols-1 md:grid md:grid-cols-1 lg:grid lg:grid-cols-2 mt-4 sm:gap-2 space-y-2 sm:space-y-0">
+      <div className="grid  sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 grid-cols-1  gap-2 mt-4 space-y-2 sm:space-y-0">
         <div className="shadow-md flex flex-col bg-white rounded-lg">
           <div className="w-full ">
             <h1 className="font-bold p-4">Número de casos</h1>
@@ -117,71 +117,9 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div className="sm:grid sm:grid-cols-2  sm:gap-2 space-y-2 sm:space-y-0">
-          <div className="shadow-md flex flex-col bg-white rounded-lg">
-            <div className="w-full ">
-              <h1 className="font-bold p-4">Profissionais</h1>
-              <hr className="text-gray" />
-            </div>
-            <div className="flex flex-col p-4 overflow-auto h-64 space-y-6">
-              <div className="relative flex flex-row space-x-2">
-                <img
-                  className="bg-primary rounded-full"
-                  src="./user3.svg"
-                  alt=""
-                />
-                <span>Fulano de tal</span>
-                <span className="absolute right-0 font-bold">US-1</span>
-              </div>
-              <div className="relative flex flex-row space-x-2">
-                <img
-                  className="bg-primary rounded-full"
-                  src="./user3.svg"
-                  alt=""
-                />
-                <span>Fulano de tal</span>
-                <span className="absolute right-0 font-bold">US-1</span>
-              </div>
-              <div className="relative flex flex-row space-x-2">
-                <img
-                  className="bg-primary rounded-full"
-                  src="./user3.svg"
-                  alt=""
-                />
-                <span>Fulano de tal</span>
-                <span className="absolute right-0 font-bold">US-1</span>
-              </div>
-              <div className="relative flex flex-row space-x-2">
-                <img
-                  className="bg-primary rounded-full"
-                  src="./user3.svg"
-                  alt=""
-                />
-                <span>Fulano de tal</span>
-                <span className="absolute right-0 font-bold">US-1</span>
-              </div>
-              <div className="relative flex flex-row space-x-2">
-                <img
-                  className="bg-primary rounded-full"
-                  src="./user3.svg"
-                  alt=""
-                />
-                <span>Fulano de tal</span>
-                <span className="absolute right-0 font-bold">US-1</span>
-              </div>
-              <div className="relative flex flex-row space-x-2">
-                <img
-                  className="bg-primary rounded-full"
-                  src="./user3.svg"
-                  alt=""
-                />
-                <span>Fulano de tal</span>
-                <span className="absolute right-0 font-bold">US-1</span>
-              </div>
-            </div>
-          </div>
+        <div className="grid grid-cols-1 space-y-2 sm:space-y-0">
           <div className="shadow-md flex flex-col bg-white rounded-lg ">
-            <div className="w-full ">
+            <div className="w-full  ">
               <h1 className="font-bold p-4">Monitoramento</h1>
               <hr className="text-gray" />
               <Grafh />
@@ -239,11 +177,11 @@ const RelatorioPaciente: React.FC = () => {
     <>
       <div className="flex flex-row   h-screen">
         <div
-          className="flex-col container sm:flex hidden items-center relative  justify-center bg-secondary
+          className="flex-col container sm:flex hidden items-center relative  bg-secondary
         sm:h-full md:h-full lg:h-full   w-2/12"
         >
-          <div className="w-full bg-primary absolute top-0 flex flex-col items-center p-6">
-            <img src="./logotest2.svg" alt="" />
+          <div className="w-full  flex flex-col items-center p-6">
+            <img className="w-1/2" src="./Logo.svg" alt="" />
           </div>
 
           <div className=" flex flex-col w-full  ">
@@ -310,7 +248,7 @@ const RelatorioPaciente: React.FC = () => {
               }
             >
               <img src="./unid.svg" alt="" />
-              <span className="">USs</span>
+              <span className="">PSFs</span>
             </button>
           </div>
           <div className="absolute left-0 bottom-0  shadow-xs  flex flex-col items-center px-2 py-4 ">
@@ -325,11 +263,46 @@ const RelatorioPaciente: React.FC = () => {
         </div>
         <div className="w-full  bg-grayBackground">
           <Bar
-            routeProfile="/perfilProfissional"
+            routeProfile="/perfilProfissional/Antonio Carlos"
             logout
             user="Antonio Carlos"
             userCargo="Administrador"
           />
+          <div className="flex sm:hidden md:hiddem lg:hidden">
+            <div className="dropdown2 hidden sm:flex px-4 absolute z-10 top-0 left-0">
+              <button
+                type="button"
+                className="text-primary px-4 p-2 rounded-md justify-center items-center flex flex-row"
+              >
+                Menu
+                <img src="./chevron-down3.svg" alt="" />
+              </button>
+              <div className="dropdown-content2 ">
+                <button
+                  type="button"
+                  onClick={() => handleSetPage('dashboard')}
+                >
+                  <span className="cursor-pointer">Dashboard</span>
+                </button>
+
+                <button type="button" onClick={() => handleSetPage('cadastro')}>
+                  <span className="cursor-pointer">Profissionais</span>
+                </button>
+
+                <button type="button" onClick={() => handleSetPage('us')}>
+                  <span className="cursor-pointer">Sintomas</span>
+                </button>
+
+                <button type="button" onClick={() => handleSetPage('cidades')}>
+                  <span className="cursor-pointer">Cidades</span>
+                </button>
+
+                <button type="button" onClick={() => handleSetPage('us')}>
+                  <span className="cursor-pointer">PSFs</span>
+                </button>
+              </div>
+            </div>
+          </div>
 
           {page === 'sintomas' ? (
             <Sintomas />

@@ -73,12 +73,12 @@ const ModalAddTool: React.FC<IModalProps> = ({
               value="Não se aplica"
             />
             <table>
-              <tr className="sm:text-sm  text-sm bg-purple   text-white  rounded-br-none rounded-bl-none flex-row mr-2 space-x-4">
+              <tr className="sm:text-sm  text-sm bg-primary   text-white  rounded-br-none rounded-bl-none flex-row mr-2 space-x-4">
                 <td className=" bg-purle   text-white  rounded-l-lg  rounded-br-none rounded-bl-none flex-row p-2 space-x-4">
                   Período
                 </td>
                 <td>Descrição</td>
-                <td className=" bg-purple  text-white rounded-r-lg sm:pr-8 rounded-br-none rounded-bl-none flex-row p-2 sm:space-x-4">
+                <td className=" bg-primary  text-white rounded-r-lg sm:pr-8 rounded-br-none rounded-bl-none flex-row p-2 sm:space-x-4">
                   Ações
                 </td>
               </tr>
@@ -103,7 +103,7 @@ const ModalAddTool: React.FC<IModalProps> = ({
                 </td>
               </tr>
             </table>
-            <button className="bg-purple rounded-md p-2" type="button">
+            <button className="bg-primary rounded-md p-2" type="button">
               <span className="text-white">Adicionar Frequencia</span>
             </button>
           </div>
@@ -116,12 +116,12 @@ const ModalAddTool: React.FC<IModalProps> = ({
               value="Não se aplica"
             />
             <table>
-              <tr className="sm:text-sm  text-sm bg-purple   text-white  rounded-br-none rounded-bl-none flex-row mr-2 space-x-4">
+              <tr className="sm:text-sm  text-sm bg-primary   text-white  rounded-br-none rounded-bl-none flex-row mr-2 space-x-4">
                 <td className=" bg-purle   text-white  rounded-l-lg  rounded-br-none rounded-bl-none flex-row p-2 space-x-4">
                   Prioridade
                 </td>
                 <td>Descrição</td>
-                <td className=" bg-purple  text-white rounded-r-lg sm:pr-8 rounded-br-none rounded-bl-none flex-row p-2 sm:space-x-4">
+                <td className=" bg-primary  text-white rounded-r-lg sm:pr-8 rounded-br-none rounded-bl-none flex-row p-2 sm:space-x-4">
                   Ações
                 </td>
               </tr>
@@ -146,7 +146,7 @@ const ModalAddTool: React.FC<IModalProps> = ({
                 </td>
               </tr>
             </table>
-            <button className="bg-purple rounded-md p-2" type="button">
+            <button className="bg-primary rounded-md p-2" type="button">
               <span className="text-white">Adicionar Intencidade</span>
             </button>
           </div>

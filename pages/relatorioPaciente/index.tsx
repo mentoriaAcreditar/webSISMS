@@ -4,7 +4,7 @@ import Link from 'next/link';
 const RelatorioDescritivo = (): JSX.Element => {
   return (
     <>
-      <div className="  flex flex-row   p-4 shadow-xs bg-purpleDark">
+      <div className="  flex flex-row   p-4 shadow-xs bg-primaryDark">
         <Link href="/painelProfissional">
           <div className="flex cursor-pointer flex-row space-x-2">
             <img src="./arrow-left.svg" alt="" />
@@ -12,7 +12,7 @@ const RelatorioDescritivo = (): JSX.Element => {
         </Link>
       </div>
       <div className="flex  flex-col bg-gray">
-        <div className="bg-purple w-full">
+        <div className="bg-primary w-full">
           <div className="py-4 flex items-center flex-col ">
             <div>
               <img className="z-0 w-18 h-18 relative" src="user.svg" alt="" />

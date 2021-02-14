@@ -31,7 +31,7 @@ const Login = (): JSX.Element => {
             placeholder="Senha"
           />
           <div className="bg-blueBlack w-4/12 cursor-pointer text-white rounded-3xl h-10 mt-6 flex flex-row items-center justify-center ">
-            <Link href="/adm">Entrar</Link>
+            <Link href="/painelProfissional">Entrar</Link>
           </div>
         </form>
       </div>

@@ -169,7 +169,7 @@ const Profissionais: React.FC = () => {
           <div className="dropdown2 sm:hidden flex absolute left-0 top-0">
             <button
               type="button"
-              className="bg-white flex flex-row items-center space-x-2 rounded-full p-2 px-4"
+              className="bg-white  hidden sm:flex  flex-row items-center space-x-2 rounded-full p-2 px-4"
             >
               <img src="./filter.svg" alt="" />
               <span className="text-primary">Filtrar</span>

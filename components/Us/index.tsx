@@ -98,7 +98,7 @@ const Us: React.FC = () => {
           <button
             onClick={() => openModal()}
             type="button"
-            className="bg-white flex flex-row items-center space-x-2 rounded-full p-2 px-4"
+            className="bg-white  hidden sm:flex flex-row items-center space-x-2 rounded-full p-2 px-4"
           >
             <img src="./filter.svg" alt="" />
             <span className="text-primary">Filtrar</span>
@@ -129,7 +129,7 @@ const Us: React.FC = () => {
         <div className="w-full shadow-lg rounded-lg ">
           <div className="p-4 relative text-secondary bg-white font-bold flex flex-row ">
             <span className="text-center w-4/12">PSF</span>
-            <span className="text-center w-4/12">Cidade</span>
+            <span className="text-center  hidden sm:flex w-4/12">Cidade</span>
             <span className="absolute right-0 mr-20 ">Ações</span>
           </div>
 

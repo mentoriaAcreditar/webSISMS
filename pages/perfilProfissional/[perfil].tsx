@@ -7,7 +7,7 @@ const PerfilProfissional = () => {
   const { perfil } = router.query;
   return (
     <>
-      <div className="  flex flex-row   p-4 shadow-xs bg-purpleDark">
+      <div className="  flex flex-row   p-4 shadow-xs bg-primaryDark">
         <Link href="/">
           <div className="flex cursor-pointer flex-row space-x-2">
             <img src="./arrow-left.svg" alt="" />
@@ -18,15 +18,15 @@ const PerfilProfissional = () => {
         </div>
       </div>
       <div className="flex  flex-col bg-gray">
-        <div className="bg-purple w-full">
+        <div className="bg-primary w-full">
           <div className="py-4 flex items-center flex-col h-40 " />
         </div>
 
         <div className="p-8 sm:flex sm:flex-row sm:space-x-12 sm:space-y-0 space-y-4 ">
           <div className="flex flex-col sm:w-4/12  bg-white rounded-lg">
             <div className="flex flex-col items-center p-8 space-y-2">
-              <div>
-                <img className="z-0 w-18 h-18 relative" src="user.svg" alt="" />
+              <div className="w-24 h-24 rounded-full border-4 border-secondary">
+                <img className="w-full  h-full" src="../../user.svg" alt="" />
               </div>
               <h1 className="font-bold text-secondary">{perfil}</h1>
               <h1>Cargo | US Tal</h1>
@@ -39,7 +39,7 @@ const PerfilProfissional = () => {
             <button type="button">
               <img
                 className="absolute right-0 w-6 top-0 mt-8 mr-8"
-                src="edit.svg"
+                src="../../edit.svg"
                 alt=""
               />
             </button>

@@ -51,7 +51,7 @@ const RelatorioPaciente: React.FC = () => {
           <button
             onClick={() => openModal()}
             type="button"
-            className="bg-white flex flex-row items-center space-x-2 rounded-full p-2 px-4"
+            className="bg-white hidden sm:flex flex-row items-center space-x-2 rounded-full p-2 px-4"
           >
             <img src="./filter.svg" alt="" />
             <span className="text-primary">Filtrar</span>
@@ -76,8 +76,10 @@ const RelatorioPaciente: React.FC = () => {
         <div className="w-full shadow-lg rounded-lg ">
           <div className="p-4 relative text-secondary bg-white sm:text-lg text-xs font-bold flex flex-row ">
             <span className="text-center w-2/12">Nome</span>
-            <span className="w-3/12 text-center ">Contato</span>
-            <span className="w-2/12 text-center  ">Última atualização</span>
+            <span className="w-3/12 smflex hidden text-center ">Contato</span>
+            <span className="w-2/12 sm:flex hidden text-center  ">
+              Última atualização
+            </span>
             <span className="w-3/12 text-center  ">Risco</span>
             <span className="absolute right-0 mr-10 ">Ações</span>
           </div>
@@ -93,10 +95,10 @@ const RelatorioPaciente: React.FC = () => {
                   <span className="text-secondary py-2     w-2/12 text-xs sm:text-lg ">
                     {vt.name}
                   </span>
-                  <span className=" w-3/12 text-xs sm:text-lg py-2 text-grayText">
+                  <span className=" w-3/12 sm:flex hidden text-xs sm:text-lg py-2 text-grayText">
                     {vt.contato}
                   </span>
-                  <span className=" w-2/12 text-center text-xs py-2 sm:text-lg text-grayText">
+                  <span className=" w-2/12 sm:flex hidden text-center text-xs py-2 sm:text-lg text-grayText">
                     {vt.atualizacao}
                   </span>
                   <span
@@ -129,7 +131,8 @@ const RelatorioPaciente: React.FC = () => {
                           className="hover:bg-primary flex flex-col justify-center items-center bg-gray rounded-full p-2"
                           type="button"
                         >
-                          Abrir
+                          <img src="./book-open.svg" alt="" />
+                          <span className="tooltiptext">Abrir Relatório</span>
                         </button>
                       </div>
                     </Link>

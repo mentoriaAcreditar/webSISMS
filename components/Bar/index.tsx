@@ -18,30 +18,7 @@ const Bar: React.FC<BarProps> = ({
   user,
   userCargo,
 }: BarProps) => (
-  <div className="  flex flex-row   p-4 shadow-xs bg-white">
-    <div className="dropdown2 sm:hidden flex px-4 absolute left-0">
-      <button
-        type="button"
-        className="text-primary px-4 p-2 rounded-md justify-center items-center flex flex-row"
-      >
-        Menu
-        <img src="./chevron-down3.svg" alt="" />
-      </button>
-      <div className="dropdown-content2 ">
-        <Link href="cad">
-          <span className="cursor-pointer">Sintomas</span>
-        </Link>
-
-        <Link href="cad">
-          <span className="cursor-pointer">Unidades de saúde (US)</span>
-        </Link>
-
-        <Link href="cadastroProfissional">
-          <span className="cursor-pointer">Profissionais de saúde</span>
-        </Link>
-      </div>
-    </div>
-
+  <div className="  flex flex-row h-16 items-center shadow-xs bg-white">
     {left ? (
       <Link href="/">
         <div className="flex cursor-pointer flex-row space-x-2">
@@ -62,7 +39,7 @@ const Bar: React.FC<BarProps> = ({
 
           <img
             className="bg-primary rounded-full w-10 p-2 h-10"
-            src="user3.svg"
+            src="userwhite.svg"
             alt=""
           />
           <div className="dropdown ">

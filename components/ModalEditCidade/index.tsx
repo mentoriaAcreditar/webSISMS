@@ -94,7 +94,7 @@ const ModalEditCidade: React.FC<IModalProps> = ({
 
             <button
               data-testid="edit-food-button"
-              className="bg-purple text-white w-20 h-10 rounded p-2"
+              className="bg-primary text-white w-20 h-10 rounded p-2"
               type="submit"
             >
               Salvar
