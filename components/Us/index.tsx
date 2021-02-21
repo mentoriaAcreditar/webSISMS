@@ -98,12 +98,18 @@ const Us: React.FC = () => {
           isOpen={modalOpen}
           setIsOpen={toggleModal}
         />
-        <ModalEditPsf
+        <ModalAddPsf
+          psf={editingPsf}
+          handleAddPsf={handleUpdatepsf}
+          isOpen={modalEditOpen}
+          setIsOpen={toggleEditModal}
+        />
+        {/* <ModalEditPsf
           isOpen={modalEditOpen}
           setIsOpen={toggleEditModal}
           editingPsf={editingPsf}
           handleUpdatePsf={handleUpdatepsf}
-        />
+        /> */}
       </div>
       <div className=" space-y-4 sm:space-y-0">
         <div className="w-full shadow-lg rounded-lg ">
