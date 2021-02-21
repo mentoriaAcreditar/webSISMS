@@ -17,14 +17,14 @@ export class ReqPsf {
     insert(psf: Psf) {
         let refdoc = this._refCol.doc();
         psf.id = refdoc.id;
-        refdoc.set(psf.toData(), { merge: true });
+        return refdoc.set(psf.toData(), { merge: true });
     }
 
     save(psf: Psf) {
-        this._refCol.doc(psf.id).set(psf.toData(), { merge: true });
+        return this._refCol.doc(psf.id).set(psf.toData(), { merge: true });
     }
 
     delete(psf: Psf) {
-        this._refCol.doc(psf.id).delete();
+        return this._refCol.doc(psf.id).delete();
     }
 }
