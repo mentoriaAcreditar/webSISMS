@@ -8,12 +8,15 @@ import { Cidade } from '../../model/entidades/cidade';
 import { ReqCidades } from '../../model/requisicoes/req-cidades';
 
 interface IModalProps {
+  psf?: Psf;
   isOpen: boolean;
   setIsOpen: () => void;
   handleAddPsf: (data: Psf) => void;
 }
 
 const ModalAddPsf: React.FC<IModalProps> = ({
+  // eslint-disable-next-line react/prop-types
+  psf,
   // eslint-disable-next-line react/prop-types
   isOpen,
   // eslint-disable-next-line react/prop-types
@@ -22,7 +25,6 @@ const ModalAddPsf: React.FC<IModalProps> = ({
   handleAddPsf,
 }) => {
   const formRef = useRef<FormHandles>(null);
-
   useEffect(() => {
     getCidades();
   }, []);
@@ -62,7 +64,7 @@ const ModalAddPsf: React.FC<IModalProps> = ({
 
   return (
     <Modal title="Cadastrar PSF" isOpen={isOpen} setIsOpen={setIsOpen}>
-      <Form ref={formRef} onSubmit={handleSubmit}>
+      <Form ref={formRef} onSubmit={handleSubmit} initialData={psf}>
         <div className=" overflow-auto h-hList w-full ">
           <Input label="Nome do PSF:" name="nome" />
           <div className="flex text-green mt-2 flex-col sm:w-4/12 ml-2  sm:mr-4 mr-2 ">
