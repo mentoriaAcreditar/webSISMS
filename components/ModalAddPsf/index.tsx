@@ -36,10 +36,12 @@ const ModalAddPsf: React.FC<IModalProps> = ({
 
   const handleSubmit = useCallback(
     async (data: Psf) => {
-      data.idCidade = cid;
-
-      await handleAddPsf(data);
-      setIsOpen();
+      if (cid.length > 0) {
+        data.idCidade = cid;
+        data.id = psf?.id ?? '';
+        await handleAddPsf(data);
+        setIsOpen();
+      }
     },
     [handleAddPsf, cid, setIsOpen],
   );
