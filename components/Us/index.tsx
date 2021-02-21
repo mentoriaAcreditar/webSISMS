@@ -59,19 +59,10 @@ const Us: React.FC = () => {
   }
 
   async function handleUpdatepsf(psf: Psf) {
-    const newP: Psf = {
-      id: psf.id,
-      nome: psf.nome,
-      idCidade: psf.idCidade,
-
-      toData() {
-        return {
-          id: this.id,
-          nome: this.nome,
-          idCidade: this.idCidade,
-        };
-      },
-    };
+    const newP: Psf = new Psf();
+    newP.id = psf.id;
+    newP.nome = psf.nome;
+    newP.idCidade = psf.idCidade;
 
     await new ReqPsf().save(newP);
     const todosIndex = psfs.findIndex((t) => t.id === psf.id);
