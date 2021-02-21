@@ -21,20 +21,9 @@ const Us: React.FC = () => {
   }
 
   async function handleAddTool(psf: Psf) {
-    const newP: Psf = {
-      id: psf.id,
-      nome: psf.nome,
-      idCidade: psf.idCidade,
-
-      toData() {
-        return {
-          id: psf.id,
-          nome: this.nome,
-          idCidade: this.idCidade,
-        };
-      },
-    };
-
+    var newP = new Psf();
+    newP.idCidade = psf.idCidade;
+    newP.nome = psf.nome;
     await new ReqPsf().insert(newP);
     setPsf([...psfs, newP]);
   }
