@@ -26,6 +26,10 @@ export class ReqProfissional {
     }
 
     save(profissional: Profissional) {
-        this._refCol.doc(profissional.id).set(profissional.toData(), { merge: true });
+        return this._refCol.doc(profissional.id).set(profissional.toData(), { merge: true });
+    }
+    
+    delete(profissional: Profissional) {
+        return this._refCol.doc(profissional.id).delete();
     }
 }
