@@ -4,7 +4,7 @@ import Link from 'next/link';
 const Login = (): JSX.Element => {
   return (
     <div className="  sm:flex w-full relative ">
-      <div className="sm:flex bg-blueBlack sm:flex-col hidden  items-end p-2 sm:w-1/2 w-full min-h-screen justify-center ">
+      <div className=" bg-blueBlack sm:hidden md:hidden hidden lg:flex  items-end p-2 sm:w-1/2 w-full min-h-screen justify-center ">
         <div className=" flex flex-col justify-end items-center">
           <img className="w-10/12" src="./img.svg" alt="" />
         </div>

@@ -52,11 +52,11 @@ const PainelProfissional: React.FC = () => {
     <>
       <div className="flex flex-row h-screen">
         <div
-          className="flex-col container sm:flex hidden items-center relative  bg-secondary
-        sm:h-full md:h-full lg:h-full   w-2/12"
+          className="flex-col container sm:flex  items-center relative  bg-secondary
+        sm:h-full md:h-full lg:h-full hidden   w-2/12"
         >
-          <div className="w-full   flex flex-col items-center h-16 justify-center ">
-            <img src="./logotest2.svg" alt="" />
+          <div className="w-full  flex flex-col items-center p-6">
+            <img className="w-1/2" src="./Logo.svg" alt="" />
           </div>
 
           <div className=" flex flex-col w-full  ">
